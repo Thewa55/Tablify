@@ -1,3 +1,5 @@
 module.exports = {
-  Book: require("./book")
+  Diningroom: require("./diningroom"),
+  Menu: require("./menu"),
+  TableHistory: require("./tableHistory")
 };

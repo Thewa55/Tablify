@@ -1,8 +1,9 @@
 import React from 'react';
+import '../style.css';
 
 function Landing() {
   return (
-    <div> TEST
+    <div className="background"> TEST
     </div>
   );
 }
