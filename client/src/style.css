@@ -1,4 +1,45 @@
 .background {
-    /* background-image: url("./assets/images/landing.jpg"); */
+    background-image: url("./assets/images/landing.png");
     font-size: 24px;
+    height: 935px;
+    width: 100%;
+}
+
+.page-center {
+    position: relative;
+    top: 40%;
+    width: 100%;
+    color: white;
+}
+
+.headline {
+    font-family: 'Satisfy', cursive;
+    font-size: 84px;
+    text-shadow: 2px 2px black;
+    padding-top: 1%;
+}
+
+.sub-headline {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 24px;
+    text-shadow: 1px 1px black;
+}
+
+.login-button {
+    margin-top: 1%;
+    margin-bottom: 1%;
+    height: 50px;
+    width: 150px;
+    border: 2px solid black;
+    font-family: 'Pacifico', cursive;
+    font-size: 20px;
+    text-shadow: 1px 1px black;
+}
+
+.page-center:hover {
+    background-color: white;
+    color: black;
+    transition: all 0.80s ease-in-out;
+    border: 1px solid black;
+    text-shadow: none;
 }
