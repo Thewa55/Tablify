@@ -2,33 +2,60 @@ const db = require("../models");
 
 // Defining methods for the booksController
 module.exports = {
-  findAll: function(req, res) {
-    db.Book
+  findAllDishes: function(req, res) {
+    db.Menu
       .find(req.query)
-      .sort({ date: -1 })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
-  findById: function(req, res) {
-    db.Book
+
+  findAllTables: function(req, res) {
+    db.Diningroom
+      .find(req.query)
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
+  
+  findTableById: function(req, res) {
+    db.Diningroom
       .findById(req.params.id)
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
-  create: function(req, res) {
-    db.Book
+  
+  // createNewTable here means the tables be created by user should store in here
+  createNewTable: function(req, res) {
+    db.Diningroom
       .create(req.body)
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
-  update: function(req, res) {
-    db.Book
+  
+  // createTable here means the table be occupied by customer and finished the order
+  createTable: function(req, res) {
+    db.TableHistory
+      .create(req.body)
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
+
+  createDish: function(req, res) {
+    db.Menu
+      .create(req.body)
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
+  
+
+  updateTable: function(req, res) {
+    db.TableHistory
       .findOneAndUpdate({ _id: req.params.id }, req.body)
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
-  remove: function(req, res) {
-    db.Book
+  
+  removeDishbyID: function(req, res) {
+    db.Menu
       .findById({ _id: req.params.id })
       .then(dbModel => dbModel.remove())
       .then(dbModel => res.json(dbModel))
