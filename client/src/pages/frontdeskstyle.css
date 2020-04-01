@@ -39,6 +39,8 @@
     margin-left: 10%;
     padding: 0px 10px;
     font-size: 30px;
+    background-image: none;
+    background-color: white;
 }
 
 .table-container {
