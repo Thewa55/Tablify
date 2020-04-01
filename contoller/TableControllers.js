@@ -54,9 +54,17 @@ module.exports = {
       .catch(err => res.stat++us(422).json(err));
   },
   
-  removeDishbyID: function(req, res) {
+  removeDishById: function(req, res) {
     db.Menu
       .findById({ _id: req.params.id })
+      .then(dbModel => dbModel.remove())
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
+  
+  removeTableById: function(req,res) {
+    db.Diningroom
+    .findById({ _id: req.params.id })
       .then(dbModel => dbModel.remove())
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
