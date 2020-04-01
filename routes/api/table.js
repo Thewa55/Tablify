@@ -1,19 +1,18 @@
 const router = require("express").Router();
-const booksController = require("../../controllers/booksController");
+const tableController = require("../../controller/TableControllers");
 
 router.route("/")
+  .get(tableController.findAllDishes)
+  .get(tableController.finsAllTables)
+  .create(tableController.createNewTable)
+  .create(tableController.createTableData)
+  .create(tableController.createDish)
 
+router.route("/:id")
+  .get(tableController.findTableById)
+  .put(tableController.updateTable)
+  .delete(tableController.removeDishById)
+  .delete(tableController.removeTableById)
 
-// Matches with "/api/books"
-router.route("/")
-  .get(booksController.findAll)
-  .post(booksController.create);
-
-// Matches with "/api/books/:id"
-router
-  .route("/:id")
-  .get(booksController.findById)
-  .put(booksController.update)
-  .delete(booksController.remove);
 
 module.exports = router;
