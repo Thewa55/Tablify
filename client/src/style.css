@@ -1,45 +1,72 @@
-.background {
-    background-image: url("./assets/images/landing.png");
-    font-size: 24px;
-    height: 935px;
-    width: 100%;
+body {
+    background-image:
+    linear-gradient(
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)
+    ),url("./assets/images/landing.png");
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    z-index: -1;    
 }
 
 .page-center {
-    position: relative;
+    position: absolute;
     top: 40%;
     width: 100%;
     color: white;
 }
 
 .headline {
-    font-family: 'Satisfy', cursive;
-    font-size: 84px;
-    text-shadow: 2px 2px black;
+    font-family: 'Fredoka One', cursive;
+    font-size: 72px;
+    text-shadow: 3px 3px black;
     padding-top: 1%;
 }
 
 .sub-headline {
-    font-family: 'Josefin Sans', sans-serif;
+    font-family: 'Fredoka One', cursive;
     font-size: 24px;
-    text-shadow: 1px 1px black;
+    text-shadow: 2px 2px black;
 }
 
 .login-button {
-    margin-top: 1%;
-    margin-bottom: 1%;
-    height: 50px;
-    width: 150px;
-    border: 2px solid black;
-    font-family: 'Pacifico', cursive;
-    font-size: 20px;
-    text-shadow: 1px 1px black;
+    width: 130px;
+    height: 40px;
+    background: #389ed5;
+    border: none;
+    border-radius: 5px;
+    position: relative;
+    border-bottom: 4px solid #2b8bc6;
+    color: #fbfbfb;
+    font-weight: 700;
+    font-family: 'Candal', sans-serif;
+    font-size: 15px;
+    text-align: left;
+    text-indent: 5px;
+    box-shadow: 0px 3px 0px 0px rgba(0,0,0,.2);
+    cursor: pointer;
+    margin: 2%;
 }
 
-.page-center:hover {
-    background-color: white;
-    color: black;
-    transition: all 0.80s ease-in-out;
-    border: 1px solid black;
-    text-shadow: none;
-}
+  .login-button:active {
+    box-shadow: 0px 2px 0px 0px rgba(0,0,0,.2);
+    top: 1px;
+  }
+  
+  .login-button:after {
+    content: "";
+    width: 0;
+    height: 0;
+    display: block;
+    border-top: 20px solid #187dbc;
+    border-bottom: 20px solid #187dbc;
+    border-left: 16px solid transparent;
+    border-right: 20px solid #187dbc;
+    position: absolute;
+    opacity: 0.6; 
+    right: 0;
+    top: 0;
+    border-radius: 0 5px 5px 0;  
+  }
