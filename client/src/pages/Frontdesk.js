@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import './frontdeskstyle.css';
 import TableExample from '../components/TableExample/TableExample';
+import { Link } from "react-router-dom";
 
 class Frontdesk extends Component {
 
@@ -15,6 +16,9 @@ class Frontdesk extends Component {
                 <button onClick={() => this.buildTable}>
                     Build Table
                 </button>
+                <Link to="/">
+                    <button>Home</button>
+                </Link>
             </div>
             <div class="main">
                 <TableExample />
