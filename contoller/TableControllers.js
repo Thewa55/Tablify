@@ -32,7 +32,7 @@ module.exports = {
   },
   
   // createTable here means the table be occupied by customer and finished the order
-  createTable: function(req, res) {
+  createTableData: function(req, res) {
     db.TableHistory
       .create(req.body)
       .then(dbModel => res.json(dbModel))
