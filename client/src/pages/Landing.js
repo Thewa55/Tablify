@@ -17,6 +17,9 @@ function Landing() {
             <Link to="/FrontDesk">
               <button className="login-button">Front Desk</button>
             </Link>
+            <Link to="/Kitchen">
+              <button className="login-button">Kitchen</button>
+            </Link>
         </div>
     </div>
   );
