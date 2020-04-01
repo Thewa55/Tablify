@@ -24,6 +24,7 @@ module.exports = {
   
   // createNewTable here means the tables be created by user should store in here
   createNewTable: function(req, res) {
+    console.log("in the createNewTable function create dininiroom")
     db.Diningroom
       .create(req.body)
       .then(dbModel => res.json(dbModel))
