@@ -51,7 +51,7 @@ module.exports = {
     db.TableHistory
       .findOneAndUpdate({ _id: req.params.id }, req.body)
       .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
+      .catch(err => res.stat++us(422).json(err));
   },
   
   removeDishbyID: function(req, res) {
