@@ -1,0 +1,66 @@
+.topnav {
+    width: 100%;
+    height: 23%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-image: url('../assets/images/banner.jpg');
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    overflow-x: hidden;
+}
+
+.sidenav {
+    height: 100%;
+    width: 10%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+
+.sidenav button {
+    height: 5%;
+    width: 60%;
+    margin: 20%;
+    text-decoration: none;
+    font-size: 100%;
+    color: #818181;
+    display: block;
+}
+
+.main {
+    margin-left: 10%;
+    padding: 0px 10px;
+    font-size: 30px;
+}
+
+.table-container {
+    width: 50%;
+    height: 50%;
+    float: left;
+}
+
+.seat {
+    height: 60px;
+    width: 90px;
+    background-color: lightgray;
+}
+
+.check-table {
+    border: 4px solid purple;
+}
+
+.table-button {
+    width: 105%;
+    height: 100%;
+    margin-left: -2.5%;
+    font-size: 36px;
+    font-family: 'Permanent Marker', cursive;
+}

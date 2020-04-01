@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import Landing from './pages/Landing';
+import Frontdesk from './pages/Frontdesk';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Landing />
+    <Frontdesk />
   </React.StrictMode>,
   document.getElementById('root')
 );
