@@ -1,5 +1,6 @@
 import React from 'react';
 import '../style.css';
+import { Link } from "react-router-dom";
 
 function Landing() {
   return (
@@ -7,8 +8,15 @@ function Landing() {
         <div className="page-center text-center">
             <h1 className="headline">Making restaurant management simple with Tablify</h1>
             <h3 className="sub-headline">Build your restaurant, manage your menu, and track your customers - all in the palm of your hand.</h3>
-            <button className="login-button">Log-in</button>
-            <button className="login-button">Sign-up</button>
+            <Link to="/LogIn">
+              <button className="login-button">Log-in</button>
+            </Link>
+            <Link to="/SignUp">
+              <button className="login-button">Sign-up</button>
+            </Link>
+            <Link to="/FrontDesk">
+              <button className="login-button">Front Desk</button>
+            </Link>
         </div>
     </div>
   );
