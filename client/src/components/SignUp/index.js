@@ -20,6 +20,15 @@ const INITIAL_STATE = {
     error: null,
   };
 
+  const ERROR_CODE_ACCOUNT_EXISTS = 'auth/email-already-in-use';
+
+  const ERROR_MSG_ACCOUNT_EXISTS = `
+    An account with this E-Mail address already exists.
+    Try to login with this account instead. If you think the
+    account is already used from one of the social logins, try
+    to sign in with one of them. Afterward, associate your accounts
+    on your personal account page.
+  `;
 
 class SignUpFormBase extends Component {
   constructor(props) {
@@ -27,19 +36,53 @@ class SignUpFormBase extends Component {
 
     this.state = { ...INITIAL_STATE };
   }
+
+  //adding the return ***
   onSubmit = event => {
-    const { username, email, passwordOne } = this.state;
+    const { username, email, passwordOne, isAdmin } = this.state;
+   
     this.props.firebase
       .doCreateUserWithEmailAndPassword(email, passwordOne)
       .then(authUser => {
+        // Create a user in your Firebase realtime database
+        return this.props.firebase.user(authUser.user.uid).set({
+          username,
+          email,
+        });
+      })
+      .then(() => {
+        return this.props.firebase.doSendEmailVerification();
+      })
+      .then(() => {
         this.setState({ ...INITIAL_STATE });
         this.props.history.push(ROUTES.HOME);
       })
       .catch(error => {
+        if (error.code === ERROR_CODE_ACCOUNT_EXISTS) {
+          error.message = ERROR_MSG_ACCOUNT_EXISTS;
+        }
+
         this.setState({ error });
       });
+
     event.preventDefault();
-  }
+  };
+  // onSubmit = event => {
+  //   const { username, email, passwordOne } = this.state;
+  //   this.props.firebase
+  //     .doCreateUserWithEmailAndPassword(email, passwordOne)
+  //     .then(authUser => {
+  //       this.setState({ ...INITIAL_STATE });
+  //       this.props.history.push(ROUTES.HOME);
+  //     })
+  //     .catch(error => {
+  //       this.setState({ error });
+  //     });
+  //   event.preventDefault();
+  // }
+
+
+
   onChange = event => {
     this.setState({ [event.target.name]: event.target.value });
   };
