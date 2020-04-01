@@ -9,7 +9,7 @@ const tableHistorySchema = new Schema({
     order_quantity: { type: String }
 });
 
-const TableHistory = mongoose.model("Book", tableHistorySchema);
+const TableHistory = mongoose.model("TableHistory", tableHistorySchema);
 
 module.exports = TableHistory;
 
