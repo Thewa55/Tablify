@@ -22,7 +22,7 @@ class Frontdesk extends Component {
         return (
             <>
                 <div className="sidenav">
-                    <button onClick={() => this.buildTable}>
+                    <button onClick={() => this.buildTable()}>
                         Build Table
                 </button>
                     <Link to="/">

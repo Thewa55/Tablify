@@ -15,6 +15,8 @@ export default {
   },
   // Create new table in diningroom
   createNewTable: function(tableData){
+      console.log("call axios")
+      console.log("tableData in createNewTable: ",tableData)
       return axios.post("/api/table", tableData)
   },
   // Create new dish
@@ -28,7 +30,7 @@ export default {
 
   // Change table status
   changeTableStatus: function(id, newStatus){
-      return axios.put("apu/table/TableHistory/" + id, newStatus)
+      return axios.put("api/table/TableHistory/" + id, newStatus)
   },
 
   // Deletes the book with the given id
