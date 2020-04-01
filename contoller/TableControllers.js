@@ -1,6 +1,5 @@
 const db = require("../models");
 
-// Defining methods for the booksController
 module.exports = {
   findAllDishes: function(req, res) {
     db.Menu
@@ -51,7 +50,7 @@ module.exports = {
     db.TableHistory
       .findOneAndUpdate({ _id: req.params.id }, req.body)
       .then(dbModel => res.json(dbModel))
-      .catch(err => res.stat++us(422).json(err));
+      .catch(err => res.status(422).json(err));
   },
   
   removeDishById: function(req, res) {
