@@ -35,12 +35,24 @@
     display: block;
 }
 
-.main {
+#main {
     margin-left: 10%;
     padding: 0px 10px;
     font-size: 30px;
     background-image: none;
     background-color: white;
+}
+
+#left-aisle {
+    width: 50%;
+    margin: 0 auto;
+    border-right: 1px solid black;
+}
+
+#right-aisle {
+    width: 50%;
+    margin: 0 auto;
+    border-left: 1px solid black;
 }
 
 .table-container {
