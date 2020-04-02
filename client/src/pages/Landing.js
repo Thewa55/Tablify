@@ -2,9 +2,16 @@ import React from 'react';
 import '../style.css';
 import SignOutButton from '../components/SignOut';
 import { Link } from "react-router-dom";
+import { AuthUserContext } from '../components/Session';
 
-const Landing = ({ authUser }) => (
-  <div>{authUser ? <LandingAuth /> : <LandingNonAuth />}</div>
+const Landing = () => (
+  <div>
+    <AuthUserContext.Consumer>
+      {authUser =>
+        authUser ? <LandingAuth /> : <LandingNonAuth />
+      }
+    </AuthUserContext.Consumer>
+  </div>
 );
 
 const LandingNonAuth = () => (
