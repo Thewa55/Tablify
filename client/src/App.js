@@ -15,7 +15,7 @@ function App() {
         <Route exact path="/" component={Landing} />
         <Route exact path="/FrontDesk" component={FrontDesk} />
         <Route exact path="/SignIn" component={SignIn} />
-        <Route exact path="/PasswordForget" component={PasswordForgetPage} />
+        <Route exact path="/pw-forget" component={PasswordForgetPage} />
         <Route exact path="/SignUp" component={SignUp} />
         <Route exact path="/Kitchen" component={Kitchen} />
       </Fragment>
