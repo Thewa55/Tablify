@@ -5,7 +5,7 @@ const tableHistorySchema = new Schema({
     start_at: { type: Number },
     end_at: { type: Number },
     table_color: { type: String, default: 'White'},
-    order: { type: Text },
+    order: { type: String },
     order_quantity: { type: String }
 });
 

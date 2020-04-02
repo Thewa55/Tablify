@@ -1,0 +1,27 @@
+.table-small, .table-medium, .table-large, .table-xl {
+    border: 2px solid black;
+    margin: 1%;
+    float: left;
+    background-color: white;
+    color: black;
+}
+
+.table-small {
+    height: 100px;
+    width: 150px;
+}
+
+.table-medium {
+    height: 200px;
+    width: 300px;
+}
+
+.table-large {
+    height: 300px;
+    width: 450px;
+}
+
+.table-xl {
+    height: 450px;
+    width: 600px;
+}
