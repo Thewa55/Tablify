@@ -11,20 +11,27 @@ import Container from '../Container'
 const SignInPage = () => (
   <div>
     <Container>
-    <Jumbotron>  
-    <h1>Sign In</h1>  
-    <SignInForm />
-    <PasswordForgetLink />
-    <SignUpLink />
-    </Jumbotron>
+      <Jumbotron>
+        <div className="Row">
+        <div class="col-md-4 offset-md-4">
+        <h1>Sign In</h1>
+        <br />
+        <SignInForm />
+        <PasswordForgetLink />
+        <SignUpLink />
+        </div>
+        </div>
+      </Jumbotron>
     </Container>
   </div>
 );
+
 const INITIAL_STATE = {
   email: '',
   password: '',
   error: null,
 };
+
 class SignInFormBase extends Component {
   constructor(props) {
     super(props);
@@ -51,6 +58,7 @@ class SignInFormBase extends Component {
     const isInvalid = password === '' || email === '';
     return (
       <form onSubmit={this.onSubmit}>
+        E-mail:
         <div class="form-group">
         <input
           name="email"
@@ -60,6 +68,7 @@ class SignInFormBase extends Component {
           placeholder="Email Address"
         />
         </div>
+        Password:
         <div class="form-group">
         <input
           name="password"
@@ -77,11 +86,13 @@ class SignInFormBase extends Component {
         {error && <p>{error.message}</p>}
       </form>
     );
-  }
-}
+  };
+};
+
 const SignInForm = compose(
   withRouter,
   withFirebase,
 )(SignInFormBase);
+
 export default SignInPage;
 export { SignInForm };
