@@ -6,6 +6,7 @@ import Small from "../components/TableExamples/Small";
 import Medium from "../components/TableExamples/Medium";
 import Large from "../components/TableExamples/Large";
 import XL from "../components/TableExamples/XL";
+import Dragula from 'react-dragula';
 
 import { List, ListItem } from "../components/List";
 
@@ -44,6 +45,10 @@ class Frontdesk extends Component {
             .catch(err => console.log(err))
     }
 
+    componentDidMount = () => {
+        Dragula([document.querySelector('#left-aisle'), document.querySelector('#right-aisle')]);
+    }
+
     render() {
         return (
             <>
@@ -55,11 +60,15 @@ class Frontdesk extends Component {
                         <button>Home</button>
                     </Link>
                 </div>
-                <div className="main">
-                    <Small />
-                    <Medium />
-                    <Large />
-                    <XL />
+                <div id="main">
+                    <div id="left-aisle">
+                        <Small />
+                        <Small />
+                    </div>
+                    <div id="right-aisle">
+                        <Medium />
+                        <Medium />
+                    </div>
                 </div>
                 {!this.state.savedTableIds.length ? (
                         <h2>not yet create table</h2>
