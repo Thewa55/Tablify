@@ -13,7 +13,7 @@ class Frontdesk extends Component {
     state = {
         savedTableIds: [],
     }
-
+// functions for diningroom collection testing!!
     retriveSavedTables = () => {
         API.getTables().then(res => {
             const savedTableIds = res.data.map(table => table._id);
@@ -44,7 +44,10 @@ class Frontdesk extends Component {
             .catch(err => console.log(err))
     }
 
+// functions for menu collection testing!!
+
     render() {
+        console.log(this.state)
         return (
             <>
                 <div className="sidenav">
