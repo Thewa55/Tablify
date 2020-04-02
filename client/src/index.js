@@ -2,13 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 // import FrontDesk from './pages/Frontdesk';
-// import Firebase, { FirebaseContext } from './components/Firebase';
+import Firebase, { FirebaseContext } from './components/Firebase';
 
 ReactDOM.render(
   <React.StrictMode>
-    {/* <FirebaseContext.Provider value={new Firebase()}> */}
+    <FirebaseContext.Provider value={new Firebase()}>
       <App />
-    {/* </FirebaseContext.Provider>, */}
+    </FirebaseContext.Provider>,
   </React.StrictMode>,
   document.getElementById('root')
 );
