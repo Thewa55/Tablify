@@ -9,6 +9,7 @@ function Kitchen() {
         <div class="card mt-2">
           <div class="card-body">
             <h5 class="card-title">Table1</h5>
+            <hr></hr>
             <h6 class="card-subtitle mb-2 text-muted">Appetizer 1</h6>
             <h6 class="card-subtitle mb-2 text-muted">Appetizer 2</h6>
             <h6 class="card-subtitle mb-2 text-muted">Entre 1</h6>
