@@ -37,6 +37,13 @@ class Frontdesk extends Component {
             .catch(err => console.log(err));
     }
 
+    deleteTable = TableId =>{
+        console.log(TableId)
+        API.deleteTable(TableId)
+            .then(this.retriveSavedTables)
+            .catch(err => console.log(err))
+    }
+
     render() {
         return (
             <>
@@ -54,19 +61,19 @@ class Frontdesk extends Component {
                     <Large />
                     <XL />
                 </div>
-                {/* {!this.state.savedTableIds.length ? (
+                {!this.state.savedTableIds.length ? (
                         <h2>not yet create table</h2>
                     ) : (this.state.savedTableIds.map(table => {
                         return (
                             <List>
                                 <ListItem key={table}>
-                                        <strong>
+                                        <button onClick={()=> this.deleteTable(table)}>
                                             tableID: {table}
-                                        </strong>
+                                        </button>
                                 </ListItem>
                             </List>
                         )
-                    }))} */}
+                    }))}
             </>
         );
     }
