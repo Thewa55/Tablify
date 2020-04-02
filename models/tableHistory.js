@@ -6,7 +6,8 @@ const tableHistorySchema = new Schema({
     end_at: { type: Number },
     table_color: { type: String, default: 'White'},
     order: { type: String },
-    order_quantity: { type: String }
+    order_quantity: { type: String },
+    availability: { type: Boolean, default: true}
 });
 
 const TableHistory = mongoose.model("TableHistory", tableHistorySchema);
