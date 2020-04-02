@@ -10,8 +10,8 @@ const SignInPage = () => (
   <div>
     <h1>SignIn</h1>
     <SignInForm />
-    <SignUpLink />
     <PasswordForgetLink />
+    <SignUpLink />
   </div>
 );
 const INITIAL_STATE = {
