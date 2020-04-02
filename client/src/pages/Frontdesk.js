@@ -1,8 +1,11 @@
 import React, { Component } from "react";
 import './frontdeskstyle.css';
-import TableExample from '../components/TableExample/TableExample';
 import { Link } from "react-router-dom";
 import API from "../utils/API";
+import Small from "../components/TableExamples/Small";
+import Medium from "../components/TableExamples/Medium";
+import Large from "../components/TableExamples/Large";
+import XL from "../components/TableExamples/XL";
 
 class Frontdesk extends Component {
 
@@ -30,10 +33,10 @@ class Frontdesk extends Component {
                     </Link>
                 </div>
                 <div className="main">
-                    <TableExample />
-                    <TableExample />
-                    <TableExample />
-                    <TableExample />
+                    <Small />
+                    <Medium />
+                    <Large />
+                    <XL />
                 </div>
             </>
         );

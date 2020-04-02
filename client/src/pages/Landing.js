@@ -8,7 +8,7 @@ function Landing() {
         <div className="page-center text-center">
             <h1 className="headline">Making restaurant management simple with Tablify</h1>
             <h3 className="sub-headline">Build your restaurant, manage your menu, and track your customers - all in the palm of your hand.</h3>
-            <Link to="/LogIn">
+            <Link to="/SignIn">
               <button className="login-button">Log-in</button>
             </Link>
             <Link to="/SignUp">
