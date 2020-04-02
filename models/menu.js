@@ -8,6 +8,6 @@ const menuSchema = new Schema({
   cookTime: { type: Number, required: true },
 });
 
-const Menu = mongoose.model("Diningroom", menuSchema);
+const Menu = mongoose.model("Menu", menuSchema);
 
 module.exports = Menu;
