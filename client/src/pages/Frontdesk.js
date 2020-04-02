@@ -14,7 +14,7 @@ class Frontdesk extends Component {
         }
         console.log("tableData: ",tableData)
         API.createNewTable(tableData)
-            .then(res => console.log(res.data))
+            .then(res => console.log("res.data: ",res.data))
             .catch(err => console.log(err));
     }
 

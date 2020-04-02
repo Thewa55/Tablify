@@ -13,16 +13,19 @@ export default {
   getMenu: function(){
       return axios.get("/api/table/Menu")
   },
+  
   // Create new table in diningroom
   createNewTable: function(tableData){
       console.log("call axios")
       console.log("tableData in createNewTable: ",tableData)
       return axios.post("/api/table", tableData)
   },
+
   // Create new dish
   createNewDish: function(newDish){
       return axios.post("/api/table/Menu", newDish)
   },
+
   // Create new table data if change to occupied
   createTableHistory: function(newCustomer){
       return axios.post("/api/table/TableHistory", newCustomer)
