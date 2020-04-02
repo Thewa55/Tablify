@@ -46,7 +46,7 @@ class Frontdesk extends Component {
     }
 
     componentDidMount = () => {
-        Dragula([document.querySelector('#left-aisle'), document.querySelector('#right-aisle')]);
+        Dragula([document.querySelector('#main')]);
     }
 
 // functions for menu collection testing!!
@@ -64,17 +64,21 @@ class Frontdesk extends Component {
                     </Link>
                 </div>
                 <div id="main">
-                    <div id="left-aisle">
                         <Small />
                         <Small />
-                    </div>
-                    <div id="right-aisle">
                         <Medium />
                         <Medium />
-                    </div>
+                        <Small />
+                        <Small />
+                        <Medium />
+                        <Medium />
+                        <Small />
+                        <Small />
+                        <Small />
+                        <Small />
                 </div>
                 {!this.state.savedTableIds.length ? (
-                        <h2>not yet create table</h2>
+                        <h2 style={{color: "white"}}>No Tables Generated Yet</h2>
                     ) : (this.state.savedTableIds.map(table => {
                         return (
                             <List>

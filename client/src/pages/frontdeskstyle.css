@@ -43,38 +43,3 @@
     background-color: white;
 }
 
-#left-aisle {
-    width: 50%;
-    margin: 0 auto;
-    border-right: 1px solid black;
-}
-
-#right-aisle {
-    width: 50%;
-    margin: 0 auto;
-    border-left: 1px solid black;
-}
-
-.table-container {
-    width: 50%;
-    height: 50%;
-    float: left;
-}
-
-.seat {
-    height: 60px;
-    width: 90px;
-    background-color: lightgray;
-}
-
-.check-table {
-    border: 4px solid purple;
-}
-
-.table-button {
-    width: 105%;
-    height: 100%;
-    margin-left: -2.5%;
-    font-size: 36px;
-    font-family: 'Permanent Marker', cursive;
-}
