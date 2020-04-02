@@ -26,6 +26,7 @@
     "firebase": "^7.13.1",
     "if-env": "^1.0.4",
     "mongoose": "^5.3.16",
+    "react-dragula": "^1.1.17",
     "recompose": "^0.30.0"
   }
 }
