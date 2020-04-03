@@ -10,7 +10,7 @@ const PasswordForgetPage = () => (
     <Container>
     <Jumbotron>  
     <div className="Row">
-    <div class="col-md-4 offset-md-4">
+    <div className="col-md-4 offset-md-4">
     <h1>Reset Password </h1>
     <PasswordForgetForm />
     </div>
@@ -48,7 +48,7 @@ class PasswordForgetFormBase extends Component {
     const isInvalid = email === '';
     return (
       <form onSubmit={this.onSubmit}>
-         <div class="form-group">
+         <div className="form-group">
         <input
           name="email"
           value={this.state.email}
@@ -57,7 +57,7 @@ class PasswordForgetFormBase extends Component {
           placeholder="Email Address"
           />
           </div>
-          <div class="form-group">
+          <div className="form-group">
 
         <button disabled={isInvalid} type="submit">
           Reset My Password

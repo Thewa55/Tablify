@@ -15,6 +15,10 @@ export default {
       return axios.get("/api/menu")
   },
   
+  findTableHistoryById: function(id){
+    return axios.get("/api/tablehistory/" + id);
+  },
+  
   // Create new table in diningroom
   createNewTable: function(tableData){
       console.log("call axios")
@@ -29,17 +33,18 @@ export default {
 
   // Create new table data if change to occupied
   createTableHistory: function(newCustomer){
-      return axios.post("/api/table/tablehistory", newCustomer)
+    console.log("newCustomer: ",newCustomer)
+      return axios.post("/api/tablehistory", newCustomer)
   },
 
   // Change table status
   changeTableStatus: function(id, newStatus){
-      return axios.put("api/table/tablehistory/" + id, newStatus)
+      return axios.put("api/tablehistory/" + id, newStatus)
   },
 
   // Deletes the book with the given id
   deleteDish: function(id) {
-    return axios.delete("/api/table/menu/" + id);
+    return axios.delete("/api/menu/" + id);
   },
   // Deletes the existing table with the given id
   deleteTable: function(id) {

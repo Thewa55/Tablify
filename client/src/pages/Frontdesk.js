@@ -13,7 +13,8 @@ import { List, ListItem } from "../components/List";
 class Frontdesk extends Component {
     state = {
         savedTableIds: [],
-        savedMenu: []
+        savedMenu: [],
+        specificTableHistory: []
     }
     // functions for diningroom collection testing!!
     retriveSavedTables = () => {
@@ -23,7 +24,6 @@ class Frontdesk extends Component {
         })
             .catch(err => console.log(err));
     };
-
     buildTable = () => {
         console.log("come into buildTable function")
         let tableData = {
@@ -38,7 +38,6 @@ class Frontdesk extends Component {
             })
             .catch(err => console.log(err));
     }
-
     deleteTable = TableId => {
         console.log(TableId)
         API.deleteTable(TableId)
@@ -63,14 +62,49 @@ class Frontdesk extends Component {
             price: 11.25,
             cookTime: 10
         }
-        console.log("newDish: ",newDish)
+        console.log("newDish: ", newDish)
 
         API.createNewDish(newDish)
-        .then(res=> {
-            console.log("res.data: ",res.data);
-            this.retriveSavedMenu()
+            .then(res => {
+                console.log("res.data: ", res.data);
+                this.retriveSavedMenu()
+            })
+            .catch(err => console.log(err));
+    }
+    deleteDish = DishId => {
+        console.log("Dish ID passed in: ", DishId)
+        API.deleteTable(DishId)
+            .then(this.retriveSavedMenu)
+            .catch(err => console.log(err))
+    }
+
+    //  functions for table this.state.specificTableHistory testing
+    retriveSavedTableHistoryById = TableId => {
+        console.log("Table Id: ", TableId)
+        API.findTableHistoryById(TableId).then(res => {
+            console.log(res.data)
+            const specificTableHistory = res.data;
+            this.setState({ specificTableHistory });
         })
-        .catch(err => console.log(err));
+            .catch(err => console.log(err));
+    }
+    AddTableHistory = () => {
+        console.log("go into add Table History function")
+        const testOrder = 
+            {
+                // start_at: Date(),
+                order:"test dish 2, test dish 3",
+                order_quantity: "1, 2",
+            }
+        
+
+
+        API.createTableHistory(testOrder)
+            .then(res => {
+                console.log("res.data: ", res.data);
+                this.retriveSavedTableHistoryById(res.data._id)
+            })
+            .catch(err => console.log(err));
     }
 
 
@@ -80,12 +114,13 @@ class Frontdesk extends Component {
 
 
     render() {
-        console.log(this.state)
+        console.log("state: ", this.state)
+        console.log("type of: ",typeof(this.state.specificTableHistory))
         return (
             <>
                 <div className="sidenav">
                     <div className="logo-box">
-                        <h1 style={{fontSize: "450%", textAlign: "center"}}>T</h1>
+                        <h1 style={{ fontSize: "80px", textAlign: "center" }}>T</h1>
                     </div>
                     <button onClick={() => this.buildTable()}>
                         Build Table
@@ -96,19 +131,22 @@ class Frontdesk extends Component {
                     <button onClick={() => this.AddDish()}>
                         Add Dish
                     </button>
+                    <button onClick={() => this.AddTableHistory()}>
+                        Add Table this.state.specificTableHistory
+                    </button>
                     <Link to="/">
                         <button>Home</button>
                     </Link>
                 </div>
                 <div id="main">
-                        <Small />
-                        <Medium />
-                        <Large />
-                        <XL />
+                    <Small />
+                    <Medium />
+                    <Large />
+                    <XL />
                 </div>
                 <List>
-                {!this.state.savedTableIds.length ? (
-                        <h2 style={{color: "white"}}>No Tables Generated Yet</h2>
+                    {!this.state.savedTableIds.length ? (
+                        <h2 style={{ color: "white" }}>No Tables Generated Yet</h2>
 
                     ) : (this.state.savedTableIds.map(table => {
                         return (
@@ -123,6 +161,8 @@ class Frontdesk extends Component {
                     }))}
                 </List>
                 <br></br><hr></hr>
+
+                {/* Menu display */}
                 <List>
                     {!this.state.savedMenu.length ? (
                         <h2>not yet create Dish</h2>
@@ -131,7 +171,7 @@ class Frontdesk extends Component {
                             <ListItem key={i}
                                 id={dish._id}
                             >
-                                <button>
+                                <button onClick={() => this.deleteDish(dish._id)}>
                                     dish name: {dish.item}
                                     dish category: {dish.category}
                                     dish price: {dish.price}
@@ -140,6 +180,21 @@ class Frontdesk extends Component {
                             </ListItem>
                         )
                     }))}
+                </List>
+                {/* Table History display */}
+                <List>
+                    {!this.state.specificTableHistory ? (
+                        <h2>not yet create Dish</h2>
+                    ) : (
+                                <button >
+                                    start at: {this.state.specificTableHistory.start_at}
+                                    table color: {this.state.specificTableHistory.color}
+                                    table status: {this.state.specificTableHistory.table_status}
+                                    order: {this.state.specificTableHistory.order}
+                                    order quantity: {this.state.specificTableHistory.order_quantit}
+                                </button>
+                        )
+                    }
                 </List>
 
             </>

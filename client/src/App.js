@@ -7,6 +7,7 @@ import SignIn from "./components/SignIn"
 import SignUp from "./components/SignUp"
 import PasswordForgetPage from './components/PasswordForget';
 import { withAuthentication } from './components/Session';
+import Account from './pages/Account';
 
 const App = () => (
   <Router>
@@ -17,6 +18,7 @@ const App = () => (
       <Route exact path="/pw-forget" component={PasswordForgetPage} />
       <Route exact path="/SignUp" component={SignUp} />
       <Route exact path="/Kitchen" component={Kitchen} />
+      <Route exact path="/Account" component={Account} />
     </Fragment>
   </Router>
 )

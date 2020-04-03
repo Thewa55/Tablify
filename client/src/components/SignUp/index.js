@@ -120,7 +120,7 @@ class SignUpFormBase extends Component {
     return (
       <form onSubmit={this.onSubmit}>
         Name:
-        <div class="form-group">
+        <div className="form-group">
           <input
             className="form-control"
             name="username"
@@ -131,7 +131,7 @@ class SignUpFormBase extends Component {
           />
         </div>
         E-mail:
-        <div class="form-group">
+        <div className="form-group">
           <input
             className="form-control"
             name="email"
@@ -142,7 +142,7 @@ class SignUpFormBase extends Component {
           />
         </div>
         Password:
-        <div class="form-group">
+        <div className="form-group">
           <input
             className="form-control"
             name="passwordOne"
@@ -153,7 +153,7 @@ class SignUpFormBase extends Component {
           />
         </div>
         Confirm Password:
-        <div class="form-group">
+        <div className="form-group">
           <input
             className="form-control"
             name="passwordTwo"
@@ -163,8 +163,8 @@ class SignUpFormBase extends Component {
             placeholder="Confirm Password"
           />
         </div>
-        <div class="form-group">
-        <button disabled={isInvalid} type="submit">Sign Up</button>
+        <div className="form-group">
+          <button disabled={isInvalid} type="submit">Sign Up</button>
         </div>
         {error && <p>{error.message}</p>}
       </form>
