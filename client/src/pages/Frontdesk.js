@@ -23,7 +23,6 @@ class Frontdesk extends Component {
         })
             .catch(err => console.log(err));
     };
-
     buildTable = () => {
         console.log("come into buildTable function")
         let tableData = {
@@ -38,7 +37,6 @@ class Frontdesk extends Component {
             })
             .catch(err => console.log(err));
     }
-
     deleteTable = TableId => {
         console.log(TableId)
         API.deleteTable(TableId)
@@ -71,6 +69,12 @@ class Frontdesk extends Component {
             this.retriveSavedMenu()
         })
         .catch(err => console.log(err));
+    }
+    deleteDish = DishId => {
+        console.log(DishId)
+        API.deleteTable(DishId)
+            .then(this.retriveSavedMenu)
+            .catch(err => console.log(err))
     }
 
 
@@ -128,6 +132,8 @@ class Frontdesk extends Component {
                     }))}
                 </List>
                 <br></br><hr></hr>
+                
+                {/* Menu display */}
                 <List>
                     {!this.state.savedMenu.length ? (
                         <h2>not yet create Dish</h2>
