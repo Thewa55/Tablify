@@ -69,29 +69,24 @@ class Frontdesk extends Component {
         return (
             <>
                 <div className="sidenav">
+                    <div className="logo-box">
+                        <h1 style={{fontSize: "80px", textAlign: "center"}}>T</h1>
+                    </div>
                     <button onClick={() => this.buildTable()}>
                         Build Table
-                </button>
+                    </button>
                     <button onClick={() => this.retriveSavedMenu()}>
-                        Get menu
-                </button>
+                        Show Menu
+                    </button>
                     <Link to="/">
                         <button>Home</button>
                     </Link>
                 </div>
                 <div id="main">
                         <Small />
-                        <Small />
                         <Medium />
-                        <Medium />
-                        <Small />
-                        <Small />
-                        <Medium />
-                        <Medium />
-                        <Small />
-                        <Small />
-                        <Small />
-                        <Small />
+                        <Large />
+                        <XL />
                 </div>
                 <List>
                 {!this.state.savedTableIds.length ? (
