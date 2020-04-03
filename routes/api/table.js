@@ -1,6 +1,5 @@
 const router = require("express").Router();
 const tableController = require("../../controller/TableControllers");
-console.log(tableController)
 
 router.route("/")
   .get(tableController.findAllTables)
@@ -10,17 +9,17 @@ router.route("/:id")
   .get(tableController.findTableById)
   .delete(tableController.removeTableById)
 
-router.route("/Menu/")
-  .get(tableController.findAllDishes)
-  .post(tableController.createDish)
+// router.route("/menu/")
+//   .get(tableController.findAllDishes)
+//   .post(tableController.createDish)
 
-router.route("/Menu/:id")
-  .delete(tableController.removeDishById)
+// router.route("/menu/:id")
+//   .delete(tableController.removeDishById)
 
-router.route("/TableHistory/")
+router.route("/tablehistory/")
   .post(tableController.createTableData)
 
-router.route("/TableHistory/:id")
+router.route("/tablehistory/:id")
   .put(tableController.updateTable)
   
 module.exports = router;
