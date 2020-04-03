@@ -9,12 +9,12 @@ router.route("/:id")
   .get(tableController.findTableById)
   .delete(tableController.removeTableById)
 
-router.route("/menu/")
-  .get(tableController.findAllDishes)
-  .post(tableController.createDish)
+// router.route("/menu/")
+//   .get(tableController.findAllDishes)
+//   .post(tableController.createDish)
 
-router.route("/menu/:id")
-  .delete(tableController.removeDishById)
+// router.route("/menu/:id")
+//   .delete(tableController.removeDishById)
 
 router.route("/tablehistory/")
   .post(tableController.createTableData)

@@ -3,7 +3,7 @@ const tableController = require("../../controller/TableControllers");
 
 router.route("/")
     .get(tableController.findAllDishes)
-    .post(tableController.createDish)
+    .post(tableController.createNewDish)
 
 router.route("/:id")
     .delete(tableController.removeDishById)
