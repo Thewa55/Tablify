@@ -3,7 +3,7 @@ import './tablestyle.css';
 
 function Small() {
     return (
-        <div className="table-small text-center">Test Small</div>
+        <div className="table-small table text-center">Test Small</div>
     );
 };
 
