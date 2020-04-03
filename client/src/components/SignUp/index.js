@@ -172,8 +172,8 @@ class SignUpFormBase extends Component {
   }
 }
 const SignUpLink = () => (
-  <p>
-    Don't have an account? <Link to={ROUTES.SIGN_UP}>Sign Up</Link>
+  <p style={{textAlign: "center", fontFamily: "monospace"}}>
+    Don't have an account? <Link to={ROUTES.SIGN_UP} style={{fontFamily: "'Marck Script', cursive", fontSize: "20px", textDecoration: "underline"}}>Sign Up</Link>
   </p>
 );
 

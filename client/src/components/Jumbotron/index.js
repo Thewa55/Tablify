@@ -1,10 +1,11 @@
 import React from "react";
+import './jumbostyle.css';
 
 function Jumbotron ({children}) {
   return(
     <div
-    style={{marginTop: 120 }}
-    className="jumbotron"
+    style={{marginTop: "15%" }}
+    className="jumbotron jumbotron-main"
     >
       {children}
     </div>
