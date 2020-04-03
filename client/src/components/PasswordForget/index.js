@@ -2,10 +2,21 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { withFirebase } from '../Firebase';
 import * as ROUTES from '../../constants/routes';
+import Jumbotron from '../Jumbotron'
+import Container from '../Container'
+
 const PasswordForgetPage = () => (
   <div>
-    <h1>PasswordForget</h1>
+    <Container>
+    <Jumbotron>  
+    <div className="Row">
+    <div class="col-md-4 offset-md-4">
+    <h1>Reset Password </h1>
     <PasswordForgetForm />
+    </div>
+        </div>
+    </Jumbotron>
+    </Container>
   </div>
 );
 const INITIAL_STATE = {
@@ -37,16 +48,21 @@ class PasswordForgetFormBase extends Component {
     const isInvalid = email === '';
     return (
       <form onSubmit={this.onSubmit}>
+         <div class="form-group">
         <input
           name="email"
           value={this.state.email}
           onChange={this.onChange}
           type="text"
           placeholder="Email Address"
-        />
+          />
+          </div>
+          <div class="form-group">
+
         <button disabled={isInvalid} type="submit">
           Reset My Password
         </button>
+          </div>
         {error && <p>{error.message}</p>}
       </form>
     );
