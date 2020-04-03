@@ -1,6 +1,13 @@
 const db = require("../models");
 
 module.exports = {
+  findAllEmployee: function(req, res) {
+    db.Employee
+      .find(req.query)
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
+
   findAllDishes: function(req, res) {
     console.log("star finding all dish")
     db.Menu
