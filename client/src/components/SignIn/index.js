@@ -13,13 +13,13 @@ const SignInPage = () => (
     <Container>
       <Jumbotron>
         <div className="Row">
-        <div class="col-md-4 offset-md-4">
-        <h1>Sign In</h1>
-        <br />
-        <SignInForm />
-        <PasswordForgetLink />
-        <SignUpLink />
-        </div>
+          <div className="col-md-4 offset-md-4">
+          <h1>Sign In</h1>
+          <br />
+          <SignInForm />
+          <PasswordForgetLink />
+          <SignUpLink />
+          </div>
         </div>
       </Jumbotron>
     </Container>
@@ -59,8 +59,9 @@ class SignInFormBase extends Component {
     return (
       <form onSubmit={this.onSubmit}>
         E-mail:
-        <div class="form-group">
+        <div className="form-group">
         <input
+          className="form-control"
           name="email"
           value={email}
           onChange={this.onChange}
@@ -69,8 +70,9 @@ class SignInFormBase extends Component {
         />
         </div>
         Password:
-        <div class="form-group">
+        <div className="form-group">
         <input
+          className="form-control"
           name="password"
           value={password}
           onChange={this.onChange}
@@ -78,7 +80,7 @@ class SignInFormBase extends Component {
           placeholder="Password"
         />
         </div>
-        <div class="form-group">
+        <div className="form-group">
         <button disabled={isInvalid} type="submit">
           Sign In
         </button>

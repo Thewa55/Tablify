@@ -46,6 +46,9 @@ const LandingAuth = () => (
     <Link to="/Kitchen">
       <button className="login-button">Kitchen</button>
     </Link>
+    <Link to="/Account">
+      <button className="login-button">Account</button>
+    </Link>
     <SignOutButton />
   </div>
 </div>
