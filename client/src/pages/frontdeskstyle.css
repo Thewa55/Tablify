@@ -23,7 +23,8 @@
     background-color: white;
     overflow-x: hidden;
     padding-top: 20px;
-    border-right: 6px solid black;
+    border-right: 4px solid black;
+    box-shadow: 2px 2px;
 }
 
 .logo-box {

@@ -85,7 +85,7 @@ class Frontdesk extends Component {
             <>
                 <div className="sidenav">
                     <div className="logo-box">
-                        <h1 style={{fontSize: "80px", textAlign: "center"}}>T</h1>
+                        <h1 style={{fontSize: "450%", textAlign: "center"}}>T</h1>
                     </div>
                     <button onClick={() => this.buildTable()}>
                         Build Table

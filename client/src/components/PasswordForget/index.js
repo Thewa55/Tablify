@@ -69,8 +69,8 @@ class PasswordForgetFormBase extends Component {
   }
 }
 const PasswordForgetLink = () => (
-  <p>
-    <Link to={ROUTES.PASSWORD_FORGET}>Forgot Password?</Link>
+  <p style={{textAlign: "center", marginTop: "5%"}}>
+    <Link to={ROUTES.PASSWORD_FORGET} style={{fontFamily: "'Marck Script', cursive", fontSize: "20px", textDecoration: "underline"}}>Forgot Password?</Link>
   </p>
 );
 export default PasswordForgetPage;

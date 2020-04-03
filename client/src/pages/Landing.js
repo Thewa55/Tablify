@@ -1,5 +1,5 @@
 import React from 'react';
-import '../style.css';
+import './landingstyle.css';
 import SignOutButton from '../components/SignOut';
 import { Link } from "react-router-dom";
 import { AuthUserContext } from '../components/Session';
