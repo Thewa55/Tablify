@@ -18,13 +18,13 @@ export default {
   // Create new table in diningroom
   createNewTable: function(tableData){
       console.log("call axios")
-      console.log("tableData in createNewTable: ",tableData)
       return axios.post("/api/table", tableData)
   },
 
   // Create new dish
   createNewDish: function(newDish){
-      return axios.post("/api/table/menu", newDish)
+      console.log("start create new dish")
+      return axios.post("/api/menu", newDish)
   },
 
   // Create new table data if change to occupied

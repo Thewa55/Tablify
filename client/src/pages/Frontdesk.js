@@ -56,7 +56,22 @@ class Frontdesk extends Component {
         })
             .catch(err => console.log(err));
     }
+    AddDish = () => {
+        const newDish = {
+            item: "Test dish",
+            category: "Appetizer",
+            price: 11.25,
+            cookTime: 10
+        }
+        console.log("newDish: ",newDish)
 
+        API.createNewDish(newDish)
+        .then(res=> {
+            console.log("res.data: ",res.data);
+            this.retriveSavedMenu()
+        })
+        .catch(err => console.log(err));
+    }
 
 
     componentDidMount = () => {
@@ -74,6 +89,9 @@ class Frontdesk extends Component {
                 </button>
                     <button onClick={() => this.retriveSavedMenu()}>
                         Get menu
+                </button>
+                <button onClick={() => this.AddDish()}>
+                        Add test dish
                 </button>
                     <Link to="/">
                         <button>Home</button>

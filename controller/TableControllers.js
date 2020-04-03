@@ -40,7 +40,8 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
 
-  createDish: function(req, res) {
+  createNewDish: function(req, res) {
+    console.log("in createDish finction")
     db.Menu
       .create(req.body)
       .then(dbModel => res.json(dbModel))
