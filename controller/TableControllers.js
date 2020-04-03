@@ -22,6 +22,13 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
+ 
+  findTableHistoryById: function(req,res){
+    db.TableHistory
+      .findById(req.params.id)
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
   
   // createNewTable here means the tables be created by user should store in here
   createNewTable: function(req, res) {
@@ -33,7 +40,7 @@ module.exports = {
   },
   
   // createTable here means the table be occupied by customer and finished the order
-  createTableData: function(req, res) {
+  createTableHistoryData: function(req, res) {
     db.TableHistory
       .create(req.body)
       .then(dbModel => res.json(dbModel))
@@ -49,9 +56,9 @@ module.exports = {
   },
   
 
-  updateTable: function(req, res) {
+  updateTableHistory: function(req, res) {
     db.TableHistory
-      .findOneAndUpdate({ _id: req.params.id }, req.body)
+      .findOneAndUpdate({ _id: req.params.id })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
