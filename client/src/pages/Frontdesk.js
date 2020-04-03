@@ -71,7 +71,7 @@ class Frontdesk extends Component {
         .catch(err => console.log(err));
     }
     deleteDish = DishId => {
-        console.log(DishId)
+        console.log("Dish ID passed in: ",DishId)
         API.deleteTable(DishId)
             .then(this.retriveSavedMenu)
             .catch(err => console.log(err))
@@ -142,7 +142,7 @@ class Frontdesk extends Component {
                             <ListItem key={i}
                                 id={dish._id}
                             >
-                                <button>
+                                <button onClick={() => this.deleteDish(dish._id)}>
                                     dish name: {dish.item}
                                     dish category: {dish.category}
                                     dish price: {dish.price}

@@ -39,7 +39,7 @@ export default {
 
   // Deletes the book with the given id
   deleteDish: function(id) {
-    return axios.delete("/api/table/menu/" + id);
+    return axios.delete("/api/menu/" + id);
   },
   // Deletes the existing table with the given id
   deleteTable: function(id) {
