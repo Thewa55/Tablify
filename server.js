@@ -13,7 +13,9 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
 // Add routes, both API and view
+const menuRouter = require("./routes/api/table")
 app.use(routes);
+app.use("/menu", menuRouter)
 
 // Connect to the Mongo DB
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/tablify");

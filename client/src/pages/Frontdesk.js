@@ -13,8 +13,9 @@ import { List, ListItem } from "../components/List";
 class Frontdesk extends Component {
     state = {
         savedTableIds: [],
+        savedMenu: []
     }
-// functions for diningroom collection testing!!
+    // functions for diningroom collection testing!!
     retriveSavedTables = () => {
         API.getTables().then(res => {
             const savedTableIds = res.data.map(table => table._id);
@@ -38,18 +39,30 @@ class Frontdesk extends Component {
             .catch(err => console.log(err));
     }
 
-    deleteTable = TableId =>{
+    deleteTable = TableId => {
         console.log(TableId)
         API.deleteTable(TableId)
             .then(this.retriveSavedTables)
             .catch(err => console.log(err))
     }
 
+
+    // functions for menu collection testing!!
+    retriveSavedMenu = () => {
+        API.getMenu().then(res => {
+            console.log(res.data)
+            const savedMenu = res.data;
+            this.setState({ savedMenu });
+        })
+            .catch(err => console.log(err));
+    }
+
+
+
     componentDidMount = () => {
         Dragula([document.querySelector('#main')]);
     }
 
-// functions for menu collection testing!!
 
     render() {
         console.log(this.state)
@@ -58,6 +71,9 @@ class Frontdesk extends Component {
                 <div className="sidenav">
                     <button onClick={() => this.buildTable()}>
                         Build Table
+                </button>
+                    <button onClick={() => this.retriveSavedMenu()}>
+                        Get menu
                 </button>
                     <Link to="/">
                         <button>Home</button>
@@ -77,19 +93,42 @@ class Frontdesk extends Component {
                         <Small />
                         <Small />
                 </div>
+                <List>
                 {!this.state.savedTableIds.length ? (
                         <h2 style={{color: "white"}}>No Tables Generated Yet</h2>
+
                     ) : (this.state.savedTableIds.map(table => {
                         return (
-                            <List>
-                                <ListItem key={table}>
-                                        <button onClick={()=> this.deleteTable(table)}>
-                                            tableID: {table}
-                                        </button>
-                                </ListItem>
-                            </List>
+
+                            <ListItem key={table}>
+                                <button onClick={() => this.deleteTable(table)}>
+                                    tableID: {table}
+                                </button>
+                            </ListItem>
+
                         )
                     }))}
+                </List>
+                <br></br><hr></hr>
+                <List>
+                    {!this.state.savedMenu.length ? (
+                        <h2>not yet create Dish</h2>
+                    ) : (this.state.savedMenu.map((dish, i) => {
+                        return (
+                            <ListItem key={i}
+                                id={dish._id}
+                            >
+                                <button>
+                                    dish name: {dish.item}
+                                    dish category: {dish.category}
+                                    dish price: {dish.price}
+                                    dish cook time: {dish.cook_time}
+                                </button>
+                            </ListItem>
+                        )
+                    }))}
+                </List>
+
             </>
         );
     }

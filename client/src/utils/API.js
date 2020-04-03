@@ -11,7 +11,8 @@ export default {
   },
   // Gets all items from Menu collection
   getMenu: function(){
-      return axios.get("/api/table/Menu")
+    console.log("go to axios")
+      return axios.get("/api/menu")
   },
   
   // Create new table in diningroom
@@ -23,22 +24,22 @@ export default {
 
   // Create new dish
   createNewDish: function(newDish){
-      return axios.post("/api/table/Menu", newDish)
+      return axios.post("/api/table/menu", newDish)
   },
 
   // Create new table data if change to occupied
   createTableHistory: function(newCustomer){
-      return axios.post("/api/table/TableHistory", newCustomer)
+      return axios.post("/api/table/tablehistory", newCustomer)
   },
 
   // Change table status
   changeTableStatus: function(id, newStatus){
-      return axios.put("api/table/TableHistory/" + id, newStatus)
+      return axios.put("api/table/tablehistory/" + id, newStatus)
   },
 
   // Deletes the book with the given id
   deleteDish: function(id) {
-    return axios.delete("/api/table/Menu/" + id);
+    return axios.delete("/api/table/menu/" + id);
   },
   // Deletes the existing table with the given id
   deleteTable: function(id) {
