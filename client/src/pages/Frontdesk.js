@@ -6,6 +6,7 @@ import Small from "../components/TableExamples/Small";
 import Medium from "../components/TableExamples/Medium";
 import Large from "../components/TableExamples/Large";
 import XL from "../components/TableExamples/XL";
+import Dragula from 'react-dragula';
 
 import { List, ListItem } from "../components/List";
 
@@ -45,6 +46,7 @@ class Frontdesk extends Component {
             .catch(err => console.log(err))
     }
 
+
     // functions for menu collection testing!!
     retriveSavedMenu = () => {
         API.getMenu().then(res => {
@@ -56,6 +58,10 @@ class Frontdesk extends Component {
     }
 
 
+
+    componentDidMount = () => {
+        Dragula([document.querySelector('#main')]);
+    }
 
 
     render() {
@@ -73,15 +79,24 @@ class Frontdesk extends Component {
                         <button>Home</button>
                     </Link>
                 </div>
-                <div className="main">
-                    <Small />
-                    <Medium />
-                    <Large />
-                    <XL />
+                <div id="main">
+                        <Small />
+                        <Small />
+                        <Medium />
+                        <Medium />
+                        <Small />
+                        <Small />
+                        <Medium />
+                        <Medium />
+                        <Small />
+                        <Small />
+                        <Small />
+                        <Small />
                 </div>
                 <List>
-                    {!this.state.savedTableIds.length ? (
-                        <h2>not yet create table</h2>
+                {!this.state.savedTableIds.length ? (
+                        <h2 style={{color: "white"}}>No Tables Generated Yet</h2>
+
                     ) : (this.state.savedTableIds.map(table => {
                         return (
 

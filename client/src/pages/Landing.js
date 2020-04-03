@@ -2,9 +2,16 @@ import React from 'react';
 import '../style.css';
 import SignOutButton from '../components/SignOut';
 import { Link } from "react-router-dom";
+import { AuthUserContext } from '../components/Session';
 
-const Landing = ({ authUser }) => (
-  <div>{authUser ? <LandingAuth /> : <LandingNonAuth />}</div>
+const Landing = () => (
+  <div>
+    <AuthUserContext.Consumer>
+      {authUser =>
+        authUser ? <LandingAuth /> : <LandingNonAuth />
+      }
+    </AuthUserContext.Consumer>
+  </div>
 );
 
 const LandingNonAuth = () => (
@@ -13,7 +20,7 @@ const LandingNonAuth = () => (
       <h1 className="headline">Making restaurant management simple with Tablify</h1>
       <h3 className="sub-headline">Build your restaurant, manage your menu, and track your customers - all in the palm of your hand.</h3>
       <Link to="/SignIn">
-        <button className="login-button">Log-in</button>
+        <button className="login-button">Sign-in</button>
       </Link>
       <Link to="/SignUp">
         <button className="login-button">Sign-up</button>

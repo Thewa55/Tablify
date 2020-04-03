@@ -3,11 +3,25 @@ import { Link, withRouter } from 'react-router-dom';
 import { withFirebase } from '../Firebase';
 import * as ROUTES from '../../constants/routes';
 import { compose } from 'recompose';
+import Container from '../Container'
+import Jumbotron from '../Jumbotron'
 
 const SignUpPage = () => (
   <div>
-    <h1>SignUp</h1>
-    <SignUpForm />
+    <Container>
+      <Jumbotron>
+        <div className="Row">
+          <div class="col-md-4 offset-md-4">
+            <h1>Sign Up</h1>
+            <br />
+            <SignUpForm />
+            <p>
+              Already have an account? <Link to={ROUTES.SIGN_IN}>Sign in</Link>
+            </p>
+          </div>
+        </div>
+      </Jumbotron>
+    </Container>
   </div>
 );
 
@@ -105,35 +119,53 @@ class SignUpFormBase extends Component {
 
     return (
       <form onSubmit={this.onSubmit}>
-        <input
-          name="username"
-          value={username}
-          onChange={this.onChange}
-          type="text"
-          placeholder="Full Name"
-        />
-        <input
-          name="email"
-          value={email}
-          onChange={this.onChange}
-          type="text"
-          placeholder="Email Address"
-        />
-        <input
-          name="passwordOne"
-          value={passwordOne}
-          onChange={this.onChange}
-          type="password"
-          placeholder="Password"
-        />
-        <input
-          name="passwordTwo"
-          value={passwordTwo}
-          onChange={this.onChange}
-          type="password"
-          placeholder="Confirm Password"
-        />
+        Name:
+        <div class="form-group">
+          <input
+            className="form-control"
+            name="username"
+            value={username}
+            onChange={this.onChange}
+            type="text"
+            placeholder="Full Name"
+          />
+        </div>
+        E-mail:
+        <div class="form-group">
+          <input
+            className="form-control"
+            name="email"
+            value={email}
+            onChange={this.onChange}
+            type="text"
+            placeholder="Email Address"
+          />
+        </div>
+        Password:
+        <div class="form-group">
+          <input
+            className="form-control"
+            name="passwordOne"
+            value={passwordOne}
+            onChange={this.onChange}
+            type="password"
+            placeholder="Password"
+          />
+        </div>
+        Confirm Password:
+        <div class="form-group">
+          <input
+            className="form-control"
+            name="passwordTwo"
+            value={passwordTwo}
+            onChange={this.onChange}
+            type="password"
+            placeholder="Confirm Password"
+          />
+        </div>
+        <div class="form-group">
         <button disabled={isInvalid} type="submit">Sign Up</button>
+        </div>
         {error && <p>{error.message}</p>}
       </form>
     );

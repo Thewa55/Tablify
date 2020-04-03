@@ -5,20 +5,33 @@ import { SignUpLink } from '../SignUp';
 import { PasswordForgetLink } from '../PasswordForget';
 import { withFirebase } from '../Firebase';
 import * as ROUTES from '../../constants/routes';
+import Jumbotron from '../Jumbotron'
+import Container from '../Container'
 
 const SignInPage = () => (
   <div>
-    <h1>SignIn</h1>
-    <SignInForm />
-    <PasswordForgetLink />
-    <SignUpLink />
+    <Container>
+      <Jumbotron>
+        <div className="Row">
+        <div class="col-md-4 offset-md-4">
+        <h1>Sign In</h1>
+        <br />
+        <SignInForm />
+        <PasswordForgetLink />
+        <SignUpLink />
+        </div>
+        </div>
+      </Jumbotron>
+    </Container>
   </div>
 );
+
 const INITIAL_STATE = {
   email: '',
   password: '',
   error: null,
 };
+
 class SignInFormBase extends Component {
   constructor(props) {
     super(props);
@@ -45,6 +58,8 @@ class SignInFormBase extends Component {
     const isInvalid = password === '' || email === '';
     return (
       <form onSubmit={this.onSubmit}>
+        E-mail:
+        <div class="form-group">
         <input
           name="email"
           value={email}
@@ -52,6 +67,9 @@ class SignInFormBase extends Component {
           type="text"
           placeholder="Email Address"
         />
+        </div>
+        Password:
+        <div class="form-group">
         <input
           name="password"
           value={password}
@@ -59,17 +77,22 @@ class SignInFormBase extends Component {
           type="password"
           placeholder="Password"
         />
+        </div>
+        <div class="form-group">
         <button disabled={isInvalid} type="submit">
           Sign In
         </button>
+        </div>
         {error && <p>{error.message}</p>}
       </form>
     );
-  }
-}
+  };
+};
+
 const SignInForm = compose(
   withRouter,
   withFirebase,
 )(SignInFormBase);
+
 export default SignInPage;
 export { SignInForm };
