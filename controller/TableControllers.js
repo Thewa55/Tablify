@@ -2,6 +2,7 @@ const db = require("../models");
 
 module.exports = {
   findAllDishes: function(req, res) {
+    console.log("star finding all dish")
     db.Menu
       .find(req.query)
       .then(dbModel => res.json(dbModel))

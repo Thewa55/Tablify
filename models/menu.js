@@ -6,6 +6,8 @@ const menuSchema = new Schema({
   category: { type: String, required: true },
   price: { type: Number, required: true },
   cookTime: { type: Number, required: true },
+  createdAt: {type: Date},
+  upDatedAt: {type: Date}
 });
 
 const Menu = mongoose.model("Menu", menuSchema);

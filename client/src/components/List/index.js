@@ -1,5 +1,6 @@
 import React from "react";
 import "./style.css";
+import { defaultProps } from "recompose";
 
 // This file exports both the List and ListItem components
 
@@ -11,6 +12,6 @@ export function List({ children }) {
   );
 }
 
-export function ListItem({ children }) {
-  return <li className="list-group-item">{children}</li>;
+export function ListItem(props) {
+  return <li className="list-group-item">{props.children}</li>;
 }
