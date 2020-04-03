@@ -7,18 +7,19 @@ import { withFirebase } from '../Firebase';
 import * as ROUTES from '../../constants/routes';
 import Jumbotron from '../Jumbotron'
 import Container from '../Container'
+import './signinstyle.css';
 
 const SignInPage = () => (
   <div>
     <Container>
       <Jumbotron>
-        <div className="Row">
-          <div className="col-md-4 offset-md-4">
-          <h1>Sign In</h1>
-          <br />
-          <SignInForm />
-          <PasswordForgetLink />
-          <SignUpLink />
+        <div className="row">
+          <div className="col-md-12 login-box">
+            <h1 className="text-center" style={{fontFamily: "'Fredoka One', cursive"}}>Sign In</h1>
+            <br />
+            <SignInForm />
+            <PasswordForgetLink />
+            <SignUpLink />
           </div>
         </div>
       </Jumbotron>
@@ -58,10 +59,10 @@ class SignInFormBase extends Component {
     const isInvalid = password === '' || email === '';
     return (
       <form onSubmit={this.onSubmit}>
-        E-mail:
-        <div className="form-group">
+        <div class="form-group text-center">
         <input
-          className="form-control"
+          style={{marginTop: "4%"}}
+          className="input"
           name="email"
           value={email}
           onChange={this.onChange}
@@ -69,10 +70,10 @@ class SignInFormBase extends Component {
           placeholder="Email Address"
         />
         </div>
-        Password:
-        <div className="form-group">
+        <div class="form-group text-center">
         <input
-          className="form-control"
+          style={{marginBottom: "5%"}}
+          className="input"
           name="password"
           value={password}
           onChange={this.onChange}
@@ -80,9 +81,9 @@ class SignInFormBase extends Component {
           placeholder="Password"
         />
         </div>
-        <div className="form-group">
-        <button disabled={isInvalid} type="submit">
-          Sign In
+        <div class="form-group text-center">
+        <button disabled={isInvalid} type="submit" className="btn btn-primary">
+          Continue
         </button>
         </div>
         {error && <p>{error.message}</p>}
