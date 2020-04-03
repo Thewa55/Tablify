@@ -1,13 +1,22 @@
-import React from 'react';
-import '../style.css';
+import React from "react";
+import "../style.css";
 import KitchenCard from "../components/KitchenCard";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
+
+const styles = {
+  sectionStyles: {
+    background: "orange"
+  }
+};
 
 function Kitchen() {
   return (
-    <div>Test
-        <div class="col-md-4">
-        <KitchenCard/>
+    <div>
+      <div class="col-md-2">
+        <KitchenCard />
+        <Link to="/">
+          <button>Home</button>
+        </Link>
       </div>
     </div>
   );
