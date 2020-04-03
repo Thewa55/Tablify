@@ -8,14 +8,14 @@ import Container from '../Container'
 const PasswordForgetPage = () => (
   <div>
     <Container>
-      <Jumbotron>
-        <div className="Row">
-          <div class="col-md-4 offset-md-4">
-            <h1>PasswordForget</h1>
-            <PasswordForgetForm />
-          </div>
+    <Jumbotron>  
+    <div className="Row">
+    <div class="col-md-4 offset-md-4">
+    <h1>Reset Password </h1>
+    <PasswordForgetForm />
+    </div>
         </div>
-      </Jumbotron>
+    </Jumbotron>
     </Container>
   </div>
 );
@@ -48,20 +48,21 @@ class PasswordForgetFormBase extends Component {
     const isInvalid = email === '';
     return (
       <form onSubmit={this.onSubmit}>
-        E-mail:
-        <div class="form-group">
-          <input
-            className="form-control"
-            name="email"
-            value={this.state.email}
-            onChange={this.onChange}
-            type="text"
-            placeholder="Email Address"
+         <div class="form-group">
+        <input
+          name="email"
+          value={this.state.email}
+          onChange={this.onChange}
+          type="text"
+          placeholder="Email Address"
           />
-        </div>
+          </div>
+          <div class="form-group">
+
         <button disabled={isInvalid} type="submit">
           Reset My Password
         </button>
+          </div>
         {error && <p>{error.message}</p>}
       </form>
     );
