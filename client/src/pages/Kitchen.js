@@ -1,7 +1,7 @@
 import React from "react";
 import "../style.css";
 import KitchenCard from "../components/KitchenCard";
-import { Link } from "react-router-dom";
+import Navbar from "../components/Navbar";
 
 const styles = {
   sectionStyles: {
@@ -13,10 +13,9 @@ function Kitchen() {
   return (
     <div>
       <div class="col-md-2">
-        <KitchenCard />
-        <Link to="/">
-          <button>Home</button>
-        </Link>
+        <Navbar/>
+        <KitchenCard/>
+        <KitchenCard/>
       </div>
     </div>
   );
