@@ -1,31 +1,32 @@
-import React, { useEffect, Component } from "react";
-// import { useEmployeeContext } from "../../utils/GlobalState";
+import React, { useEffect } from "react";
+import { useEmployeeContext } from "../../utils/GlobalState";
 import API from "../../utils/API";
 
-class EmployeeList extends Component{
+function EmployeeList(){
     
-  state = {
-    employees: []
-  }
+  const [state, dispatch] = useEmployeeContext()
 
-  getEmployees = () => {
+  const getEmployees = () => {
+    dispatch({type: "LOADING"});
     API.getEmployees()      
       .then(results => {
-        this.setState({ employees: results.data})
+        dispatch({
+          type: "UPDATE_EMPLOYEES",
+          employees: results.data
+        })
       })
       .catch(err => console.log(err))
   }
-  
-  componentDidMount = () => {
-    this.getEmployees()
-  }
 
-  render(){
-    return(
+  useEffect( () => {
+    getEmployees()
+  }, []);
+
+  return(
     <div>
-      {this.state.employees.length ? (
+      {state.employees.length ? (
         <div>
-          {this.state.employees.map( employee => (
+          {state.employees.map( employee => (
             <ul class="list-group">
               <li className="list-group-item">{employee._id}</li>
               <li className="list-group-item">{employee.name}</li>
@@ -41,8 +42,7 @@ class EmployeeList extends Component{
         </div>
       )}
     </div>
-    )
-  }
+  )
 
 
 }

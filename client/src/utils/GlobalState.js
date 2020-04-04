@@ -1,39 +1,31 @@
 import React, { createContext, useReducer, useContext } from "react";
-import {
-  SET_CURRENT_EMPLOYEE,
-  REMOVE_EMPLOYEE,
-  UPDATE_EMPLOYEES,
-  ADD_EMPLOYEE,
-  LOADING
-} from "./actions";
-
 const EmployeeContext = createContext();
 const { Provider } = EmployeeContext;
 
 const reducer = (state, action) => {
   switch (action.type) {
-  case SET_CURRENT_EMPLOYEE:
+  case "SET_CURRENT_EMPLOYEE":
     return {
       ...state,
       currentEmployee: action.employee,
       loading: false
     };
 
-  case UPDATE_EMPLOYEES:
+  case "UPDATE_EMPLOYEES":
     return {
       ...state,
       employees: [...action.employees],
       loading: false
     };
 
-  case ADD_EMPLOYEE:
+  case "ADD_EMPLOYEE":
     return {
       ...state,
       employees: [action.employee, ...state.employees],
       loading: false
     };
 
-  case REMOVE_EMPLOYEE:
+  case "REMOVE_EMPLOYEE":
     return {
       ...state,
       employees: state.employees.filter((employee) => {
@@ -41,7 +33,7 @@ const reducer = (state, action) => {
       })
     };
 
-  case LOADING:
+  case "LOADING":
     return {
       ...state,
       loading: true
