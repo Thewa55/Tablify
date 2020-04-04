@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import API from "../../utils/API";
+import EmployeeModal from "../EmployeeModal"
 
 function EmployeeList() {
     
@@ -34,6 +35,7 @@ function EmployeeList() {
       ) : (
         <div>
             <h1>No current employees in the database, please add some people!</h1>
+            <EmployeeModal />
         </div>
       )}
     </div>
