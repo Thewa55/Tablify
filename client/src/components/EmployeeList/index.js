@@ -1,31 +1,27 @@
-import React, { useEffect, Component } from "react";
-// import { useEmployeeContext } from "../../utils/GlobalState";
+import React, { useEffect, useState } from "react";
 import API from "../../utils/API";
 
-class EmployeeList extends Component{
+function EmployeeList() {
     
-  state = {
-    employees: []
-  }
+  const [employees, setEmployees] = useState([])
 
-  getEmployees = () => {
+  function getEmployees() {
     API.getEmployees()      
       .then(results => {
-        this.setState({ employees: results.data})
+        setEmployees(results.data)
       })
       .catch(err => console.log(err))
   }
   
-  componentDidMount = () => {
-    this.getEmployees()
-  }
+  useEffect(() => {
+    getEmployees()
+  }, [])
 
-  render(){
-    return(
+  return(
     <div>
-      {this.state.employees.length ? (
+      {employees.length ? (
         <div>
-          {this.state.employees.map( employee => (
+          {employees.map( employee => (
             <ul class="list-group">
               <li className="list-group-item">{employee._id}</li>
               <li className="list-group-item">{employee.name}</li>
@@ -41,10 +37,7 @@ class EmployeeList extends Component{
         </div>
       )}
     </div>
-    )
-  }
-
-
+  )
 }
 
 export default EmployeeList;
