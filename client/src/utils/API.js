@@ -49,6 +49,10 @@ export default {
   // Deletes the existing table with the given id
   deleteTable: function(id) {
       return axios.delete("/api/table/" + id)
-  }
+  },
 
+  getEmployees: function(){
+    return axios.get("/api/employee")
+  }
+  
 };

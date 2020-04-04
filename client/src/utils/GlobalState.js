@@ -1,43 +1,43 @@
 import React, { createContext, useReducer, useContext } from "react";
 import {
-  SET_CURRENT_POST,
+  SET_CURRENT_EMPLOYEE,
   REMOVE_EMPLOYEE,
-  UPDATE_EMPLOYEE,
+  UPDATE_EMPLOYEES,
   ADD_EMPLOYEE,
   LOADING
 } from "./actions";
 
-const StoreContext = createContext();
-const { Provider } = StoreContext;
+const EmployeeContext = createContext();
+const { Provider } = EmployeeContext;
 
 const reducer = (state, action) => {
   switch (action.type) {
-  case SET_CURRENT_POST:
+  case SET_CURRENT_EMPLOYEE:
     return {
       ...state,
-      currentPost: action.post,
+      currentEmployee: action.employee,
       loading: false
     };
 
-  case UPDATE_EMPLOYEE:
+  case UPDATE_EMPLOYEES:
     return {
       ...state,
-      posts: [...action.posts],
+      employees: [...action.employees],
       loading: false
     };
 
   case ADD_EMPLOYEE:
     return {
       ...state,
-      posts: [action.post, ...state.posts],
+      employees: [action.employee, ...state.employees],
       loading: false
     };
 
   case REMOVE_EMPLOYEE:
     return {
       ...state,
-      posts: state.posts.filter((post) => {
-        return post._id !== action._id; 
+      employees: state.employees.filter((employee) => {
+        return employee._id !== action._id; 
       })
     };
 
@@ -52,14 +52,17 @@ const reducer = (state, action) => {
   }
 };
 
-const StoreProvider = ({ value = [], ...props }) => {
+const EmployeeProvider = ({ value = [], ...props }) => {
   const [state, dispatch] = useReducer(reducer, {
-    posts: [],
-    currentPost: {
+    employees: [],
+    currentEmployee: {
       _id: 0,
-      title: "",
-      body: "",
-      author: ""
+      employeeid: 0,
+      name: "",
+      position: "",
+      phonenumber: 0,
+      startDate: "",
+      email: "",
     },
     loading: false
   });
@@ -67,8 +70,8 @@ const StoreProvider = ({ value = [], ...props }) => {
   return <Provider value={[state, dispatch]} {...props} />;
 };
 
-const useStoreContext = () => {
-  return useContext(StoreContext);
+const useEmployeeContext = () => {
+  return useContext(EmployeeContext);
 };
 
-export { StoreProvider, useStoreContext };
+export { EmployeeProvider, useEmployeeContext };

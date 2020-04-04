@@ -1,6 +1,7 @@
 const db = require("../models");
 
 module.exports = {
+  
   findAllEmployee: function(req, res) {
     db.Employee
       .find(req.query)
