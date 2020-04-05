@@ -44,11 +44,11 @@ function EmployeeList() {
                 <li className="list-group-item">{employee.email}</li>
               </ul>
               <Button variant="danger" onClick={() => removeEmployee(employee._id)}>Remove Employee</Button>{' '}
-              <EmployEditModal employee={employee} />
+              <EmployEditModal employee={employee} getEmployees={getEmployees}/>
             </>
           ))}
           <div>
-            <EmployeeModal />
+            <EmployeeModal getEmployees={getEmployees} />
           </div>
         </div>    
       ) : (
