@@ -7,5 +7,7 @@ router.route("/")
 
 router.route("/:id")
   .delete(tableController.removeEmployeeById)
+  .put(tableController.updateEmployee)
 
+  
 module.exports = router;

@@ -95,10 +95,10 @@ function EmployeeModal() {
           </Modal.Body>
           <Modal.Footer>
             <Button variant="secondary" onClick={handleClose}>
-              Close
+              Cancel
             </Button>
             <Button variant="primary" onClick={handleSubmit}>
-              Save Changes
+              Add Employee
             </Button>
           </Modal.Footer>
         </Modal>
