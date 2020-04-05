@@ -55,7 +55,11 @@ export default {
     return axios.get("/api/employee")
   },
   
-  createEmployee: function(){
-    return axios.post("/api/employee")
-  }
+  createEmployee: function(employee){
+    return axios.post("/api/employee", employee)
+  },
+
+  removeEmployee: function(id) {
+    return axios.delete("/api/employee/" + id)
+},
 };

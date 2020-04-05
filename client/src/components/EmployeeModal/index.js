@@ -36,7 +36,7 @@ function EmployeeModal() {
 
     return (
       <>
-        <Button variant="primary" onClick={handleShow}>
+        <Button variant="primary" className="mt-4" onClick={handleShow}>
           Add An Employee
         </Button>
   
