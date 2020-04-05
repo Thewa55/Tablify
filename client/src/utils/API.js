@@ -61,5 +61,10 @@ export default {
 
   removeEmployee: function(id) {
     return axios.delete("/api/employee/" + id)
-},
+  },
+
+  changeEmployeeInfo: function(id, employee){
+    return axios.put("/api/employee/" +id, employee)
+  }
+
 };
