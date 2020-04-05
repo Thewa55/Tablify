@@ -24,8 +24,8 @@ function EmployeeList() {
       {employees.length ? (
         <div>
           {employees.map( employee => (
-            <ul class="list-group">
-              <li className="list-group-item">{employee._id}</li>
+            <ul className="list-group" key={employee._id}>
+              <li className="list-group-item">{employee.employeeId}</li>
               <li className="list-group-item">{employee.name}</li>
               <li className="list-group-item">{employee.position}</li>
               <li className="list-group-item">{employee.phonenumber}</li>
