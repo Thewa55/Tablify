@@ -21,27 +21,18 @@ function EmployeeModal(props) {
 
     function handleInputChange(event){
         const { name, value } = event.target
-        setEmployee({ [name]: value})
+        setEmployee({...employee, [name]: value})
         // setId(event.target.value)
     }
 
-    function handleSubmit (event){
-    //   event.preventDefault();
-    //   const newEmployee = {
-    //     employeeId: parseInt(employeeIdRef.current.value),
-    //     name: nameRef.current.value,
-    //     position: positionRef.current.value,
-    //     phonenumber: parseInt(phonenumberRef.current.value),
-    //     email: emailRef.current.value
-    //   }
-
-    //   console.log(newEmployee)
-
-    //   handleClose(employeeIdRef.current.value)
+    function handleSubmit (id, employee){
+        API.changeEmployeeInfo(id, employee)
+          .then(result =>{
+          handleClose()
+        })
     }
 
-    const employeeInfo = Object.values(employee)
-    console.log("employeeInfo: ", employeeInfo)
+    console.log("employeeInfo: ", employee)
 
     return (
       <>
@@ -82,6 +73,7 @@ function EmployeeModal(props) {
                 type="text"
                 name="position"
                 value={employee.position}
+                onChange={handleInputChange}               
                 />
               </div>
               <div className="form-group text-center">
@@ -91,6 +83,7 @@ function EmployeeModal(props) {
                 type="text"
                 name="phonenumber"
                 value={employee.phonenumber}
+                onChange={handleInputChange}
                 />
               </div>
               <div className="form-group text-center">
@@ -100,6 +93,7 @@ function EmployeeModal(props) {
                 type="text"
                 name="email"
                 value={employee.email}
+                onChange={handleInputChange}
                 />
               </div>
             </form>
@@ -108,7 +102,7 @@ function EmployeeModal(props) {
             <Button variant="secondary" onClick={handleClose}>
               Cancel
             </Button>
-            <Button variant="primary" onClick={handleSubmit}>
+            <Button variant="primary" onClick={() => handleSubmit(employee._id, employee)}>
               Update Employee
             </Button>
           </Modal.Footer>
