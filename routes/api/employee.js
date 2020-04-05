@@ -8,6 +8,4 @@ router.route("/")
 router.route("/:id")
   .delete(tableController.removeEmployeeById)
 
-
-
 module.exports = router;
