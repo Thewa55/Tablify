@@ -10,34 +10,50 @@ import Dragula from 'react-dragula';
 
 import { List, ListItem } from "../components/List";
 
+const SavedTables = [];
+
 class Frontdesk extends Component {
     state = {
-        savedTableIds: [],
+        tables: [],
         savedMenu: [],
         specificTableHistory: []
     }
     // functions for diningroom collection testing!!
+    componentDidMount(){
+        this.retriveSavedTables()
+    }
+
     retriveSavedTables = () => {
-        API.getTables().then(res => {
-            const savedTableIds = res.data.map(table => table._id);
-            this.setState({ savedTableIds });
+        API.getTables().then(res =>{ 
+            this.setState({ tables: res.data })  
         })
-            .catch(err => console.log(err));
     };
-    buildTable = () => {
+q
+    buildTable = type => {
         console.log("come into buildTable function")
-        let tableData = {
-            seats: 2,
-            twoSeat: true
+        let tableData = {};
+        if (type === 2) {
+            tableData = {
+                seats: 2
+            }
+        } else if (type === 4) {
+            tableData = {
+                seats: 4
+            }
+        } else if (type === 6) {
+            tableData = {
+                seats: 6
+            }
         }
-        console.log("tableData: ", tableData)
+
         API.createNewTable(tableData)
             .then(res => {
                 console.log("res.data: ", res.data);
-                this.retriveSavedTables()
+                    this.retriveSavedTables()
             })
             .catch(err => console.log(err));
     }
+
     deleteTable = TableId => {
         console.log(TableId)
         API.deleteTable(TableId)
@@ -90,13 +106,13 @@ class Frontdesk extends Component {
     }
     AddTableHistory = () => {
         console.log("go into add Table History function")
-        const testOrder = 
-            {
-                // start_at: Date(),
-                order:"test dish 2, test dish 3",
-                order_quantity: "1, 2",
-            }
-        
+        const testOrder =
+        {
+            // start_at: Date(),
+            order: "test dish 2, test dish 3",
+            order_quantity: "1, 2",
+        }
+
 
 
         API.createTableHistory(testOrder)
@@ -114,16 +130,22 @@ class Frontdesk extends Component {
 
 
     render() {
-        console.log("state: ", this.state)
-        console.log("type of: ",typeof(this.state.specificTableHistory))
+        console.log("state: ", this.state.tables)
+        console.log("type of: ", typeof (this.state.tables))
         return (
             <>
                 <div className="sidenav">
                     <div className="logo-box">
                         <h1 style={{ fontSize: "80px", textAlign: "center" }}>T</h1>
                     </div>
-                    <button onClick={() => this.buildTable()}>
-                        Build Table
+                    <button onClick={() => this.buildTable(2)}>
+                        Build Table of 2
+                    </button>
+                    <button onClick={() => this.buildTable(4)}>
+                        Build Table of 4
+                    </button>
+                    <button onClick={() => this.buildTable(6)}>
+                        Build Table of 6
                     </button>
                     <button onClick={() => this.retriveSavedMenu()}>
                         View Menu
@@ -138,64 +160,31 @@ class Frontdesk extends Component {
                         <button>Home</button>
                     </Link>
                 </div>
+
                 <div id="main">
-                    <Small />
-                    <Medium />
-                    <Large />
-                    <XL />
-                </div>
-                <List>
-                    {!this.state.savedTableIds.length ? (
+
+                    {!this.state.tables ? (
                         <h2 style={{ color: "white" }}>No Tables Generated Yet</h2>
+                    ) : (this.state.tables.map(table => {
+                        if (table.seats === 2 ) {
+                            return(
+                                <Small />
+                            )
+                        }else if(table.seats === 4 ){
+                            return(
+                                <Medium />
+                            )
+                        }else{
+                            return(
+                                <XL />
+                            )
+                        }
 
-                    ) : (this.state.savedTableIds.map(table => {
-                        return (
-
-                            <ListItem key={table}>
-                                <button onClick={() => this.deleteTable(table)}>
-                                    tableID: {table}
-                                </button>
-                            </ListItem>
-
-                        )
                     }))}
-                </List>
-                <br></br><hr></hr>
 
-                {/* Menu display */}
-                <List>
-                    {!this.state.savedMenu.length ? (
-                        <h2>not yet create Dish</h2>
-                    ) : (this.state.savedMenu.map((dish, i) => {
-                        return (
-                            <ListItem key={i}
-                                id={dish._id}
-                            >
-                                <button onClick={() => this.deleteDish(dish._id)}>
-                                    dish name: {dish.item}
-                                    dish category: {dish.category}
-                                    dish price: {dish.price}
-                                    dish cook time: {dish.cook_time}
-                                </button>
-                            </ListItem>
-                        )
-                    }))}
-                </List>
-                {/* Table History display */}
-                <List>
-                    {!this.state.specificTableHistory ? (
-                        <h2>not yet create Dish</h2>
-                    ) : (
-                                <button >
-                                    start at: {this.state.specificTableHistory.start_at}
-                                    table color: {this.state.specificTableHistory.color}
-                                    table status: {this.state.specificTableHistory.table_status}
-                                    order: {this.state.specificTableHistory.order}
-                                    order quantity: {this.state.specificTableHistory.order_quantit}
-                                </button>
-                        )
-                    }
-                </List>
+
+
+                </div>
 
             </>
         );
