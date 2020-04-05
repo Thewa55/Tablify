@@ -2,14 +2,11 @@ import React, { useEffect, useState } from "react";
 import API from "../../utils/API";
 import EmployeeModal from "../EmployeeModal"
 import Button from 'react-bootstrap/Button'
-import Modal from 'react-bootstrap/Modal'
+import EmployeeEditModal from  '../EmployeeEditModal'
 
 function EmployeeList() {
-  const [show, setShow] = useState(false); 
-  const [employees, setEmployees] = useState([])
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const [employees, setEmployees] = useState([])
 
   function getEmployees() {
     API.getEmployees()      
@@ -26,6 +23,7 @@ function EmployeeList() {
       })
       .catch(err => console.log(err))
   }
+
 
   useEffect(() => {
     getEmployees()
@@ -46,26 +44,8 @@ function EmployeeList() {
                 <li className="list-group-item">{employee.email}</li>
               </ul>
               <Button variant="danger" onClick={() => removeEmployee(employee._id)}>Remove Employee</Button>{' '}
-              <Button variant="primary" className="mt-4" onClick={handleShow}>
-                    Edit {employee.name}
-              </Button>
-                  <Modal show={show} onHide={handleClose}>
-                    <Modal.Header closeButton>
-                      <Modal.Title>Add an employee</Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body>
-                      hello
-                    </Modal.Body>
-                    <Modal.Footer>
-                      <Button variant="secondary" onClick={handleClose}>
-                        Cancel
-                      </Button>
-                      <Button variant="primary" onClick={handleClose}>
-                        Add Employee
-                      </Button>
-                    </Modal.Footer>
-                  </Modal>
-                </>
+              <EmployeeEditModal employee={employee} />
+            </>
           ))}
           <div>
             <EmployeeModal />
