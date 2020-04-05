@@ -55,6 +55,7 @@ export default {
     return axios.get("/api/employee")
   },
   
+
   createEmployee: function(employee){
     return axios.post("/api/employee", employee)
   },
@@ -65,6 +66,7 @@ export default {
 
   changeEmployeeInfo: function(id, employee){
     return axios.put("/api/employee/" +id, employee)
+
   }
 
 };

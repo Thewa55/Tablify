@@ -1,50 +1,48 @@
 import React, { useRef, useState } from 'react'
-import './tablestyle.css';
 import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button'
 import API from '../../utils/API'
 
 
-function Small() {
+function AddDishModal() {
     const [show, setShow] = useState(false);
 
-    const employeeIdRef = useRef()
-    const nameRef = useRef()
-    const positionRef = useRef()
-    const phonenumberRef = useRef()
-    const emailRef = useRef()
+    const dishRef = useRef()
+    const priceRef = useRef()
+    const cookTimeRef = useRef()
+    const categoryRef = useRef()
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
     function handleSubmit(event) {
         event.preventDefault();
-        const newEmployee = {
-            employeeId: parseInt(employeeIdRef.current.value),
-            name: nameRef.current.value,
-            position: positionRef.current.value,
-            phonenumber: parseInt(phonenumberRef.current.value),
-            email: emailRef.current.value
+        const newDish = {
+            item: dishRef.current.value,
+            category: categoryRef.current.value,
+            price: parseInt(priceRef.current.value),
+            cook_time: parseInt(cookTimeRef.current.value),
         }
 
-        console.log(newEmployee)
-        API.createEmployee(newEmployee)
+        console.log(newDish)
+        API.createNewDish(newDish)
             .then(res => {
                 console.log(res)
             })
         handleClose()
-        alert("Thanks for submiting!")
+        alert("Thanks for submiting new dish!")
     }
-
 
 
     return (
         <>
-            <Button className="table-small table text-center" onClick={handleShow}>Test Small</Button>
+            <Button variant="primary" className="mt-4" onClick={handleShow}>
+                Add Dish
+            </Button>
 
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Add an employee</Modal.Title>
+                    <Modal.Title>Add Dish</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <form>
@@ -52,61 +50,53 @@ function Small() {
                             <input
                                 style={{ marginTop: "5%" }}
                                 className="input"
-                                ref={employeeIdRef}
+                                ref={dishRef}
                                 type="text"
-                                placeholder="Employee ID"
+                                placeholder="Dish Name"
                             />
                         </div>
                         <div className="form-group text-center">
                             <input
                                 style={{ marginBottom: "5%" }}
                                 className="input"
-                                ref={nameRef}
+                                ref={categoryRef}
                                 type="text"
-                                placeholder="Employee Name"
+                                placeholder="Appetizer, Entre, or Dessert"
                             />
                         </div>
                         <div className="form-group text-center">
                             <input
                                 style={{ marginBottom: "5%" }}
                                 className="input"
-                                ref={positionRef}
+                                ref={priceRef}
                                 type="text"
-                                placeholder="Position"
+                                placeholder="Price"
                             />
                         </div>
                         <div className="form-group text-center">
                             <input
                                 style={{ marginBottom: "5%" }}
                                 className="input"
-                                ref={phonenumberRef}
+                                ref={cookTimeRef}
                                 type="text"
-                                placeholder="Phone Number"
-                            />
-                        </div>
-                        <div className="form-group text-center">
-                            <input
-                                style={{ marginBottom: "5%" }}
-                                className="input"
-                                ref={emailRef}
-                                type="text"
-                                placeholder="E-Mail"
+                                placeholder="Cook time (min)"
                             />
                         </div>
                     </form>
+
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleClose}>
                         Cancel
-            </Button>
+                    </Button>
                     <Button variant="primary" onClick={handleSubmit}>
-                        Add Employee
-            </Button>
+                        Add Dish
+                    </Button>
+
                 </Modal.Footer>
             </Modal>
         </>
-
     );
-};
+}
 
-export default Small;
+export default AddDishModal;
