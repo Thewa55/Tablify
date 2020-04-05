@@ -72,7 +72,7 @@ function ViewMenuModal(props) {
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleClose}>
-                        Close
+                        Closed
                     </Button>
                     {/* <Button variant="primary" onClick={handleSubmit}>
                         Add Employee
