@@ -66,7 +66,6 @@ export default {
 
   changeEmployeeInfo: function(id, employee){
     return axios.put("/api/employee/" +id, employee)
-
   }
 
 };
