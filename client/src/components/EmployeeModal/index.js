@@ -4,7 +4,7 @@ import Button from 'react-bootstrap/Button'
 import API from '../../utils/API'
 
 function EmployeeModal() {
-    const [show, setShow] = useState(false);
+    const [show, setShow] = useState(false); 
 
     const employeeIdRef = useRef()
     const nameRef = useRef()
@@ -17,16 +17,19 @@ function EmployeeModal() {
 
     function handleSubmit (event){
       event.preventDefault();
-      API.createEmployee({
-        employeeId: employeeIdRef.current.value,
+      const newEmployee = {
+        employeeId: parseInt(employeeIdRef.current.value),
         name: nameRef.current.value,
         position: positionRef.current.value,
-        phonenumber: phonenumberRef.current.value,
-        startDate: Date.now(),
+        phonenumber: parseInt(phonenumberRef.current.value),
         email: emailRef.current.value
-      }).then( res => {
-        
-      })
+      }
+
+      console.log(newEmployee)
+      API.createEmployee(newEmployee)
+        .then( res => {
+          console.log(res)
+        })
       handleClose()
       alert("Thanks for submiting!")
     }
@@ -39,7 +42,7 @@ function EmployeeModal() {
   
         <Modal show={show} onHide={handleClose}>
           <Modal.Header closeButton>
-            <Modal.Title>Modal heading</Modal.Title>
+            <Modal.Title>Add an employee</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <form>

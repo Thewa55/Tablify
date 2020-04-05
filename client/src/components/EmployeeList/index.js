@@ -18,6 +18,7 @@ function EmployeeList() {
     getEmployees()
   }, [])
 
+  console.log(employees)
   return(
     <div>
       {employees.length ? (
@@ -31,6 +32,7 @@ function EmployeeList() {
               <li className="list-group-item">{employee.email}</li>
             </ul>
           ))}
+          <EmployeeModal />
         </div>    
       ) : (
         <div>
