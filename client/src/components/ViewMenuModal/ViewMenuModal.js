@@ -1,8 +1,9 @@
-import React, { useRef, useState } from 'react'
+import React, { useState } from 'react'
 import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button'
-import API from '../../utils/API'
-import { List, ListItem } from '../List/index'
+import AddDishModal from '../AddDishModal/AddDishModal'
+import DeleteDishModal from '../DeleteDishModal/DeleteDishModal'
+
 
 function ViewMenuModal(props) {
     const [show, setShow] = useState(false);
@@ -71,12 +72,9 @@ function ViewMenuModal(props) {
 
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="secondary" onClick={handleClose}>
-                        Closed
-                    </Button>
-                    {/* <Button variant="primary" onClick={handleSubmit}>
-                        Add Employee
-                    </Button> */}
+                    <AddDishModal />
+                    {/* <DeleteDishModal /> */}
+                    
                 </Modal.Footer>
             </Modal>
         </>
