@@ -55,7 +55,7 @@ export default {
     return axios.get("/api/employee")
   },
   
-  createEmployee: function(){
-    return axios.post("/api/employee")
+  createEmployee: function(employee){
+    return axios.post("/api/employee", employee)
   }
 };
