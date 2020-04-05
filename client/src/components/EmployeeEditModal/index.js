@@ -1,47 +1,57 @@
-import React, { useRef, useState } from 'react'
+import React, { useState } from 'react'
 import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button'
 import API from '../../utils/API'
+// import EmployeeContext from '../../utils/EmployeeContext'
 
 function EmployeeModal(props) {
     const [show, setShow] = useState(false); 
 
-    const employeeIdRef = useRef()
-    const nameRef = useRef()
-    const positionRef = useRef()
-    const phonenumberRef = useRef()
-    const emailRef = useRef()
-
     const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+    const handleShow = () => setShow(true)
+
+    const [employee, setEmployee] = useState({
+      _id: props.employee._id,
+      employeeId: props.employee.employeeId,
+      name: props.employee.name,
+      position: props.employee.position,
+      phonenumber: props.employee.phonenumber,
+      email: props.employee.email
+    })
+
+    function handleInputChange(event){
+        const { name, value } = event.target
+        setEmployee({ [name]: value})
+        // setId(event.target.value)
+    }
 
     function handleSubmit (event){
-      event.preventDefault();
-      const newEmployee = {
-        employeeId: parseInt(employeeIdRef.current.value),
-        name: nameRef.current.value,
-        position: positionRef.current.value,
-        phonenumber: parseInt(phonenumberRef.current.value),
-        email: emailRef.current.value
-      }
+    //   event.preventDefault();
+    //   const newEmployee = {
+    //     employeeId: parseInt(employeeIdRef.current.value),
+    //     name: nameRef.current.value,
+    //     position: positionRef.current.value,
+    //     phonenumber: parseInt(phonenumberRef.current.value),
+    //     email: emailRef.current.value
+    //   }
 
-      console.log(newEmployee)
-      API.createEmployee(newEmployee)
-        .then( res => {
-          console.log(res)
-        })
-      handleClose()
+    //   console.log(newEmployee)
+
+    //   handleClose(employeeIdRef.current.value)
     }
+
+    const employeeInfo = Object.values(employee)
+    console.log("employeeInfo: ", employeeInfo)
 
     return (
       <>
         <Button variant="primary" className="mt-4" onClick={handleShow}>
-          Edit {props.employee.name}
+          Edit {employee.name}
         </Button>
   
         <Modal show={show} onHide={handleClose}>
           <Modal.Header closeButton>
-            <Modal.Title>Add an employee</Modal.Title>
+            <Modal.Title>Edit Employee Info</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <form>
@@ -49,45 +59,47 @@ function EmployeeModal(props) {
                 <input
                 style={{marginTop: "5%"}}
                 className="input"
-                ref={employeeIdRef}
                 type="text"
-                value = {props.employee.employeeId}
+                name= "employeeId"
+                value={employee.employeeId}
+                onChange={handleInputChange}
                 />
               </div>
               <div className="form-group text-center">
                 <input
                 style={{marginBottom: "5%"}}
                 className="input"
-                ref={nameRef}
                 type="text"
-                value = {props.employee.name}
+                name="name"
+                value={employee.name}
+                onChange={handleInputChange}
                 />
               </div>
               <div className="form-group text-center">
                 <input
                 style={{marginBottom: "5%"}}
                 className="input"
-                ref={positionRef}
                 type="text"
-                value = {props.employee.position}
+                name="position"
+                value={employee.position}
                 />
               </div>
               <div className="form-group text-center">
                 <input
                 style={{marginBottom: "5%"}}
                 className="input"
-                ref={phonenumberRef}
                 type="text"
-                value = {props.employee.phonenumber}
+                name="phonenumber"
+                value={employee.phonenumber}
                 />
               </div>
               <div className="form-group text-center">
                 <input
                 style={{marginBottom: "5%"}}
                 className="input"
-                ref={emailRef}
                 type="text"
-                value = {props.employee.email}
+                name="email"
+                value={employee.email}
                 />
               </div>
             </form>

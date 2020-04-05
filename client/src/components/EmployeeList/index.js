@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import API from "../../utils/API";
 import EmployeeModal from "../EmployeeModal"
+import EmployEditModal from "../EmployeeEditModal"
 import Button from 'react-bootstrap/Button'
-import EmployeeEditModal from  '../EmployeeEditModal'
+// import EmployeeContext from '../../utils/EmployeeContext'
 
 function EmployeeList() {
-
   const [employees, setEmployees] = useState([])
 
   function getEmployees() {
@@ -31,8 +31,8 @@ function EmployeeList() {
 
   console.log(employees)
   return(
-    <div>
-      {employees.length ? (
+      <div>
+        {employees.length ? (
         <div>
           {employees.map( employee => (
             <>
@@ -44,7 +44,7 @@ function EmployeeList() {
                 <li className="list-group-item">{employee.email}</li>
               </ul>
               <Button variant="danger" onClick={() => removeEmployee(employee._id)}>Remove Employee</Button>{' '}
-              <EmployeeEditModal employee={employee} />
+              <EmployEditModal employee={employee} />
             </>
           ))}
           <div>
