@@ -7,7 +7,7 @@ import Medium from "../components/TableExamples/Medium";
 import Large from "../components/TableExamples/Large";
 import XL from "../components/TableExamples/XL";
 import ViewMenuModal from "../components/ViewMenuModal/ViewMenuModal"
-import Dragula from 'react-dragula';
+import Draggable, {DraggableCore} from 'react-draggable'; 
 
 import { List, ListItem } from "../components/List";
 
@@ -126,7 +126,6 @@ class Frontdesk extends Component {
 
 
     componentDidMount = () => {
-        Dragula([document.querySelector('#main')]);
         this.retriveSavedMenu()
     }
 
