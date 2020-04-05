@@ -18,11 +18,16 @@ function EmployeeModal() {
     function handleSubmit (event){
       event.preventDefault();
       const newEmployee = {
-        employeeId: parseInt(employeeIdRef.current.value),
-        name: nameRef.current.value,
-        position: positionRef.current.value,
-        phonenumber: parseInt(phonenumberRef.current.value),
-        email: emailRef.current.value
+        employeeId: 1234,
+        name: "Test",
+        position: "position",
+        phonenumber: 12345,
+        email: "email"
+        // employeeId: parseInt(employeeIdRef.current.value),
+        // name: nameRef.current.value,
+        // position: positionRef.current.value,
+        // phonenumber: parseInt(phonenumberRef.current.value),
+        // email: emailRef.current.value
       }
 
       console.log(newEmployee)

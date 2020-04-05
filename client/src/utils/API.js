@@ -56,6 +56,7 @@ export default {
   },
   
   createEmployee: function(){
+    console.log("call axios to create employee")
     return axios.post("/api/employee")
   }
 };
