@@ -6,17 +6,17 @@ import Small from "../components/TableExamples/Small";
 import Medium from "../components/TableExamples/Medium";
 import Large from "../components/TableExamples/Large";
 import XL from "../components/TableExamples/XL";
+import ViewMenuModal from "../components/ViewMenuModal/ViewMenuModal"
 import Dragula from 'react-dragula';
 
 import { List, ListItem } from "../components/List";
 
-const SavedTables = [];
 
 class Frontdesk extends Component {
     state = {
         tables: [],
-        savedMenu: [],
-        specificTableHistory: []
+        menu: [],
+        tableHistory: []
     }
     // functions for diningroom collection testing!!
     componentDidMount(){
@@ -28,7 +28,7 @@ class Frontdesk extends Component {
             this.setState({ tables: res.data })  
         })
     };
-q
+
     buildTable = type => {
         console.log("come into buildTable function")
         let tableData = {};
@@ -63,11 +63,12 @@ q
 
 
     // functions for menu collection testing!!
+
     retriveSavedMenu = () => {
         API.getMenu().then(res => {
             console.log(res.data)
             const savedMenu = res.data;
-            this.setState({ savedMenu });
+            this.setState({ menu: savedMenu });
         })
             .catch(err => console.log(err));
     }
@@ -100,7 +101,7 @@ q
         API.findTableHistoryById(TableId).then(res => {
             console.log(res.data)
             const specificTableHistory = res.data;
-            this.setState({ specificTableHistory });
+            this.setState({ tableHistory: specificTableHistory });
         })
             .catch(err => console.log(err));
     }
@@ -126,12 +127,12 @@ q
 
     componentDidMount = () => {
         Dragula([document.querySelector('#main')]);
+        this.retriveSavedMenu()
     }
 
 
     render() {
-        console.log("state: ", this.state.tables)
-        console.log("type of: ", typeof (this.state.tables))
+        console.log("state: ", this.state)
         return (
             <>
                 <div className="sidenav">
@@ -147,12 +148,9 @@ q
                     <button onClick={() => this.buildTable(6)}>
                         Build Table of 6
                     </button>
-                    <button onClick={() => this.retriveSavedMenu()}>
-                        View Menu
-                    </button>
-                    <button onClick={() => this.AddDish()}>
-                        Add Dish
-                    </button>
+
+                    <ViewMenuModal menu= {this.state.menu}/>
+                    
                     <button onClick={() => this.AddTableHistory()}>
                         Add Table this.state.specificTableHistory
                     </button>
@@ -162,7 +160,7 @@ q
                 </div>
 
                 <div id="main">
-
+                    {/* create tables */}
                     {!this.state.tables ? (
                         <h2 style={{ color: "white" }}>No Tables Generated Yet</h2>
                     ) : (this.state.tables.map(table => {
@@ -181,8 +179,7 @@ q
                         }
 
                     }))}
-
-
+                    
 
                 </div>
 
