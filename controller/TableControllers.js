@@ -10,6 +10,7 @@ module.exports = {
   },
 
   createNewEmployee: function(req, res) {
+    console.log("Hello")
     db.Employee
     .create(req.body)
     .then(dbModel => res.json(dbModel))
