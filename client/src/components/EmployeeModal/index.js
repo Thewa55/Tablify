@@ -41,7 +41,7 @@ function EmployeeModal() {
 
     return (
       <>
-        <Button variant="primary" onClick={handleShow}>
+        <Button variant="primary" className="mt-4" onClick={handleShow}>
           Add An Employee
         </Button>
   
@@ -100,10 +100,10 @@ function EmployeeModal() {
           </Modal.Body>
           <Modal.Footer>
             <Button variant="secondary" onClick={handleClose}>
-              Close
+              Cancel
             </Button>
             <Button variant="primary" onClick={handleSubmit}>
-              Save Changes
+              Add Employee
             </Button>
           </Modal.Footer>
         </Modal>
