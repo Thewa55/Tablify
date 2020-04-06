@@ -7,7 +7,8 @@ import Medium from "../components/TableExamples/Medium";
 import Large from "../components/TableExamples/Large";
 import XL from "../components/TableExamples/XL";
 import ViewMenuModal from "../components/ViewMenuModal/ViewMenuModal"
-import Draggable, {DraggableCore} from 'react-draggable'; 
+import Draggable, { DraggableCore } from 'react-draggable';
+import OrderingSysModal from "../components/OrderingSysModal/OrderingSysModal"
 
 import { List, ListItem } from "../components/List";
 
@@ -19,13 +20,11 @@ class Frontdesk extends Component {
         tableHistory: []
     }
     // functions for diningroom collection testing!!
-    componentDidMount(){
-        this.retriveSavedTables()
-    }
 
-    retriveSavedTables = () => {
-        API.getTables().then(res =>{ 
-            this.setState({ tables: res.data })  
+
+    getSavedTable = () => {
+        API.getTables().then(res => {
+            this.setState({ tables: res.data })
         })
     };
 
@@ -49,7 +48,7 @@ class Frontdesk extends Component {
         API.createNewTable(tableData)
             .then(res => {
                 console.log("res.data: ", res.data);
-                    this.retriveSavedTables()
+                this.getSavedTable()
             })
             .catch(err => console.log(err));
     }
@@ -57,14 +56,14 @@ class Frontdesk extends Component {
     deleteTable = TableId => {
         console.log(TableId)
         API.deleteTable(TableId)
-            .then(this.retriveSavedTables)
+            .then(this.getSavedTable)
             .catch(err => console.log(err))
     }
 
 
     // functions for menu collection testing!!
 
-    retriveSavedMenu = () => {
+    getMenu = () => {
         API.getMenu().then(res => {
             console.log(res.data)
             const savedMenu = res.data;
@@ -96,7 +95,7 @@ class Frontdesk extends Component {
     }
 
     //  functions for table this.state.specificTableHistory testing
-    retriveSavedTableHistoryById = TableId => {
+    getTableHistoryById = TableId => {
         console.log("Table Id: ", TableId)
         API.findTableHistoryById(TableId).then(res => {
             console.log(res.data)
@@ -126,7 +125,8 @@ class Frontdesk extends Component {
 
 
     componentDidMount = () => {
-        this.retriveSavedMenu()
+        this.getSavedTable()
+        this.getMenu()
     }
 
 
@@ -148,8 +148,11 @@ class Frontdesk extends Component {
                         Build Table of 6
                     </button>
 
-                    <ViewMenuModal menu= {this.state.menu}/>
-                    
+                    <ViewMenuModal
+                        menu={this.state.menu}
+                        getMenu={this.getMenu}
+                    />
+
                     <button onClick={() => this.AddTableHistory()}>
                         Add Table this.state.specificTableHistory
                     </button>
@@ -163,22 +166,26 @@ class Frontdesk extends Component {
                     {!this.state.tables ? (
                         <h2 style={{ color: "white" }}>No Tables Generated Yet</h2>
                     ) : (this.state.tables.map(table => {
-                        if (table.seats === 2 ) {
-                            return(
-                                <Small />
+                        if (table.seats === 2) {
+                            return (
+                                <OrderingSysModal
+                                    tableId = {table._id}
+                                    menu={this.state.menu}
+                                    getMenu={this.getMenu}
+                                />
                             )
-                        }else if(table.seats === 4 ){
-                            return(
+                        } else if (table.seats === 4) {
+                            return (
                                 <Medium />
                             )
-                        }else{
-                            return(
+                        } else {
+                            return (
                                 <XL />
                             )
                         }
 
                     }))}
-                    
+
 
                 </div>
 
