@@ -35,7 +35,7 @@ const MenuSeed = [
   },
   {
     item:'beef wellington',
-    category:'Entre',
+    category:'Entree',
     price:'49.99',
     cook_time:'10',
     createdAt:Date(),
@@ -43,7 +43,7 @@ const MenuSeed = [
   },
   {
     item:'roasted rack of lamb',
-    category:'Entre',
+    category:'Entree',
     price:'39.99',
     cook_time:'10',
     createdAt:Date(),
@@ -51,7 +51,7 @@ const MenuSeed = [
   },
   {
     item:'crispy skin salmon',
-    category:'Entre',
+    category:'Entree',
     price:'37.99',
     cook_time:'10',
     createdAt:Date(),
