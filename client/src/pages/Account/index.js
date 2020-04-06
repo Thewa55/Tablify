@@ -20,6 +20,9 @@ const AccountPage = () => (
                 <Link to="/Employees">
                   <button className="login-button">Employees</button>
                 </Link>
+                <Link to="/Revenue">
+                  <button className="login-button">Revenue</button>
+                </Link>
               </div>
             </div>
           </Jumbotron>
