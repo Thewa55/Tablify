@@ -11,8 +11,25 @@ function OrderListModal(props) {
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+    
+    const orderedItem = props.tableHistory.order.split(",")
+    const orderedQuantity = props.tableHistory.order_quantity.split(",")
+    const order = [];
+    
+    for(var i =0; i < orderedItem.length; i++){
+        order[i] = {
+            item: orderedItem[i],
+            quantity: orderedQuantity[i],
+            id: i
+        }
+    }
 
-
+    function handleSubmit(event) {
+        event.preventDefault();
+        props.changeTableAvailability(props.tableHistory._id, props.availability)
+        handleClose()
+        alert("Be ready for next customer!.")
+    }
 
     return (
         <>
@@ -25,7 +42,13 @@ function OrderListModal(props) {
                 </Modal.Header>
                 <Modal.Body>
                     <ul>
-
+                        {order.length > 0 (
+                            order.map(order => {
+                                return(
+                                    <li key = {order.id}> {order.item}, {order.quantity}</li>
+                                )
+                            })
+                        )}
                     </ul>
 
                 </Modal.Body>
