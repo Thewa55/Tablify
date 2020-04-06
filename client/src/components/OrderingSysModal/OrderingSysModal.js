@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import API from '../../utils/API';
+import "../TableExamples/tablestyle.css";
 import Draggable, {DraggableCore} from 'react-draggable'; 
 
 
@@ -55,8 +56,10 @@ function OrderingSysModal(props) {
     }
     return (
         <>
-            <Draggable>
-            <div className="table-small table text-center" onClick={handleShow}>Test Small</div>
+            <Draggable handle=".table">
+                <div className="table-small table text-center">
+                    <div className="interior-small interior" onClick={handleShow}>Test Small</div>
+                </div>
             </Draggable>
 
             <Modal show={show} onHide={handleClose}>

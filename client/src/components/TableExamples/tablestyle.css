@@ -17,30 +17,52 @@
     font-family: 'Permanent Marker', cursive;
 }
 
+.interior {
+    background-color: white;
+    border: 2px solid black;
+}
+
+.interior-small {
+    border-radius: 5px;
+    margin: 15%;
+}
+
+.interior-medium {
+    border-radius: 7px;
+    margin: 10%;
+    margin-top: 16%;
+}
+
+.interior-large {
+    border-radius: 10px;
+    margin: 10%;
+}
+
+.interior-xl {
+    border-radius: 10px;
+    margin: 10%;
+}
+
 .table-small {
     height: 100px;
     width: 100px;
     font-size: 20px;
-    padding: 1%;
 }
 
 .table-medium {
     height: 150px;
     width: 150px;
     font-size: 30px;
-    padding: 1%;
 }
 
 .table-large {
     height: 200px;
     width: 200px;
-    font-size: 40px;
-    padding: 2%;
+    font-size: 48px;
 }
 
 .table-xl {
     height: 300px;
     width: 300px;
-    font-size: 60px;
-    padding: 3%;
+    font-size: 80px;
 }
