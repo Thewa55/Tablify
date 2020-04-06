@@ -4,8 +4,10 @@ import Draggable, {DraggableCore} from 'react-draggable';
 
 function Medium() {
     return (
-        <Draggable>
-            <div className="table-medium table text-center">Test Medium</div>
+        <Draggable handle=".table">
+            <div className="table-medium table text-center">
+                <div className="interior-medium interior">Test Medium</div>
+            </div>
         </Draggable>
     );
 };

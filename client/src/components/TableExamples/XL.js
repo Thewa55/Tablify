@@ -4,8 +4,10 @@ import Draggable, {DraggableCore} from 'react-draggable';
 
 function XL() {
     return (
-        <Draggable>
-            <div className="table-xl table text-center">Test XL</div>
+        <Draggable handle=".table">
+            <div className="table-xl table text-center">
+                <div className="interior-xl interior">Test XL</div>
+            </div>
         </Draggable>
     );
 };

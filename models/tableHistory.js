@@ -6,7 +6,7 @@ const tableHistorySchema = new Schema({
     // end_at: Date(),
     order: { type: String },
     order_quantity: { type: String },
-    availability: { type: Boolean, default: false}
+    total_price:{ type: Number },
 });
 
 const TableHistory = mongoose.model("TableHistory", tableHistorySchema);

@@ -14,7 +14,7 @@ module.exports = {
       .find(req.query)
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
-  }
+  },
 
   createNewEmployee: function (req, res) {
     console.log("Hello")
@@ -98,6 +98,13 @@ module.exports = {
 
   updateTableHistory: function (req, res) {
     db.TableHistory
+      .findOneAndUpdate({ _id: req.params.id })
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
+
+  updateTableAvailability: function(req,res){
+    db.Diningroom
       .findOneAndUpdate({ _id: req.params.id })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));

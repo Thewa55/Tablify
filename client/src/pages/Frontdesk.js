@@ -43,6 +43,10 @@ class Frontdesk extends Component {
             tableData = {
                 seats: 6
             }
+        } else if (type === 8) {
+            tableData = {
+                seats: 8
+            }
         }
 
         API.createNewTable(tableData)
@@ -139,13 +143,16 @@ class Frontdesk extends Component {
                         <h1 style={{ fontSize: "80px", textAlign: "center" }}>T</h1>
                     </div>
                     <button onClick={() => this.buildTable(2)}>
-                        Build Table of 2
+                        Build Small
                     </button>
                     <button onClick={() => this.buildTable(4)}>
-                        Build Table of 4
+                        Build Medium
                     </button>
                     <button onClick={() => this.buildTable(6)}>
-                        Build Table of 6
+                        Build Large
+                    </button>
+                    <button onClick={() => this.buildTable(8)}>
+                        Build XL
                     </button>
 
                     <ViewMenuModal
@@ -177,6 +184,10 @@ class Frontdesk extends Component {
                         } else if (table.seats === 4) {
                             return (
                                 <Medium />
+                            )
+                        } else if (table.seats === 6) {
+                            return (
+                                <Large />
                             )
                         } else {
                             return (
