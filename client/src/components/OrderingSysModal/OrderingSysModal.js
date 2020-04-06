@@ -7,7 +7,6 @@ import Draggable, {DraggableCore} from 'react-draggable';
 
 
 function OrderingSysModal(props) {
-    console.log(props);
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
@@ -24,12 +23,16 @@ function OrderingSysModal(props) {
     )
     let orderedDish = [];
     let orderedDishCount = [];
+    let totalPrice = 0;
 
     function handleInputChange(event) {
-        let value = event.target.value;
+        let value = parseInt(event.target.value);
         let name = event.target.name;
+        let price = parseFloat(event.target.id);
+        console.log("value, price: ", value ,", ",price)
         orderedDish.push(name);
-        orderedDishCount.push(parseInt(value));
+        orderedDishCount.push(value);
+        totalPrice += value*price;
     }
 
 
@@ -42,7 +45,8 @@ function OrderingSysModal(props) {
         const newOrder = {
             table_id: props.tableId,
             order: orderString,
-            order_quantity: orderQuantityString
+            order_quantity: orderQuantityString,
+            total_price: totalPrice
         }
         console.log(newOrder)
         API.createTableHistory(newOrder)
@@ -77,6 +81,7 @@ function OrderingSysModal(props) {
                                             {dish.item}:
                                             <input
                                                 name={dish.item}
+                                                id= {dish.price}
                                                 className="input"
                                                 type="text"
                                                 placeholder="Num"
@@ -98,6 +103,7 @@ function OrderingSysModal(props) {
                                             {dish.item}:
                                             <input
                                                 name={dish.item}
+                                                id= {dish.price}
                                                 className="input"
                                                 type="text"
                                                 placeholder="Num"
@@ -119,6 +125,7 @@ function OrderingSysModal(props) {
                                             {dish.item}:
                                             <input
                                                 name={dish.item}
+                                                id= {dish.price}
                                                 className="input"
                                                 type="text"
                                                 placeholder="Num"
