@@ -3,7 +3,7 @@ import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button'
 import API from '../../utils/API'
 
-function EmployeeModal() {
+function EmployeeModal(props) {
     const [show, setShow] = useState(false); 
 
     const employeeIdRef = useRef()
@@ -31,7 +31,7 @@ function EmployeeModal() {
           console.log(res)
         })
       handleClose()
-      alert("Thanks for submiting!")
+      props.getEmployees()
     }
 
     return (

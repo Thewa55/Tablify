@@ -29,6 +29,7 @@ function EmployeeModal(props) {
         API.changeEmployeeInfo(id, employee)
           .then(result =>{
           handleClose()
+          props.getEmployees()
         })
     }
 
