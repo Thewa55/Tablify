@@ -44,7 +44,41 @@ const PaymentPage = () => {
       };
     }
 
+
+    return (
+        <SquarePaymentForm
+          sandbox={true}
+          applicationId={APPLICATION_ID}
+          locationId={LOCATION_ID}
+          cardNonceResponseReceived={cardNonceResponseReceived}
+          createPaymentRequest={createPaymentRequest}
+        >
+        
+          <fieldset className="sq-fieldset">
+            <CreditCardNumberInput />
     
+            <div className="sq-form-third">
+              <CreditCardExpirationDateInput />
+            </div>
+    
+            <div className="sq-form-third">
+              <CreditCardPostalCodeInput />
+            </div>
+    
+            <div className="sq-form-third">
+              <CreditCardCVVInput />
+            </div>
+          </fieldset>
+    
+          <CreditCardSubmitButton>Pay $1.00</CreditCardSubmitButton>
+    
+          <div className="sq-error-message">
+            {errorMessages.map(errorMessage => (
+              <li key={`sq-error-${errorMessage}`}>{errorMessage}</li>
+            ))}
+          </div>
+        </SquarePaymentForm>
+      );
 
 
 };
