@@ -202,8 +202,8 @@ class Frontdesk extends Component {
                                 return(
                                     <OrderListModal 
                                     availability={table.availability}
-                                    tableHistoyr={table}
-                                    changeTableAvalibility={this.changeTableAvalibility}
+                                    tableHistory={table}
+                                    changeTableAvalibility ={this.changeTableAvalibility}
                                     />
                                 )
                             }

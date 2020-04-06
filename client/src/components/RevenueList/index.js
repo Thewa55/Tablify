@@ -3,31 +3,23 @@ import API from "../../utils/API";
 // import Button from 'react-bootstrap/Button'
 // import Table from 'react-bootstrap/Table'
 import Moment from 'react-moment';
+import moment from 'moment';
 
 
 function RevenueList(){
   const [tableHistory, setTableHistory] = useState([]);
   const [today, setToday] = useState()
-  const []
 
-  function getTableHistory(){
-    var today = new Date();
-    var dd = String(today.getDate()).padStart(2, '0');
-    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-    var yyyy = today.getFullYear();
-    today = mm + '/' + dd + '/' + yyyy;
-    setToday(today)
-
-    API.getTableHistory()
-      .then(results => {
-        setTableHistory(results.data)
-    })
-
-    
-  };
+//   getTableHistory()
+//     // API.getTableHistory()
+//     //   .then(results => {
+//     //     setTableHistory(results.data)
+//     // })
+//   };
 
   useEffect(() => {
-    getTableHistory()
+    setToday(moment().format('L'));
+    // getTableHistory()
   }, []);
 
   console.log(today)

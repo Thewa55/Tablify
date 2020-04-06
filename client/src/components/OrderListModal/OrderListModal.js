@@ -26,7 +26,7 @@ function OrderListModal(props) {
 
     function handleSubmit(event) {
         event.preventDefault();
-        props.changeTableAvailability(props.tableHistory._id, props.availability)
+        props.changeTableAvailability(props.tableHistory._id, props.availibility)
         handleClose()
         alert("Be ready for next customer!.")
     }
