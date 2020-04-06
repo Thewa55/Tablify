@@ -3,7 +3,7 @@ import API from "../../utils/API";
 import EmployeeModal from "../EmployeeModal"
 import EmployEditModal from "../EmployeeEditModal"
 import Button from 'react-bootstrap/Button'
-// import EmployeeContext from '../../utils/EmployeeContext'
+import Table from 'react-bootstrap/Table'
 
 function EmployeeList() {
   const [employees, setEmployees] = useState([])
@@ -34,19 +34,32 @@ function EmployeeList() {
       <div>
         {employees.length ? (
         <div>
-          {employees.map( employee => (
-            <>
-              <ul className="list-group mt-3" key={employee._id}>
-                <li className="list-group-item">{employee.employeeId}</li>
-                <li className="list-group-item">{employee.name}</li>
-                <li className="list-group-item">{employee.position}</li>
-                <li className="list-group-item">{employee.phonenumber}</li>
-                <li className="list-group-item">{employee.email}</li>
-              </ul>
-              <Button variant="danger" onClick={() => removeEmployee(employee._id)}>Remove Employee</Button>{' '}
-              <EmployEditModal employee={employee} getEmployees={getEmployees}/>
-            </>
-          ))}
+          <Table striped bordered hover size="sm">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Postion</th>
+                <th>Phone Number</th>
+                <th>E-mail</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+             {employees.map( employee => (
+                <tr>
+                  <td>{employee.employeeId}</td>
+                  <td>{employee.name}</td>
+                  <td>{employee.position}</td>
+                  <td>{employee.phonenumber}</td>
+                  <td>{employee.email}</td>
+                  <td><Button variant="danger" onClick={() => removeEmployee(employee._id)}>Remove</Button>{' '}
+                      <EmployEditModal employee={employee} getEmployees={getEmployees}/></td>
+                </tr>
+
+           ))}
+              </tbody>
+            </Table>
           <div>
             <EmployeeModal getEmployees={getEmployees} />
           </div>
@@ -54,7 +67,7 @@ function EmployeeList() {
       ) : (
         <div>
             <h1>No current employees in the database, please add some people!</h1>
-            <EmployeeModal />
+            <EmployeeModal getEmployees={getEmployees}/>
         </div>
       )}
     </div>

@@ -37,8 +37,8 @@ function EmployeeModal(props) {
 
     return (
       <>
-        <Button variant="primary" className="mt-4" onClick={handleShow}>
-          Edit {employee.name}
+        <Button variant="primary" className="mt-0" onClick={handleShow}>
+          Edit
         </Button>
   
         <Modal show={show} onHide={handleClose}>
