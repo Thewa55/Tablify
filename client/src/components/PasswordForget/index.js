@@ -11,7 +11,7 @@ const PasswordForgetPage = () => (
     <Jumbotron>  
     <div className="Row">
     <div className="col-md-12 login-box">
-    <h1 className="text-center" style={{fontFamily: "'Fredoka One', cursive"}}>Reset Password </h1>
+    <h1 className="text-center" style={{fontFamily: "'Fredoka One', cursive", textDecoration: "underline"}}>Reset Password </h1>
     <PasswordForgetForm />
     </div>
         </div>
@@ -40,9 +40,11 @@ class PasswordForgetFormBase extends Component {
       });
     event.preventDefault();
   };
+  
   onChange = event => {
     this.setState({ [event.target.name]: event.target.value });
   };
+
   render() {
     const { email, error } = this.state;
     const isInvalid = email === '';
@@ -68,8 +70,12 @@ class PasswordForgetFormBase extends Component {
 
           <div style={{margin: "0 auto", fontStyle: "monospace"}} className="text-center">
           {error && <mark>{error.message}</mark>}
-        </div>	       
-
+        </div>
+        <div className="text-center">       
+          <Link to="/">
+            <button style={{textAlign: "center", width: "15%", margin: "1%"}}>Home</button>
+          </Link>
+        </div>	
       </form>
     );
   }

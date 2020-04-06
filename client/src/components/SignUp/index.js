@@ -13,12 +13,17 @@ const SignUpPage = () => (
       <Jumbotron>
         <div className="row">
           <div class="col-md-12 login-box">
-            <h1 className="text-center" style={{fontFamily: "'Fredoka One', cursive"}}>Sign Up</h1>
+            <h1 className="text-center" style={{fontFamily: "'Fredoka One', cursive", textDecoration: "underline"}}>Sign Up</h1>
             <br />
             <SignUpForm />
             <p style={{textAlign: "center", fontFamily: "monospace"}}>
               Already have an account? <Link to={ROUTES.SIGN_IN} style={{fontFamily: "'Marck Script', cursive", fontSize: "20px", textDecoration: "underline"}}>Sign in</Link>
             </p>
+            <div className="text-center">       
+              <Link to="/">
+                <button style={{textAlign: "center", width: "15%"}}>Home</button>
+              </Link>
+            </div>
           </div>
         </div>
       </Jumbotron>
