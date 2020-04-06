@@ -5,8 +5,10 @@ import Draggable, {DraggableCore} from 'react-draggable';
 
 function Large() {
     return (
-        <Draggable>
-            <div className="table-large table text-center">Test Large</div>
+        <Draggable handle=".table">
+            <div className="table-large table text-center">
+                <div className="interior-large interior">Test Large</div>
+            </div>
         </Draggable>
     );
 };
