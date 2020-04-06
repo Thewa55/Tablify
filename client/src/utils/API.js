@@ -72,6 +72,10 @@ export default {
 
   changeEmployeeInfo: function(id, employee){
     return axios.put("/api/employee/" +id, employee)
+  },
+
+  changeTableAvalibility: function(id, table){
+    return axios.put("/api/table/" +id, table)
   }
 
 };

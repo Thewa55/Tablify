@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { compose } from 'recompose';
 import { SignUpLink } from '../SignUp';
+import { Link } from "react-router-dom";
 import { PasswordForgetLink } from '../PasswordForget';
 import { withFirebase } from '../Firebase';
 import * as ROUTES from '../../constants/routes';
@@ -15,11 +16,16 @@ const SignInPage = () => (
       <Jumbotron>
         <div className="row">
           <div className="col-md-12 login-box">
-            <h1 className="text-center" style={{fontFamily: "'Fredoka One', cursive"}}>Sign In</h1>
+            <h1 className="text-center" style={{fontFamily: "'Fredoka One', cursive", textDecoration: "underline"}}>Sign In</h1>
             <br />
             <SignInForm />
             <PasswordForgetLink />
             <SignUpLink />
+            <div className="text-center">       
+              <Link to="/">
+                <button style={{textAlign: "center", width: "15%"}}>Home</button>
+              </Link>
+            </div>
           </div>
         </div>
       </Jumbotron>

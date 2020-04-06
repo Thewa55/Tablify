@@ -11,6 +11,7 @@ import Draggable, { DraggableCore } from 'react-draggable';
 import OrderingSysModal from "../components/OrderingSysModal/OrderingSysModal"
 
 import { List, ListItem } from "../components/List";
+import OrderListModal from "../components/OrderListModal/OrderListModal";
 
 
 class Frontdesk extends Component {
@@ -57,14 +58,49 @@ class Frontdesk extends Component {
             .catch(err => console.log(err));
     }
 
-    deleteTable = TableId => {
-        console.log(TableId)
-        API.deleteTable(TableId)
-            .then(this.getSavedTable)
-            .catch(err => console.log(err))
+    changeTableAvalibility = (tableId, availability) => {
+        if (availability === true) {
+            availability = false
+            this.state.tables.map(table => {
+                if (table._id === tableId) {
+                    let newTable = {
+                        seats: parseInt(table.seats),
+                        order: "",
+                        order_quantity: "",
+                        color: "primary",
+                        status: "Unoccupied",
+                        availability: availability
+                    }
+                    this.updateTableAvalibility(tableId,newTable)
+                    this.getSavedTable()
+                }
+            })
+        } else {
+            availability = true
+            this.state.tables.map(table => {
+                if (table._id === tableId) {
+                    let newTable = {
+                        seats: parseInt(table.seats),
+                        order: "",
+                        order_quantity: "",
+                        color: "Success",
+                        status: "Occupied",
+                        availability: availability
+                    }
+                    this.updateTableAvalibility(tableId,newTable)
+                    this.getSavedTable()
+                }
+            })
+        }
+
     }
 
-
+    updateTableAvalibility = (tableId, newTablestatus) => {
+        API.changeTableAvalibility(tableId, newTablestatus)
+            .then(result => {
+                console.log(result)
+            })
+    }
     // functions for menu collection testing!!
 
     getMenu = () => {
@@ -74,28 +110,6 @@ class Frontdesk extends Component {
             this.setState({ menu: savedMenu });
         })
             .catch(err => console.log(err));
-    }
-    AddDish = () => {
-        const newDish = {
-            item: "Test dish",
-            category: "Appetizer",
-            price: 11.25,
-            cookTime: 10
-        }
-        console.log("newDish: ", newDish)
-
-        API.createNewDish(newDish)
-            .then(res => {
-                console.log("res.data: ", res.data);
-                this.retriveSavedMenu()
-            })
-            .catch(err => console.log(err));
-    }
-    deleteDish = DishId => {
-        console.log("Dish ID passed in: ", DishId)
-        API.deleteTable(DishId)
-            .then(this.retriveSavedMenu)
-            .catch(err => console.log(err))
     }
 
     //  functions for table this.state.specificTableHistory testing
@@ -174,13 +188,36 @@ class Frontdesk extends Component {
                         <h2 style={{ color: "white" }}>No Tables Generated Yet</h2>
                     ) : (this.state.tables.map(table => {
                         if (table.seats === 2) {
-                            return (
-                                <OrderingSysModal
-                                    tableId = {table._id}
+                            if (table.availability === true){
+                                return(
+                                    <OrderingSysModal
+                                    availability={table.availability}
+                                    key={table._id}
+                                    tableId={table._id}
                                     menu={this.state.menu}
-                                    getMenu={this.getMenu}
+                                    changeTableAvalibility={this.changeTableAvalibility}
                                 />
-                            )
+                                )
+                            }else{
+                                return(
+                                    <OrderListModal 
+                                    availability={table.availability}
+                                    tableHistoyr={table}
+                                    changeTableAvalibility={this.changeTableAvalibility}
+                                    />
+                                )
+                            }
+                                
+                            
+                            // return (
+                                
+                            //     <OrderingSysModal
+                            //         key={table._id}
+                            //         tableId={table._id}
+                            //         menu={this.state.menu}
+                            //         getMenu={this.getMenu}
+                            //     />
+                            // )
                         } else if (table.seats === 4) {
                             return (
                                 <Medium />

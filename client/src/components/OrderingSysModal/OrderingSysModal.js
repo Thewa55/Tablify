@@ -30,8 +30,6 @@ function OrderingSysModal(props) {
         let name = event.target.name;
         let price = parseFloat(event.target.id);
         console.log("value, price: ", value ,", ",price)
-        orderedDish.push(name);
-        orderedDishCount.push(value);
         totalPrice += value*price;
     }
 
@@ -53,6 +51,7 @@ function OrderingSysModal(props) {
             .then(res => {
                 console.log(res)
             })
+        props.changeTableAvailability(props.tableId, props.availability)
         handleClose()
         orderedDish = [];
         orderedDishCount = [];

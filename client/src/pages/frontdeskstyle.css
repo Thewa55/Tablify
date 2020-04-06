@@ -1,18 +1,3 @@
-.topnav {
-    width: 100%;
-    height: 23%;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    background-image: url('../assets/images/banner.jpg');
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    overflow-x: hidden;
-}
-
 .sidenav {
     height: 100%;
     width: 10%;

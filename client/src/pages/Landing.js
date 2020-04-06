@@ -17,6 +17,7 @@ const Landing = () => (
 const LandingNonAuth = () => (
   <div className="background">
     <div className="page-center text-center">
+      <h1 className="logo">T</h1>
       <h1 className="headline">Making restaurant management simple with Tablify</h1>
       <h3 className="sub-headline">Build your restaurant, manage your menu, and track your customers - all in the palm of your hand.</h3>
       <Link to="/SignIn">
