@@ -15,6 +15,12 @@ export default {
       return axios.get("/api/menu")
   },
   
+  // Gets all table histories from Tablehistory collection
+  getTableHistory: function(){
+    console.log("go to axios")
+      return axios.get("/api/tablehistory")
+  },
+  
   findTableHistoryById: function(id){
     return axios.get("/api/tablehistory/" + id);
   },
