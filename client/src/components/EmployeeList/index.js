@@ -53,8 +53,10 @@ function EmployeeList() {
                   <td>{employee.position}</td>
                   <td>{employee.phonenumber}</td>
                   <td>{employee.email}</td>
-                  <td><Button variant="danger" onClick={() => removeEmployee(employee._id)}>Remove</Button>{' '}
-                      <EmployEditModal employee={employee} getEmployees={getEmployees}/></td>
+                  <td>
+                    <Button variant="danger" onClick={() => removeEmployee(employee._id)}>Remove</Button>{' '}
+                    <EmployEditModal employee={employee} getEmployees={getEmployees}/>
+                  </td>
                 </tr>
 
            ))}
