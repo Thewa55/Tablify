@@ -14,7 +14,6 @@ function ViewMenuModal(props) {
     const Appetizer = props.menu.filter(dish => 
         dish.category === "Appetizer"
     )
-    console.log("Appetizer: ",Appetizer)
     const Entre = props.menu.filter(dish => 
         dish.category === "Entre"
     )
