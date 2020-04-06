@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
-import Modal from 'react-bootstrap/Modal'
-import Button from 'react-bootstrap/Button'
-import API from '../../utils/API'
-
+import React, { useState } from 'react';
+import Modal from 'react-bootstrap/Modal';
+import Button from 'react-bootstrap/Button';
+import API from '../../utils/API';
+import Draggable, {DraggableCore} from 'react-draggable'; 
 
 
 function OrderingSysModal(props) {
@@ -16,7 +16,7 @@ function OrderingSysModal(props) {
         dish.category === "Appetizer"
     )
     const Entre = props.menu.filter(dish =>
-        dish.category === "Entre"
+        dish.category === "Entree"
     )
     const Dessert = props.menu.filter(dish =>
         dish.category === "Dessert"
@@ -51,12 +51,13 @@ function OrderingSysModal(props) {
         handleClose()
         orderedDish = [];
         orderedDishCount = [];
-        alert("Thanks for submiting!")
+        alert("Thank you for your submission.")
     }
     return (
         <>
-            <Button className="table-small table text-center" onClick={handleShow}>Test Small</Button>
-
+            <Draggable>
+            <div className="table-small table text-center" onClick={handleShow}>Test Small</div>
+            </Draggable>
 
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
@@ -82,10 +83,10 @@ function OrderingSysModal(props) {
                                     )
                                 })
                             ) : (
-                                    <h2>no Appetizer on the Menu</h2>
+                                    <h2>No Appetizers Currently Listed</h2>
                                 )}
                         </ul>
-                        <p>Entre:</p>
+                        <p>Entree:</p>
                         <ul>
                             {Entre.length ? (
                                 Entre.map(dish => {
@@ -103,7 +104,7 @@ function OrderingSysModal(props) {
                                     )
                                 })
                             ) : (
-                                    <h2>no Entre on the Menu</h2>
+                                    <h2>No Entrees Currently Listed</h2>
                                 )}
                         </ul>
                         <p>Dessert:</p>
@@ -124,7 +125,7 @@ function OrderingSysModal(props) {
                                     )
                                 })
                             ) : (
-                                    <h2>no Dissert on the Menu</h2>
+                                    <h2>No Desserts Currently Listed</h2>
                                 )}
                         </ul>
                     </form>

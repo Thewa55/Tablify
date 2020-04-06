@@ -41,7 +41,9 @@ function Small() {
 
     return (
         <>
-            <Button className="table-small table text-center" onClick={handleShow}>Test Small</Button>
+        <Draggable>
+            <div className="table-small table text-center" onClick={handleShow}>Test Small</div>
+        </Draggable>
 
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
