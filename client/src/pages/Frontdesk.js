@@ -20,10 +20,10 @@ class Frontdesk extends Component {
     }
     // functions for diningroom collection testing!!
     componentDidMount(){
-        this.retriveSavedTables()
+        this.getSavedTalbe()
     }
 
-    retriveSavedTables = () => {
+    getSavedTalbe = () => {
         API.getTables().then(res =>{ 
             this.setState({ tables: res.data })  
         })
@@ -49,7 +49,7 @@ class Frontdesk extends Component {
         API.createNewTable(tableData)
             .then(res => {
                 console.log("res.data: ", res.data);
-                    this.retriveSavedTables()
+                    this.getSavedTalbe()
             })
             .catch(err => console.log(err));
     }
@@ -57,14 +57,14 @@ class Frontdesk extends Component {
     deleteTable = TableId => {
         console.log(TableId)
         API.deleteTable(TableId)
-            .then(this.retriveSavedTables)
+            .then(this.getSavedTalbe)
             .catch(err => console.log(err))
     }
 
 
     // functions for menu collection testing!!
 
-    retriveSavedMenu = () => {
+    getMenu = () => {
         API.getMenu().then(res => {
             console.log(res.data)
             const savedMenu = res.data;
@@ -96,7 +96,7 @@ class Frontdesk extends Component {
     }
 
     //  functions for table this.state.specificTableHistory testing
-    retriveSavedTableHistoryById = TableId => {
+    getTableHistoryById = TableId => {
         console.log("Table Id: ", TableId)
         API.findTableHistoryById(TableId).then(res => {
             console.log(res.data)
@@ -126,7 +126,7 @@ class Frontdesk extends Component {
 
 
     componentDidMount = () => {
-        this.retriveSavedMenu()
+        this.getMenu()
     }
 
 
@@ -148,7 +148,10 @@ class Frontdesk extends Component {
                         Build Table of 6
                     </button>
 
-                    <ViewMenuModal menu= {this.state.menu}/>
+                    <ViewMenuModal 
+                        menu= {this.state.menu}
+                        getMenu = {this.getMenu}
+                    />
                     
                     <button onClick={() => this.AddTableHistory()}>
                         Add Table this.state.specificTableHistory

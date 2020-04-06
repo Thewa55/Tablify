@@ -3,8 +3,8 @@ import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button'
 import API from '../../utils/API'
 
-
-function AddDishModal() {
+// prop here pass getMenu function to refresh the menu
+function AddDishModal(props) {
     const [show, setShow] = useState(false);
 
     const dishRef = useRef()
@@ -29,7 +29,10 @@ function AddDishModal() {
             .then(res => {
                 console.log(res)
             })
+        
         handleClose()
+        props.getMenu()
+        console.log("finish call getMenu after add")
         alert("Thanks for submiting new dish!")
     }
 
