@@ -14,7 +14,6 @@ function ViewMenuModal(props) {
     const Appetizer = props.menu.filter(dish => 
         dish.category === "Appetizer"
     )
-    console.log("Appetizer: ",Appetizer)
     const Entre = props.menu.filter(dish => 
         dish.category === "Entre"
     )
@@ -49,7 +48,7 @@ function ViewMenuModal(props) {
                         {Entre.length ? (
                             Entre.map(dish => {
                                 return(
-                                <li key={dish._id}> {dish.item}, {dish.price}, {dish.cookTime}</li>
+                                <li key={dish._id}> {dish.item}, {dish.price}, {dish.cook_time} min</li>
                                 )
                             })
                         ) : (
@@ -61,7 +60,7 @@ function ViewMenuModal(props) {
                         {Dessert.length ? (
                             Dessert.map(dish => {
                                 return(
-                                <li key={dish._id}> {dish.item}, {dish.price}, {dish.cookTime}</li>
+                                <li key={dish._id}> {dish.item}, {dish.price}, {dish.cook_time} min</li>
                                 )
                             })
                         ) : (
@@ -72,8 +71,11 @@ function ViewMenuModal(props) {
 
                 </Modal.Body>
                 <Modal.Footer>
-                    <AddDishModal />
-                    {/* <DeleteDishModal /> */}
+                    <AddDishModal getMenu={props.getMenu}/>
+                    <DeleteDishModal 
+                        getMenu = {props.getMenu}
+                        menu = {props.menu}
+                    />
                     
                 </Modal.Footer>
             </Modal>
