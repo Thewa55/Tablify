@@ -26,10 +26,13 @@
     "express": "^4.16.3",
     "firebase": "^7.13.1",
     "if-env": "^1.0.4",
+    "moment": "^2.24.0",
+    "moment-timezone": "^0.5.28",
     "mongoose": "^5.3.16",
     "react-bootstrap": "^1.0.0",
     "react-draggable": "^4.2.0",
     "react-dragula": "^1.1.17",
+    "react-moment": "^0.9.7",
     "recompose": "^0.30.0"
   }
 }
