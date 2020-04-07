@@ -40,7 +40,10 @@ function OrderListModal(props) {
 
     function handleSubmit(event) {
         event.preventDefault();
-        props.changeTableAvailability(props.table._id, props.availability)
+        const newTableInfo = {
+            id: props.table._id
+        }
+        props.changeTableAvailability(newTableInfo, props.table.availability)
         handleClose()
         alert("Be ready for next customer!.")
     }
@@ -69,19 +72,55 @@ function OrderListModal(props) {
                 <hr></hr>
                 <div className="container">
                     <div className="row">
-                        
-                        <Button className="col" variant="secondary" onClick={changeStatus}>
+                        {props.table.status === "Occupied" ? (
+                            <Button className="col" variant="secondary" style={{ backgroundColor: props.table.color }} onClick={changeStatus}>
+                                Appetizer
+                            </Button>
+                        ):(
+                            <Button className="col" variant="secondary">
+                                Appetizer
+                            </Button>
+                        )}
+                        {/* <Button className="col" variant="secondary" onClick={changeStatus}>
                             Appetizer
-                        </Button>
-                        <Button className="col" variant="secondary" onClick={changeStatus}>
+                        </Button> */}
+                        {props.table.status === "Appetizer" ? (
+                            <Button className="col" variant="secondary" style={{ backgroundColor: props.table.color }} onClick={changeStatus}>
+                                Entree
+                            </Button>
+                        ):(
+                            <Button className="col" variant="secondary">
+                                Entree
+                            </Button>
+                        )}
+                        {/* <Button className="col" variant="secondary" onClick={changeStatus}>
                             Entree
-                        </Button>
-                        <Button className="col" variant="secondary" onClick={changeStatus}>
+                        </Button> */}
+                        {props.table.status === "Entree" ? (
+                            <Button className="col" variant="secondary" style={{ backgroundColor: props.table.color }} onClick={changeStatus}>
+                                Dessert
+                            </Button>
+                        ):(
+                            <Button className="col" variant="secondary">
+                                Dessert
+                            </Button>
+                        )}
+
+                        {props.table.status === "Dessert" ? (
+                            <Button className="col" variant="secondary" style={{ backgroundColor: props.table.color }} onClick={changeStatus}>
+                                Clear
+                            </Button>
+                        ):(
+                            <Button className="col" variant="secondary">
+                                Clear
+                            </Button>
+                        )}
+                        {/* <Button className="col" variant="secondary" onClick={changeStatus}>
                             Dessert
                         </Button>
                         <Button className="col" variant="primary" onClick={handleSubmit}>
                             Clear
-                        </Button>
+                        </Button> */}
                     </div>
                 </div>
 

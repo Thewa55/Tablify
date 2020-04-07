@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Jumbotron from '../Jumbotron'
 import Container from '../Container'
-import './paymentstyle.css';
+// import './paymentstyle.css';
 
 import {
   SquarePaymentForm,
@@ -9,7 +9,8 @@ import {
   CreditCardExpirationDateInput,
   CreditCardNumberInput,
   CreditCardPostalCodeInput,
-  CreditCardSubmitButton
+  CreditCardSubmitButton,
+  GooglePayButton,
 } from 'react-square-payment-form';
 import 'react-square-payment-form/lib/default.css';
 
@@ -71,7 +72,19 @@ const PaymentPage = () => {
         };
       }
 
+      const loadingView = <div className="sq-wallet-loading"></div>;
+    
+      const unavailableGoogle = <div className="sq-wallet-unavailable">Google pay unavailable.</div>;
+    
+
+
     return (
+
+      <Container>
+      <Jumbotron>
+        <div className="row">
+          <div className="col-md-12 payment-box">
+
         <SquarePaymentForm
           sandbox={true}
           applicationId={APPLICATION_ID}
@@ -80,7 +93,16 @@ const PaymentPage = () => {
           createPaymentRequest={createPaymentRequest}
           createVerificationDetails={createVerificationDetails}
         >
-        
+          <h1 className="text-center" style={{fontFamily: "'Fredoka One', cursive", textDecoration: "underline"}}>Payment</h1>
+            <br />
+
+            <GooglePayButton loadingView={loadingView} unavailableView={unavailableGoogle} /> 
+
+      <div className="sq-divider">
+        <span className="sq-divider-label">Or</span>
+        <hr className="sq-divider-hr" />
+      </div>
+
           <fieldset className="sq-fieldset">
             <CreditCardNumberInput />
     
@@ -96,15 +118,19 @@ const PaymentPage = () => {
               <CreditCardCVVInput />
             </div>
           </fieldset>
-    
+
           <CreditCardSubmitButton>Pay $1.00</CreditCardSubmitButton>
-    
-          <div className="sq-error-message">
+          <div style={{margin: "0 auto"}} className="text-center">
+
             {errorMessages.map(errorMessage => (
               <li key={`sq-error-${errorMessage}`}>{errorMessage}</li>
             ))}
           </div>
         </SquarePaymentForm>
+        </div>
+        </div>
+      </Jumbotron>
+    </Container>
       );
 
 

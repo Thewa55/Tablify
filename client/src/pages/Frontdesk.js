@@ -169,6 +169,7 @@ class Frontdesk extends Component {
                 }
             })
         } else {
+            console.log("Availability is false")
             availability = true
             this.state.tables.map(table => {
                 if (table._id === newTableInfo.id) {
