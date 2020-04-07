@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import API from "../../utils/API";
 import moment from 'moment';
-import Table from 'react-bootstrap/Table'
-import Button from 'react-bootstrap/Button'
-import CustomSearch from '../CustomSearch'
-import InvoiceModal from '../InvoiceModal'
+import Table from 'react-bootstrap/Table';
+import Button from 'react-bootstrap/Button';
+import CustomSearch from '../CustomSearch';
+import InvoiceModal from '../InvoiceModal';
+import { Link } from "react-router-dom";
 
 
 function RevenueList(){
@@ -73,17 +74,19 @@ function RevenueList(){
   console.log(selected)
   return(
     <div>
-      This is the Revenue List.
       <div>
-        <Button variant="primary" onClick={getToday}>Today</Button>
-        <Button variant="primary" onClick={getYesterday}>Yesterday</Button>
-        <Button variant="primary" onClick={getWeek}>Week</Button>
+        <button variant="primary" style={{width: "100px", margin: "1%"}} className="btn btn-primary" onClick={getToday}>Today</button>
+        <button variant="primary" style={{width: "100px", margin: "1%"}} className="btn btn-primary" onClick={getYesterday}>Yesterday</button>
+        <button variant="primary" style={{width: "100px", margin: "1%"}} className="btn btn-primary" onClick={getWeek}>Week</button>
         <CustomSearch userSearch={userSearch} />
+        <Link to="/Account">
+          <button className="login-button" style={{margin: "1%", marginLeft: "3%"}}>Account</button>
+        </Link>
       </div>
       {selected.invoices.length === 0 ? (
-      <div>Sorry no transaction for {selected.date}. </div>
+      <div style={{fontFamily: "'Bebas Neue', cursive", fontSize: "22px", margin: "2%", marginLeft: "1%"}}>Sorry, there are no transactions for {selected.date}. </div>
       ):(<Table striped bordered hover size="sm">
-      <thead>
+      <thead style={{fontFamily: "'Bebas Neue', cursive", fontSize: "22px"}}>
       Revenue from {selected.date}
         <tr>
           <th>Date</th>
