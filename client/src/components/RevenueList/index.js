@@ -8,32 +8,37 @@ import moment from 'moment';
 
 function RevenueList(){
   const [tableHistory, setTableHistory] = useState([]);
-  const [today, setToday] = useState()
-  const [yesterday, setYesterday] = useState()
-  const [todayTrans, setTodayTrans] = useState()
+//   const [today, setToday] = useState()
+//   const [yesterday, setYesterday] = useState()
+  const [todayTrans, setTodayTrans] = useState([])
+  const today = moment().format('L').toString()
+  const yesterday = moment().subtract(1, 'day').format('L')
+  const week = moment().subtract(7, 'day').format('L')
 
-  function getTableHistory() {
+  function getTableHistory() {  
     API.getTableHistory()
       .then(results => {
-          console.log(results.data)
-        setTableHistory(results.data.reverse())
-        let transaction = tableHistory.filter(receipt => receipt.date === today)
+        console.log(results.data)
+        setTableHistory(results.data)
+        console.log(today)
+        let transaction = results.data.filter(receipt => receipt.date === today)
         setTodayTrans(transaction)
     })
   };
 
   useEffect(() => {
-    setToday(moment().format('L'));
-    setYesterday(moment().subtract(1, 'day').format('L'))
     getTableHistory()
   }, []);
 
+//   console.log(today)
+//   console.log(yesterday)
+  console.log(tableHistory)
   console.log(todayTrans)
-  console.log(yesterday)
+  console.log(week)
   return(
     <div>
       This is the Revenue List. Today is {today}
-      {todayTrans ? (<div>You have stuff to render!</div>):(<div>Sorry nothing today! </div>)}
+      {todayTrans.length === 0 ? (<div>Sorry nothing today! </div>): (<div>You have stuff to render!</div>)}
     </div>
   )
 }
