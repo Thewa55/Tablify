@@ -6,27 +6,27 @@ import API from '../../utils/API'
 
 
 function OrderListModal(props) {
-    
+    console.log(props.table)
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
     
-    const orderedItem = props.tableHistory.order.split(",")
-    const orderedQuantity = props.tableHistory.order_quantity.split(",")
+    // const orderedItem = props.table.order.split(",")
+    // const orderedQuantity = props.table.order_quantity.split(",")
     const order = [];
     
-    for(var i =0; i < orderedItem.length; i++){
-        order[i] = {
-            item: orderedItem[i],
-            quantity: orderedQuantity[i],
-            id: i
-        }
-    }
+    // for(var i =0; i < orderedItem.length; i++){
+    //     order[i] = {
+    //         item: orderedItem[i],
+    //         quantity: orderedQuantity[i],
+    //         id: i
+    //     }
+    // }
 
     function handleSubmit(event) {
         event.preventDefault();
-        props.changeTableAvailability(props.tableHistory._id, props.availibility)
+        props.changeTableAvailability(props.table._id, props.availability)
         handleClose()
         alert("Be ready for next customer!.")
     }
@@ -41,7 +41,7 @@ function OrderListModal(props) {
                     <Modal.Title>Order List </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <ul>
+                    {/* <ul>
                         {order.length > 0 (
                             order.map(order => {
                                 return(
@@ -49,7 +49,7 @@ function OrderListModal(props) {
                                 )
                             })
                         )}
-                    </ul>
+                    </ul> */}
 
                 </Modal.Body>
                 <Modal.Footer>

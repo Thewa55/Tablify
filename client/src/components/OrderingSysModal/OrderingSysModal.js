@@ -3,7 +3,7 @@ import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import API from '../../utils/API';
 import "../TableExamples/tablestyle.css";
-import Draggable, {DraggableCore} from 'react-draggable'; 
+import Draggable, { DraggableCore } from 'react-draggable';
 
 
 function OrderingSysModal(props) {
@@ -29,34 +29,43 @@ function OrderingSysModal(props) {
         let value = parseInt(event.target.value);
         let name = event.target.name;
         let price = parseFloat(event.target.id);
-        console.log("value, price: ", value ,", ",price)
-        totalPrice += value*price;
+        console.log("value, price: ", value, ", ", price)
+        orderedDish.push(name)
+        orderedDishCount.push(value)
+        totalPrice += value * price;
     }
 
 
     function handleSubmit(event) {
         event.preventDefault();
-        
+
         const orderString = orderedDish.toString();
         const orderQuantityString = orderedDishCount.toString();
 
-        const newOrder = {
-            table_id: props.tableId,
+        const newOrderTohistory = {
             order: orderString,
             order_quantity: orderQuantityString,
             total_price: totalPrice
         }
-        console.log(newOrder)
-        API.createTableHistory(newOrder)
+        console.log("neworderhistory: ", newOrderTohistory)
+        API.createTableHistory(newOrderTohistory)
             .then(res => {
                 console.log(res)
             })
-        props.changeTableAvailability(props.tableId, props.availability)
+            console.log("prop and prop.changeTable", props, ", ",props.changeTableAvailability)
+        const newTableInfo = {
+            id: props.table._id,
+            order: orderString,
+            order_quantity: orderQuantityString,
+        }
+        props.changeTableAvailability(newTableInfo, props.table.availability)
+
         handleClose()
         orderedDish = [];
         orderedDishCount = [];
         alert("Thank you for your submission.")
     }
+    
     return (
         <>
             <Draggable handle=".table">
@@ -80,7 +89,7 @@ function OrderingSysModal(props) {
                                             {dish.item}:
                                             <input
                                                 name={dish.item}
-                                                id= {dish.price}
+                                                id={dish.price}
                                                 className="input"
                                                 type="text"
                                                 placeholder="Num"
@@ -102,7 +111,7 @@ function OrderingSysModal(props) {
                                             {dish.item}:
                                             <input
                                                 name={dish.item}
-                                                id= {dish.price}
+                                                id={dish.price}
                                                 className="input"
                                                 type="text"
                                                 placeholder="Num"
@@ -124,7 +133,7 @@ function OrderingSysModal(props) {
                                             {dish.item}:
                                             <input
                                                 name={dish.item}
-                                                id= {dish.price}
+                                                id={dish.price}
                                                 className="input"
                                                 type="text"
                                                 placeholder="Num"
