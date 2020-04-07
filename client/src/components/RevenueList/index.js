@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import API from "../../utils/API";
-// import Button from 'react-bootstrap/Button'
-// import Table from 'react-bootstrap/Table'
-import Moment from 'react-moment';
 import moment from 'moment';
 import Table from 'react-bootstrap/Table'
 import Button from 'react-bootstrap/Button'
+import CustomSearch from '../CustomSearch'
+import InvoiceModal from '../InvoiceModal'
+
 
 function RevenueList(){
   const [tableHistory, setTableHistory] = useState([]);
@@ -41,10 +41,21 @@ function RevenueList(){
   }
 
   function getWeek(){
-    let transaction = []
-    let timeFrame = `${today} - ${week}`
+    let transaction = [];
+    let timeFrame = `${today} - ${week}`;
     tableHistory.forEach(invoice =>{
       if(moment(invoice.date).isBetween(week, today, 'day', [])){
+        transaction.push(invoice)
+      }
+    })
+    setSelected({invoices: transaction, date: timeFrame})
+  }
+
+  function userSearch(start, end){
+    let transaction = [];
+    let timeFrame = `${start}- ${end}`
+    tableHistory.forEach(invoice => {
+      if(moment(invoice.date).isBetween(end, start, 'day', [])){
         transaction.push(invoice)
       }
     })
@@ -67,6 +78,7 @@ function RevenueList(){
         <Button variant="primary" onClick={getToday}>Today</Button>
         <Button variant="primary" onClick={getYesterday}>Yesterday</Button>
         <Button variant="primary" onClick={getWeek}>Week</Button>
+        <CustomSearch userSearch={userSearch} />
       </div>
       {selected.invoices.length === 0 ? (
       <div>Sorry no transaction for {selected.date}. </div>
@@ -77,6 +89,7 @@ function RevenueList(){
           <th>Date</th>
           <th>Order #</th>
           <th>Order total</th>
+          <th>View invoice</th>
         </tr>
       </thead>
       <tbody>
@@ -84,7 +97,8 @@ function RevenueList(){
           <tr>
             <td>{select.date}</td>
             <td>{select._id}</td>
-            <td>{select.total_price}</td>
+            <td>${select.total_price}</td>
+            <td><InvoiceModal items={select}/></td>
           </tr>
 
      ))}
