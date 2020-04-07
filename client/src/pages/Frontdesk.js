@@ -58,6 +58,10 @@ class Frontdesk extends Component {
             .catch(err => console.log(err));
     }
 
+    changeTableStatus = (newTableInfo,status) =>{
+        console.log("newTableInfo: ", newTableInfo)
+        console.log("status: ", status)
+    }
 
     changeTableAvailability = (newTableInfo, availability) => {
         console.log("newTableInfo: ",newTableInfo)
@@ -73,12 +77,12 @@ class Frontdesk extends Component {
                         order: newTableInfo.order,
                         order_quantity: newTableInfo.order_quantity,
                         total_price: parseFloat(newTableInfo.total_price),
-                        color: "success",
+                        color: "green",
                         status: "Occupied",
                         availability: availability
                     }
                     console.log("newTable: ",newTable)
-                    this.updateTableAvailability(table._id,newTable)
+                    this.updateTable(table._id,newTable)
                     this.getSavedTable()
                 }
             })
@@ -91,11 +95,11 @@ class Frontdesk extends Component {
                         order: "",
                         order_quantity: "",
                         total_price: "",
-                        color: "primary",
+                        color: "blue",
                         status: "Unoccupied",
                         availability: availability
                     }
-                    this.updateTableAvailability(table._id,newTable)
+                    this.updateTable(table._id,newTable)
                     this.getSavedTable()
                 }
             })
@@ -103,7 +107,7 @@ class Frontdesk extends Component {
 
     }
 
-    updateTableAvailability = (tableId, newTablestatus) => {
+    updateTable = (tableId, newTablestatus) => {
         console.log("call API to update availability")
         API.changeTableStatus(tableId, newTablestatus)
             .then(result => {
