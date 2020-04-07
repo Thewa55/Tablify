@@ -11,6 +11,7 @@ function EmployeeList() {
   function getEmployees() {
     API.getEmployees()      
       .then(results => {
+        console.log(results.data)
         setEmployees(results.data)
       })
       .catch(err => console.log(err))
