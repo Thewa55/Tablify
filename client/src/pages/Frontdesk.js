@@ -193,6 +193,11 @@ class Frontdesk extends Component {
                     <button onClick={() => this.AddTableHistory()}>
                         Add Table this.state.specificTableHistory
                     </button>
+                    
+                    <Link to="/Payment">
+                        <button>Payment</button>
+                    </Link>
+
                     <Link to="/">
                         <button>Home</button>
                     </Link>
