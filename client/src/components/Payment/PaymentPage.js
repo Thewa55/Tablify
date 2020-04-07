@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
 import {
-  SquarePaymentForm
-
+  SquarePaymentForm,
+  CreditCardCVVInput,
+  CreditCardExpirationDateInput,
+  CreditCardNumberInput,
+  CreditCardPostalCodeInput,
+  CreditCardSubmitButton
 } from 'react-square-payment-form';
 import 'react-square-payment-form/lib/default.css';
 
