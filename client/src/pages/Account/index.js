@@ -11,18 +11,23 @@ const AccountPage = () => (
       <div>
         <Container>
           <Jumbotron>
-            <div className="Row">
-              <div className="col-md-4 offset-md-4">
-                <h1>Account: {authUser.email}</h1>
+            <div className="row">
+              <div className="col-md-12 login-box">
+                <h1 className="text-center" style={{fontFamily: "'Fredoka One', cursive", textDecoration: "underline"}}>Account: {authUser.email}</h1>
                 <br />
                 <PasswordChangeForm />
                 <br />
-                <Link to="/Employees">
-                  <button className="login-button">Employees</button>
-                </Link>
-                <Link to="/Revenue">
-                  <button className="login-button">Revenue</button>
-                </Link>
+                <div className="text-center">
+                  <Link to="/Employees">
+                    <button className="login-button">Employees</button>
+                  </Link>
+                  <Link to="/Revenue">
+                    <button className="login-button">Revenue</button>
+                  </Link>
+                  <Link to="/">
+                    <button className="login-button">Home</button>
+                  </Link>
+                </div>
               </div>
             </div>
           </Jumbotron>

@@ -12,7 +12,7 @@ const SignUpPage = () => (
     <Container>
       <Jumbotron>
         <div className="row">
-          <div class="col-md-12 login-box">
+          <div className="col-md-12 login-box">
             <h1 className="text-center" style={{fontFamily: "'Fredoka One', cursive", textDecoration: "underline"}}>Sign Up</h1>
             <br />
             <SignUpForm />
@@ -21,7 +21,7 @@ const SignUpPage = () => (
             </p>
             <div className="text-center">       
               <Link to="/">
-                <button style={{textAlign: "center", width: "15%"}}>Home</button>
+                <button style={{textAlign: "center", width: "15%"}} className="login-button">Home</button>
               </Link>
             </div>
           </div>
@@ -170,7 +170,7 @@ class SignUpFormBase extends Component {
           />
         </div>
         <div className="form-group text-center">
-          <button disabled={isInvalid} type="submit" className="btn btn-primary">Sign Up</button>
+          <button disabled={isInvalid} type="submit">Sign Up</button>
         </div>
         <div style={{margin: "0 auto", fontStyle: "monospace"}} className="text-center">
           {error && <mark>{error.message}</mark>}

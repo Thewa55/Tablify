@@ -23,7 +23,7 @@ const SignInPage = () => (
             <SignUpLink />
             <div className="text-center">       
               <Link to="/">
-                <button style={{textAlign: "center", width: "15%"}}>Home</button>
+                <button className="login-button" style={{textAlign: "center", width: "15%"}}>Home</button>
               </Link>
             </div>
           </div>
@@ -78,7 +78,7 @@ class SignInFormBase extends Component {
         </div>
         <div class="form-group text-center">
         <input
-          style={{marginBottom: "5%"}}
+          style={{marginBottom: "1%"}}
           className="input"
           name="password"
           value={password}
@@ -88,7 +88,7 @@ class SignInFormBase extends Component {
         />
         </div>
         <div class="form-group text-center">
-        <button disabled={isInvalid} type="submit" className="btn btn-primary">
+        <button disabled={isInvalid} type="submit">
           Continue
         </button>
         </div>

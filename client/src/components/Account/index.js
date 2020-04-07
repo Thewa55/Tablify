@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import { compose } from 'recompose';
+import "./accountstyle.css";
+import Jumbotron from "../Jumbotron";
+import Container from "../Container";
 
 import {
   AuthUserContext,
@@ -20,11 +23,18 @@ const SIGN_IN_METHODS = [
 const AccountPage = () => (
   <AuthUserContext.Consumer>
     {authUser => (
-      <div>
-        <h1>Account: {authUser.email}</h1>
-        <PasswordChangeForm />
-        <LoginManagement authUser={authUser} />
-      </div>
+      <>
+        <Container>
+          <Jumbotron>
+            <div className="row">
+              <div className="col-md-12 login-box">
+              <h1 className="text-center" style={{fontFamily: "'Fredoka One', cursive", textDecoration: "underline"}}>Account: {authUser.email}</h1>
+              <PasswordChangeForm />
+              <LoginManagement authUser={authUser} />
+            </div>
+          </Jumbotron>
+        </Container>
+      </>
     )}
   </AuthUserContext.Consumer>
 );
