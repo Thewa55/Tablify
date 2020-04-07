@@ -9,6 +9,7 @@ import Button from 'react-bootstrap/Button'
 
 function RevenueList(){
   const [tableHistory, setTableHistory] = useState([]);
+  const [todayTrans, setTodayTrans] = useState([])
   const [selected, setSelected] = useState({
     invoices:[],
     date: ""
@@ -26,9 +27,13 @@ function RevenueList(){
         console.log(today)
         let transaction = results.data.filter(receipt => receipt.date === today)
         setSelected({ invoices: transaction , date: today})
-        // setTodayTrans(transaction)
+        setTodayTrans(transaction)
     })
   };
+
+  function getToday(){
+    setSelected({invoices: todayTrans, date: today})
+  }
 
   function getYesterday(){
       let transaction = tableHistory.filter(receipt => receipt.date === yesterday)
@@ -59,12 +64,12 @@ function RevenueList(){
     <div>
       This is the Revenue List.
       <div>
-        <Button variant="primary" onClick={getTableHistory}>Today</Button>
+        <Button variant="primary" onClick={getToday}>Today</Button>
         <Button variant="primary" onClick={getYesterday}>Yesterday</Button>
         <Button variant="primary" onClick={getWeek}>Week</Button>
       </div>
       {selected.invoices.length === 0 ? (
-      <div>Sorry no revenue to show. </div>
+      <div>Sorry no transaction for {selected.date}. </div>
       ):(<Table striped bordered hover size="sm">
       <thead>
       Revenue from {selected.date}
