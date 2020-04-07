@@ -73,7 +73,7 @@ function OrderListModal(props) {
                 <div className="container">
                     <div className="row">
                         {props.table.status === "Occupied" ? (
-                            <Button className="col" variant="secondary" style={{ backgroundColor: props.table.color }} onClick={changeStatus}>
+                            <Button className="col text-dark" variant="secondary" style={{ backgroundColor: props.table.color }} onClick={changeStatus}>
                                 Appetizer
                             </Button>
                         ):(
@@ -81,11 +81,9 @@ function OrderListModal(props) {
                                 Appetizer
                             </Button>
                         )}
-                        {/* <Button className="col" variant="secondary" onClick={changeStatus}>
-                            Appetizer
-                        </Button> */}
+                        
                         {props.table.status === "Appetizer" ? (
-                            <Button className="col" variant="secondary" style={{ backgroundColor: props.table.color }} onClick={changeStatus}>
+                            <Button className="col text-dark" variant="secondary" style={{ backgroundColor: props.table.color }} onClick={changeStatus}>
                                 Entree
                             </Button>
                         ):(
@@ -93,11 +91,9 @@ function OrderListModal(props) {
                                 Entree
                             </Button>
                         )}
-                        {/* <Button className="col" variant="secondary" onClick={changeStatus}>
-                            Entree
-                        </Button> */}
+                        
                         {props.table.status === "Entree" ? (
-                            <Button className="col" variant="secondary" style={{ backgroundColor: props.table.color }} onClick={changeStatus}>
+                            <Button className="col text-dark" variant="secondary" style={{ backgroundColor: props.table.color }} onClick={changeStatus}>
                                 Dessert
                             </Button>
                         ):(
@@ -107,7 +103,7 @@ function OrderListModal(props) {
                         )}
 
                         {props.table.status === "Dessert" ? (
-                            <Button className="col" variant="secondary" style={{ backgroundColor: props.table.color }} onClick={changeStatus}>
+                            <Button className="col text-dark" variant="secondary" style={{ backgroundColor: props.table.color }} onClick={handleSubmit}>
                                 Clear
                             </Button>
                         ):(
@@ -115,12 +111,7 @@ function OrderListModal(props) {
                                 Clear
                             </Button>
                         )}
-                        {/* <Button className="col" variant="secondary" onClick={changeStatus}>
-                            Dessert
-                        </Button>
-                        <Button className="col" variant="primary" onClick={handleSubmit}>
-                            Clear
-                        </Button> */}
+                        
                     </div>
                 </div>
 
