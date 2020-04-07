@@ -63,7 +63,7 @@ class PasswordForgetFormBase extends Component {
           </div>
           <div className="form-group text-center">
 
-        <button disabled={isInvalid} type="submit" className="btn btn-primary">
+        <button disabled={isInvalid} type="submit">
           Reset My Password
         </button>
           </div>
@@ -73,7 +73,7 @@ class PasswordForgetFormBase extends Component {
         </div>
         <div className="text-center">       
           <Link to="/">
-            <button style={{textAlign: "center", width: "15%", margin: "1%"}}>Home</button>
+            <button style={{textAlign: "center", width: "15%", margin: "1%"}} className="login-button">Home</button>
           </Link>
         </div>	
       </form>
