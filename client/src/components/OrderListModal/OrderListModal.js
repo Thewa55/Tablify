@@ -31,10 +31,9 @@ function OrderListModal(props) {
         handleClose()
         alert("Be ready for next customer!.")
     }
-
     return (
         <>
-            <Button className="table-small table text-center" onClick={handleShow}>Test Small</Button>
+            <Button className="table-small table text-center" style={{backgroundColor: props.table.color}} onClick={handleShow}>Test Small</Button>
 
 
             <Modal show={show} onHide={handleClose}>
