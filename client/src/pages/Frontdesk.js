@@ -58,11 +58,32 @@ class Frontdesk extends Component {
             .catch(err => console.log(err));
     }
 
-    changeTableAvalibility = (tableId, availability) => {
+    changeTableAvailability = (newTableInfo, availability) => {
+        console.log("newTableInfo: ",newTableInfo)
+        console.log("availability: ",availability)
         if (availability === true) {
+            console.log("availability is true")
             availability = false
             this.state.tables.map(table => {
-                if (table._id === tableId) {
+                if (table._id === newTableInfo.id) {
+                    console.log("is match")
+                    let newTable = {
+                        seats: parseInt(table.seats),
+                        order: newTableInfo.order,
+                        order_quantity: newTableInfo.order_quantity,
+                        color: "success",
+                        status: "Occupied",
+                        availability: availability
+                    }
+                    console.log("newTable: ",newTable)
+                    this.updateTableAvailability(table._id,newTable)
+                    this.getSavedTable()
+                }
+            })
+        } else {
+            availability = true
+            this.state.tables.map(table => {
+                if (table._id === newTableInfo.id) {
                     let newTable = {
                         seats: parseInt(table.seats),
                         order: "",
@@ -71,23 +92,7 @@ class Frontdesk extends Component {
                         status: "Unoccupied",
                         availability: availability
                     }
-                    this.updateTableAvalibility(tableId,newTable)
-                    this.getSavedTable()
-                }
-            })
-        } else {
-            availability = true
-            this.state.tables.map(table => {
-                if (table._id === tableId) {
-                    let newTable = {
-                        seats: parseInt(table.seats),
-                        order: "",
-                        order_quantity: "",
-                        color: "Success",
-                        status: "Occupied",
-                        availability: availability
-                    }
-                    this.updateTableAvalibility(tableId,newTable)
+                    this.updateTableAvailability(table._id,newTable)
                     this.getSavedTable()
                 }
             })
@@ -95,10 +100,12 @@ class Frontdesk extends Component {
 
     }
 
-    updateTableAvalibility = (tableId, newTablestatus) => {
-        API.changeTableAvalibility(tableId, newTablestatus)
+    updateTableAvailability = (tableId, newTablestatus) => {
+        console.log("call API to update availability")
+        API.changeTableStatus(tableId, newTablestatus)
             .then(result => {
                 console.log(result)
+                this.getSavedTable()
             })
     }
     // functions for menu collection testing!!
@@ -191,19 +198,19 @@ class Frontdesk extends Component {
                             if (table.availability === true){
                                 return(
                                     <OrderingSysModal
-                                    availability={table.availability}
                                     key={table._id}
-                                    tableId={table._id}
+                                    table={table}
                                     menu={this.state.menu}
-                                    changeTableAvalibility={this.changeTableAvalibility}
+                                    changeTableAvailability={this.changeTableAvailability}
+                                    getSavedTable = {this.getSavedTable}
                                 />
                                 )
                             }else{
                                 return(
                                     <OrderListModal 
-                                    availability={table.availability}
-                                    tableHistoyr={table}
-                                    changeTableAvalibility={this.changeTableAvalibility}
+                                    availiability={table.availability}
+                                    table={table}
+                                    changeTableAvalability={this.changeTableAvalibility}
                                     />
                                 )
                             }

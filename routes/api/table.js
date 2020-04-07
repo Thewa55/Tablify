@@ -8,6 +8,6 @@ router.route("/")
 router.route("/:id")
   .get(tableController.findTableById)
   .delete(tableController.removeTableById)
-  .put(tableController.updateTableAvailability)
+  .put(tableController.updateTable)
   
 module.exports = router;
