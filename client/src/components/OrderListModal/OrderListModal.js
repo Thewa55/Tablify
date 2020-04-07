@@ -40,7 +40,10 @@ function OrderListModal(props) {
 
     function handleSubmit(event) {
         event.preventDefault();
-        props.changeTableAvailability(props.table._id, props.availability)
+        const newTableInfo={
+            id:props.table._id
+        }
+        props.changeTableAvailability(newTableInfo, props.table.availability)
         handleClose()
         alert("Be ready for next customer!.")
     }
