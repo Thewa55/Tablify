@@ -172,37 +172,40 @@ class Frontdesk extends Component {
         return (
             <>
                 <div className="sidenav">
+
                     <div className="logo-box">
-                        <h1 style={{ fontSize: "80px", textAlign: "center" }}>T</h1>
+                        <h1 style={{ fontSize: "100px", textAlign: "center" }}>T</h1>
                     </div>
-                    <button onClick={() => this.buildTable(2)}>
-                        Build Small
-                    </button>
-                    <button onClick={() => this.buildTable(4)}>
-                        Build Medium
-                    </button>
-                    <button onClick={() => this.buildTable(6)}>
-                        Build Large
-                    </button>
-                    <button onClick={() => this.buildTable(8)}>
-                        Build XL
-                    </button>
 
-                    <ViewMenuModal
-                        menu={this.state.menu}
-                        getMenu={this.getMenu}
-                    />
+                    <h1 className="box-top">Build Tables</h1>
+                    <div className="inner-box">
+                        <button onClick={() => this.buildTable(2)}>
+                            Build Small
+                        </button>
+                        <button onClick={() => this.buildTable(4)}>
+                            Build Medium
+                        </button>
+                        <button onClick={() => this.buildTable(6)}>
+                            Build Large
+                        </button>
+                        <button onClick={() => this.buildTable(8)}>
+                            Build XL
+                        </button>
+                    </div>
 
-                    <button onClick={() => this.AddTableHistory()}>
-                        Add Table this.state.specificTableHistory
-                    </button>
-                    
-                    <Link to="/Payment">
-                        <button>Payment</button>
-                    </Link>
+                    <h1 className="box-top" style={{marginTop: "15%"}}>Menu and Payment</h1>
+                    <div className="inner-box">
+                        <ViewMenuModal
+                            menu={this.state.menu}
+                            getMenu={this.getMenu}
+                        />
+                        <Link to="/Payment">
+                            <button>Payment</button>
+                        </Link>
+                    </div>
 
                     <Link to="/">
-                        <button>Home</button>
+                        <button style={{marginTop: "25%", backgroundColor: "white"}}>Home</button>
                     </Link>
                 </div>
 

@@ -22,9 +22,9 @@ function ViewMenuModal(props) {
     )
     return (
         <>
-            <Button variant="primary" className="mt-4" onClick={handleShow}>
+            <button className="mt-4" onClick={handleShow}>
                 View Menu
-            </Button>
+            </button>
 
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
