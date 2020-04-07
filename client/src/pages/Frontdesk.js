@@ -58,6 +58,7 @@ class Frontdesk extends Component {
             .catch(err => console.log(err));
     }
 
+
     changeTableAvailability = (newTableInfo, availability) => {
         console.log("newTableInfo: ",newTableInfo)
         console.log("availability: ",availability)
@@ -71,6 +72,7 @@ class Frontdesk extends Component {
                         seats: parseInt(table.seats),
                         order: newTableInfo.order,
                         order_quantity: newTableInfo.order_quantity,
+                        total_price: parseFloat(newTableInfo.total_price),
                         color: "success",
                         status: "Occupied",
                         availability: availability
@@ -88,6 +90,7 @@ class Frontdesk extends Component {
                         seats: parseInt(table.seats),
                         order: "",
                         order_quantity: "",
+                        total_price: "",
                         color: "primary",
                         status: "Unoccupied",
                         availability: availability
@@ -208,9 +211,10 @@ class Frontdesk extends Component {
                             }else{
                                 return(
                                     <OrderListModal 
-                                    availiability={table.availability}
+                                    key = {table._id}
                                     table={table}
                                     changeTableAvalability={this.changeTableAvalibility}
+                                    getSavedTable = {this.getSavedTable}
                                     />
                                 )
                             }

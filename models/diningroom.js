@@ -7,6 +7,7 @@ const diningroomSchema = new Schema({
   availability: { type: Boolean, default: true},
   order: {type: String},
   order_quantity: {type: String},
+  total_price: {tpye: Number},
   color: {type: String, default:"primary"},
   status: {type: String, default:"Unoccupied"}
 });
