@@ -34,6 +34,7 @@ function OrderingSysModal(props) {
         orderedDish.push(name)
         orderedDishCount.push(value)
         totalPrice += value * price;
+        console.log(totalPrice)
     }
 
 

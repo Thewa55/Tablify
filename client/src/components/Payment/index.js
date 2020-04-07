@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Jumbotron from '../Jumbotron'
 import Container from '../Container'
-import './paymentstyle.css';
+// import './paymentstyle.css';
 
 import {
   SquarePaymentForm,
