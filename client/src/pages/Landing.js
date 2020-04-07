@@ -41,6 +41,7 @@ function LandingAuth (authUser) {
   return(
   <div className="background">
     <div className="page-center text-center">
+      <h1 className="logo">T</h1>
       <h1 className="headline">Welcome back, {authUser.authUser.username}</h1>
       <h3 className="sub-headline">What would you like to do today?</h3>
       <Link to="/FrontDesk">

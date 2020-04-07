@@ -58,6 +58,14 @@ class Frontdesk extends Component {
             .catch(err => console.log(err));
     }
 
+    changeTableStatus = (newTableInfo,status) =>{
+        console.log("newTableInfo: ", newTableInfo)
+        console.log("status: ", status)
+        if(status === "Occupied"){
+            
+        }
+    }
+
     changeTableAvailability = (newTableInfo, availability) => {
         console.log("newTableInfo: ",newTableInfo)
         console.log("availability: ",availability)
@@ -71,12 +79,13 @@ class Frontdesk extends Component {
                         seats: parseInt(table.seats),
                         order: newTableInfo.order,
                         order_quantity: newTableInfo.order_quantity,
-                        color: "success",
+                        total_price: parseFloat(newTableInfo.total_price),
+                        color: "green",
                         status: "Occupied",
                         availability: availability
                     }
                     console.log("newTable: ",newTable)
-                    this.updateTableAvailability(table._id,newTable)
+                    this.updateTable(table._id,newTable)
                     this.getSavedTable()
                 }
             })
@@ -88,11 +97,12 @@ class Frontdesk extends Component {
                         seats: parseInt(table.seats),
                         order: "",
                         order_quantity: "",
-                        color: "primary",
+                        total_price: "",
+                        color: "blue",
                         status: "Unoccupied",
                         availability: availability
                     }
-                    this.updateTableAvailability(table._id,newTable)
+                    this.updateTable(table._id,newTable)
                     this.getSavedTable()
                 }
             })
@@ -100,7 +110,7 @@ class Frontdesk extends Component {
 
     }
 
-    updateTableAvailability = (tableId, newTablestatus) => {
+    updateTable = (tableId, newTablestatus) => {
         console.log("call API to update availability")
         API.changeTableStatus(tableId, newTablestatus)
             .then(result => {
@@ -186,6 +196,11 @@ class Frontdesk extends Component {
                     <button onClick={() => this.AddTableHistory()}>
                         Add Table this.state.specificTableHistory
                     </button>
+                    
+                    <Link to="/Payment">
+                        <button>Payment</button>
+                    </Link>
+
                     <Link to="/">
                         <button>Home</button>
                     </Link>
@@ -210,9 +225,10 @@ class Frontdesk extends Component {
                             }else{
                                 return(
                                     <OrderListModal 
-                                    availiability={table.availability}
+                                    key = {table._id}
                                     table={table}
                                     changeTableAvalability={this.changeTableAvalibility}
+                                    getSavedTable = {this.getSavedTable}
                                     />
                                 )
                             }
