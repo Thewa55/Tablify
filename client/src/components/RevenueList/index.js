@@ -35,10 +35,16 @@ function RevenueList(){
       setSelected({invoices: transaction, date: yesterday})
   }
 
-//   function getWeek(){
-//       let transaction = []
-      
-//   }
+  function getWeek(){
+    let transaction = []
+    let timeFrame = `${today} - ${week}`
+    tableHistory.forEach(invoice =>{
+      if(moment(invoice.date).isBetween(week, today, 'day', [])){
+        transaction.push(invoice)
+      }
+    })
+    setSelected({invoices: transaction, date: timeFrame})
+  }
 
   useEffect(() => {
     getTableHistory()
@@ -55,7 +61,7 @@ function RevenueList(){
       <div>
         <Button variant="primary" onClick={getTableHistory}>Today</Button>
         <Button variant="primary" onClick={getYesterday}>Yesterday</Button>
-        {/* <Button variant="primary" onClick={getWeek}>Week</Button> */}
+        <Button variant="primary" onClick={getWeek}>Week</Button>
       </div>
       {selected.invoices.length === 0 ? (
       <div>Sorry no revenue to show. </div>
