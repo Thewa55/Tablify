@@ -9,7 +9,8 @@ import {
   CreditCardExpirationDateInput,
   CreditCardNumberInput,
   CreditCardPostalCodeInput,
-  CreditCardSubmitButton
+  CreditCardSubmitButton,
+  GooglePayButton,
 } from 'react-square-payment-form';
 import 'react-square-payment-form/lib/default.css';
 
@@ -71,6 +72,12 @@ const PaymentPage = () => {
         };
       }
 
+      const loadingView = <div className="sq-wallet-loading"></div>;
+    
+      const unavailableGoogle = <div className="sq-wallet-unavailable">Google pay unavailable.</div>;
+    
+
+
     return (
 
       <Container>
@@ -88,6 +95,13 @@ const PaymentPage = () => {
         >
           <h1 className="text-center" style={{fontFamily: "'Fredoka One', cursive", textDecoration: "underline"}}>Payment</h1>
             <br />
+
+            <GooglePayButton loadingView={loadingView} unavailableView={unavailableGoogle} /> 
+
+      <div className="sq-divider">
+        <span className="sq-divider-label">Or</span>
+        <hr className="sq-divider-hr" />
+      </div>
 
           <fieldset className="sq-fieldset">
             <CreditCardNumberInput />
