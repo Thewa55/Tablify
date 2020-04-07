@@ -61,6 +61,9 @@ class Frontdesk extends Component {
     changeTableStatus = (newTableInfo,status) =>{
         console.log("newTableInfo: ", newTableInfo)
         console.log("status: ", status)
+        if(status === "Occupied"){
+            
+        }
     }
 
     changeTableAvailability = (newTableInfo, availability) => {
