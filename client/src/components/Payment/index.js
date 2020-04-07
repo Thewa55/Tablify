@@ -72,6 +72,12 @@ const PaymentPage = () => {
       }
 
     return (
+
+      <Container>
+      <Jumbotron>
+        <div className="row">
+          <div className="col-md-12 payment-box">
+
         <SquarePaymentForm
           sandbox={true}
           applicationId={APPLICATION_ID}
@@ -80,7 +86,9 @@ const PaymentPage = () => {
           createPaymentRequest={createPaymentRequest}
           createVerificationDetails={createVerificationDetails}
         >
-        
+          <h1 className="text-center" style={{fontFamily: "'Fredoka One', cursive", textDecoration: "underline"}}>Payment</h1>
+            <br />
+
           <fieldset className="sq-fieldset">
             <CreditCardNumberInput />
     
@@ -96,15 +104,19 @@ const PaymentPage = () => {
               <CreditCardCVVInput />
             </div>
           </fieldset>
-    
+
           <CreditCardSubmitButton>Pay $1.00</CreditCardSubmitButton>
-    
-          <div className="sq-error-message">
+          <div style={{margin: "0 auto"}} className="text-center">
+
             {errorMessages.map(errorMessage => (
               <li key={`sq-error-${errorMessage}`}>{errorMessage}</li>
             ))}
           </div>
         </SquarePaymentForm>
+        </div>
+        </div>
+      </Jumbotron>
+    </Container>
       );
 
 
