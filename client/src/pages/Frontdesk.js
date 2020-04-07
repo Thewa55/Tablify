@@ -62,7 +62,86 @@ class Frontdesk extends Component {
         console.log("newTableInfo: ", newTableInfo)
         console.log("status: ", status)
         if(status === "Occupied"){
-            
+            console.log("Match Occupied")
+            status = "Appetizer"
+            let color = "yellow"
+            this.state.tables.map(table => {
+                if (table._id === newTableInfo.id) {
+                    console.log("Matched Table")
+                    let newTable = {
+                        // seats: parseInt(table.seats),
+                        // order: newTableInfo.order,
+                        // order_quantity: newTableInfo.order_quantity,
+                        // total_price: parseFloat(newTableInfo.total_price),
+                        color: color,
+                        status: status,
+                        // availability: false
+                    }
+                    console.log("newTable: ",newTable)
+                    this.updateTable(table._id,newTable)
+                    this.getSavedTable()
+                }
+            })
+        }
+        else if(status === "Appetizer"){
+            status = "Entree"
+            let color = "red"
+            this.state.tables.map(table => {
+                if (table._id === newTableInfo.id) {
+                    let newTable = {
+                        seats: parseInt(table.seats),
+                        order: newTableInfo.order,
+                        order_quantity: newTableInfo.order_quantity,
+                        total_price: parseFloat(newTableInfo.total_price),
+                        color: color,
+                        status: status,
+                        availability: false
+                    }
+                    console.log("newTable: ",newTable)
+                    this.updateTable(table._id,newTable)
+                    this.getSavedTable()
+                }
+            })
+        }
+        else if(status === "Entree"){
+            status = "Dessert"
+            let color = "gray"
+            this.state.tables.map(table => {
+                if (table._id === newTableInfo.id) {
+                    let newTable = {
+                        seats: parseInt(table.seats),
+                        order: newTableInfo.order,
+                        order_quantity: newTableInfo.order_quantity,
+                        total_price: parseFloat(newTableInfo.total_price),
+                        color: color,
+                        status: status,
+                        availability: false
+                    }
+                    console.log("newTable: ",newTable)
+                    this.updateTable(table._id,newTable)
+                    this.getSavedTable()
+                }
+            })
+        }
+        else if(status === "Dessert"){
+            status = "Done"
+            let color = "white"
+            this.state.tables.map(table => {
+                if (table._id === newTableInfo.id) {
+                    let newTable = {
+                        seats: parseInt(table.seats),
+                        order: newTableInfo.order,
+                        order_quantity: newTableInfo.order_quantity,
+                        total_price: parseFloat(newTableInfo.total_price),
+                        color: color,
+                        status: status,
+                        availability: false
+                    }
+                    console.log("newTable: ",newTable)
+                    this.updateTable(table._id,newTable)
+                    this.getSavedTable()
+                }
+            })
         }
     }
 
@@ -172,37 +251,40 @@ class Frontdesk extends Component {
         return (
             <>
                 <div className="sidenav">
+
                     <div className="logo-box">
-                        <h1 style={{ fontSize: "80px", textAlign: "center" }}>T</h1>
+                        <h1 style={{ fontSize: "100px", textAlign: "center" }}>T</h1>
                     </div>
-                    <button onClick={() => this.buildTable(2)}>
-                        Build Small
-                    </button>
-                    <button onClick={() => this.buildTable(4)}>
-                        Build Medium
-                    </button>
-                    <button onClick={() => this.buildTable(6)}>
-                        Build Large
-                    </button>
-                    <button onClick={() => this.buildTable(8)}>
-                        Build XL
-                    </button>
 
-                    <ViewMenuModal
-                        menu={this.state.menu}
-                        getMenu={this.getMenu}
-                    />
+                    <h1 className="box-top">Build Tables</h1>
+                    <div className="inner-box">
+                        <button onClick={() => this.buildTable(2)}>
+                            Build Small
+                        </button>
+                        <button onClick={() => this.buildTable(4)}>
+                            Build Medium
+                        </button>
+                        <button onClick={() => this.buildTable(6)}>
+                            Build Large
+                        </button>
+                        <button onClick={() => this.buildTable(8)}>
+                            Build XL
+                        </button>
+                    </div>
 
-                    <button onClick={() => this.AddTableHistory()}>
-                        Add Table this.state.specificTableHistory
-                    </button>
-                    
-                    <Link to="/Payment">
-                        <button>Payment</button>
-                    </Link>
+                    <h1 className="box-top" style={{marginTop: "15%"}}>Menu and Payment</h1>
+                    <div className="inner-box">
+                        <ViewMenuModal
+                            menu={this.state.menu}
+                            getMenu={this.getMenu}
+                        />
+                        <Link to="/Payment">
+                            <button>Payment</button>
+                        </Link>
+                    </div>
 
                     <Link to="/">
-                        <button>Home</button>
+                        <button style={{marginTop: "25%", backgroundColor: "white"}}>Home</button>
                     </Link>
                 </div>
 
@@ -227,7 +309,8 @@ class Frontdesk extends Component {
                                     <OrderListModal 
                                     key = {table._id}
                                     table={table}
-                                    changeTableAvalability={this.changeTableAvalibility}
+                                    changeTableStatus = {this.changeTableStatus}
+                                    changeTableAvailability={this.changeTableAvailability}
                                     getSavedTable = {this.getSavedTable}
                                     />
                                 )
