@@ -69,11 +69,7 @@ function OrderListModal(props) {
                 <hr></hr>
                 <div className="container">
                     <div className="row">
-                        {props.table.status === "Occupied"(
-                            <Button className="col" variant="secondary" onClick={changeStatus}>
-                                Appetizer
-                            </Button>
-                        )}
+                        
                         <Button className="col" variant="secondary" onClick={changeStatus}>
                             Appetizer
                         </Button>
