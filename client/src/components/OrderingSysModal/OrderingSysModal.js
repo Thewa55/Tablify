@@ -59,6 +59,7 @@ function OrderingSysModal(props) {
             id: props.table._id,
             order: orderString,
             order_quantity: orderQuantityString,
+            total_price: totalPrice
         }
         props.changeTableAvailability(newTableInfo, props.table.availability)
 
