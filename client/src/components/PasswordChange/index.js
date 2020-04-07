@@ -33,23 +33,23 @@ class PasswordChangeForm extends Component {
       passwordOne !== passwordTwo || passwordOne === '';
     return (
       <form onSubmit={this.onSubmit}>
-          New password:
-        <div className="form-group">
+        <div className="form-group text-center">
 
         <input
-          className="form-control"
+          style={{margin: "auto", marginTop: "1%", marginBottom: "1%"}}
+          className="form-control input"
           name="passwordOne"
           value={passwordOne}
           onChange={this.onChange}
           type="password"
-          placeholder="New Password"
+          placeholder="Reset Password"
           />
           </div>
-          Repeat password:
-        <div className="form-group">
+        <div className="form-group text-center">
 
         <input
-          className="form-control"
+          style={{margin: "auto", marginTop: "1%", marginBottom: "1%"}}
+          className="form-control input"
           name="passwordTwo"
           value={passwordTwo}
           onChange={this.onChange}
@@ -57,12 +57,14 @@ class PasswordChangeForm extends Component {
           placeholder="Confirm New Password"
         />
         </div>
-        <div className="form-group">
-        <button disabled={isInvalid} type="submit">
+        <div className="form-group text-center">
+        <button disabled={isInvalid} type="submit" style={{margin: "auto", marginTop: "1%", marginBottom: "1%"}}>
           Reset My Password
         </button>
         </div>
-        {error && <p>{error.message}</p>}
+        <div style={{margin: "0 auto"}} className="text-center">
+          {error && <mark className="error-message">{error.message}</mark>}
+        </div>
       </form>
     );
   }
