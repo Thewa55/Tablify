@@ -29,9 +29,9 @@ function CustomSearch(props) {
     console.log(range)
     return (
       <>
-        <Button variant="primary" className="mt-0" onClick={handleShow}>
+        <button variant="primary" style={{width: "100px", margin: "1%"}} className="btn btn-primary" onClick={handleShow}>
           Search
-        </Button>
+        </button>
   
         <Modal show={show} onHide={handleClose}>
           <Modal.Header closeButton>
