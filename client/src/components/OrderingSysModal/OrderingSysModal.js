@@ -4,7 +4,6 @@ import Button from 'react-bootstrap/Button';
 import API from '../../utils/API';
 import "../TableExamples/tablestyle.css";
 import Draggable, { DraggableCore } from 'react-draggable';
-import moment from 'moment';
 
 
 function OrderingSysModal(props) {
@@ -44,7 +43,6 @@ function OrderingSysModal(props) {
         const orderQuantityString = orderedDishCount.toString();
 
         const newOrderTohistory = {
-            date: moment().format('L'),
             order: orderString,
             order_quantity: orderQuantityString,
             total_price: totalPrice

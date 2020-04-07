@@ -13,6 +13,7 @@ function OrderListModal(props) {
     const handleShow = () => setShow(true);
 
     const orderedItem = props.table.order.split(",")
+    // console.log("orderedItem: ", orderedItem)
     const orderedQuantity = props.table.order_quantity.split(",")
     const order = [];
 
@@ -23,7 +24,19 @@ function OrderListModal(props) {
             id: i
         }
     }
-    console.log("order of the table: ", order)
+    // console.log("order of the table: ", order)
+
+    function changeStatus(event) {
+        event.preventDefault();
+        const newTableInfo = {
+            id: props.table._id,
+            // color: props.table.color,
+            status: props.table.status
+        }
+        props.changeTableStatus(newTableInfo, props.table.status)
+
+        handleClose()
+    }
 
     function handleSubmit(event) {
         event.preventDefault();
@@ -33,7 +46,7 @@ function OrderListModal(props) {
     }
     return (
         <>
-            <Button className="table-small table text-center" style={{backgroundColor: props.table.color}} onClick={handleShow}>Test Small</Button>
+            <Button className="table-small table text-center" style={{ backgroundColor: props.table.color }} onClick={handleShow}>Test Small</Button>
 
 
             <Modal show={show} onHide={handleClose}>
@@ -56,14 +69,18 @@ function OrderListModal(props) {
                 <hr></hr>
                 <div className="container">
                     <div className="row">
-                        {/* <Button className="offset-md-1 col-md-2 " variant="secondary" onClick={handleClose}> */}
-                        <Button className="col" variant="secondary" onClick={handleClose}>
+                        {props.table.status === "Occupied"(
+                            <Button className="col" variant="secondary" onClick={changeStatus}>
+                                Appetizer
+                            </Button>
+                        )}
+                        <Button className="col" variant="secondary" onClick={changeStatus}>
                             Appetizer
                         </Button>
-                        <Button className="col" variant="secondary" onClick={handleClose}>
+                        <Button className="col" variant="secondary" onClick={changeStatus}>
                             Entree
                         </Button>
-                        <Button className="col" variant="secondary" onClick={handleClose}>
+                        <Button className="col" variant="secondary" onClick={changeStatus}>
                             Dessert
                         </Button>
                         <Button className="col" variant="primary" onClick={handleSubmit}>

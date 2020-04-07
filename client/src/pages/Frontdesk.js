@@ -62,7 +62,86 @@ class Frontdesk extends Component {
         console.log("newTableInfo: ", newTableInfo)
         console.log("status: ", status)
         if(status === "Occupied"){
-            
+            console.log("Match Occupied")
+            status = "Appetizer"
+            let color = "yellow"
+            this.state.tables.map(table => {
+                if (table._id === newTableInfo.id) {
+                    console.log("Matched Table")
+                    let newTable = {
+                        // seats: parseInt(table.seats),
+                        // order: newTableInfo.order,
+                        // order_quantity: newTableInfo.order_quantity,
+                        // total_price: parseFloat(newTableInfo.total_price),
+                        color: color,
+                        status: status,
+                        // availability: false
+                    }
+                    console.log("newTable: ",newTable)
+                    this.updateTable(table._id,newTable)
+                    this.getSavedTable()
+                }
+            })
+        }
+        else if(status === "Appetizer"){
+            status = "Entree"
+            let color = "red"
+            this.state.tables.map(table => {
+                if (table._id === newTableInfo.id) {
+                    let newTable = {
+                        seats: parseInt(table.seats),
+                        order: newTableInfo.order,
+                        order_quantity: newTableInfo.order_quantity,
+                        total_price: parseFloat(newTableInfo.total_price),
+                        color: color,
+                        status: status,
+                        availability: false
+                    }
+                    console.log("newTable: ",newTable)
+                    this.updateTable(table._id,newTable)
+                    this.getSavedTable()
+                }
+            })
+        }
+        else if(status === "Entree"){
+            status = "Dessert"
+            let color = "gray"
+            this.state.tables.map(table => {
+                if (table._id === newTableInfo.id) {
+                    let newTable = {
+                        seats: parseInt(table.seats),
+                        order: newTableInfo.order,
+                        order_quantity: newTableInfo.order_quantity,
+                        total_price: parseFloat(newTableInfo.total_price),
+                        color: color,
+                        status: status,
+                        availability: false
+                    }
+                    console.log("newTable: ",newTable)
+                    this.updateTable(table._id,newTable)
+                    this.getSavedTable()
+                }
+            })
+        }
+        else if(status === "Dessert"){
+            status = "Done"
+            let color = "white"
+            this.state.tables.map(table => {
+                if (table._id === newTableInfo.id) {
+                    let newTable = {
+                        seats: parseInt(table.seats),
+                        order: newTableInfo.order,
+                        order_quantity: newTableInfo.order_quantity,
+                        total_price: parseFloat(newTableInfo.total_price),
+                        color: color,
+                        status: status,
+                        availability: false
+                    }
+                    console.log("newTable: ",newTable)
+                    this.updateTable(table._id,newTable)
+                    this.getSavedTable()
+                }
+            })
         }
     }
 
@@ -230,7 +309,8 @@ class Frontdesk extends Component {
                                     <OrderListModal 
                                     key = {table._id}
                                     table={table}
-                                    changeTableAvalability={this.changeTableAvalibility}
+                                    changeTableStatus = {this.changeTableStatus}
+                                    changeTableAvailability={this.changeTableAvailability}
                                     getSavedTable = {this.getSavedTable}
                                     />
                                 )
