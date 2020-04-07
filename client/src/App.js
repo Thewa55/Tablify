@@ -9,6 +9,8 @@ import PasswordForgetPage from './components/PasswordForget';
 import { withAuthentication } from './components/Session';
 import Account from './pages/Account';
 import Employees from './pages/Employees';
+import Revenue from './pages/Revenue';
+import Payment from './components/Payment';
 
 const App = () => (
   <Router>
@@ -21,6 +23,8 @@ const App = () => (
       <Route exact path="/Kitchen" component={Kitchen} />
       <Route exact path="/Account" component={Account} />
       <Route exact path="/Employees" component={Employees} />
+      <Route exact path="/Revenue" component={Revenue} />
+      <Route exact path="/Payment" component={Payment} />
     </Fragment>
   </Router>
 )

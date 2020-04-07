@@ -11,6 +11,7 @@ import Draggable, { DraggableCore } from 'react-draggable';
 import OrderingSysModal from "../components/OrderingSysModal/OrderingSysModal"
 
 import { List, ListItem } from "../components/List";
+import OrderListModal from "../components/OrderListModal/OrderListModal";
 
 
 class Frontdesk extends Component {
@@ -57,14 +58,63 @@ class Frontdesk extends Component {
             .catch(err => console.log(err));
     }
 
-    deleteTable = TableId => {
-        console.log(TableId)
-        API.deleteTable(TableId)
-            .then(this.getSavedTable)
-            .catch(err => console.log(err))
+    changeTableStatus = (newTableInfo,status) =>{
+        console.log("newTableInfo: ", newTableInfo)
+        console.log("status: ", status)
     }
 
+    changeTableAvailability = (newTableInfo, availability) => {
+        console.log("newTableInfo: ",newTableInfo)
+        console.log("availability: ",availability)
+        if (availability === true) {
+            console.log("availability is true")
+            availability = false
+            this.state.tables.map(table => {
+                if (table._id === newTableInfo.id) {
+                    console.log("is match")
+                    let newTable = {
+                        seats: parseInt(table.seats),
+                        order: newTableInfo.order,
+                        order_quantity: newTableInfo.order_quantity,
+                        total_price: parseFloat(newTableInfo.total_price),
+                        color: "green",
+                        status: "Occupied",
+                        availability: availability
+                    }
+                    console.log("newTable: ",newTable)
+                    this.updateTable(table._id,newTable)
+                    this.getSavedTable()
+                }
+            })
+        } else {
+            availability = true
+            this.state.tables.map(table => {
+                if (table._id === newTableInfo.id) {
+                    let newTable = {
+                        seats: parseInt(table.seats),
+                        order: "",
+                        order_quantity: "",
+                        total_price: "",
+                        color: "blue",
+                        status: "Unoccupied",
+                        availability: availability
+                    }
+                    this.updateTable(table._id,newTable)
+                    this.getSavedTable()
+                }
+            })
+        }
 
+    }
+
+    updateTable = (tableId, newTablestatus) => {
+        console.log("call API to update availability")
+        API.changeTableStatus(tableId, newTablestatus)
+            .then(result => {
+                console.log(result)
+                this.getSavedTable()
+            })
+    }
     // functions for menu collection testing!!
 
     getMenu = () => {
@@ -74,28 +124,6 @@ class Frontdesk extends Component {
             this.setState({ menu: savedMenu });
         })
             .catch(err => console.log(err));
-    }
-    AddDish = () => {
-        const newDish = {
-            item: "Test dish",
-            category: "Appetizer",
-            price: 11.25,
-            cookTime: 10
-        }
-        console.log("newDish: ", newDish)
-
-        API.createNewDish(newDish)
-            .then(res => {
-                console.log("res.data: ", res.data);
-                this.retriveSavedMenu()
-            })
-            .catch(err => console.log(err));
-    }
-    deleteDish = DishId => {
-        console.log("Dish ID passed in: ", DishId)
-        API.deleteTable(DishId)
-            .then(this.retriveSavedMenu)
-            .catch(err => console.log(err))
     }
 
     //  functions for table this.state.specificTableHistory testing
@@ -113,8 +141,10 @@ class Frontdesk extends Component {
         const testOrder =
         {
             // start_at: Date(),
+            date: "04/06/2020",
             order: "test dish 2, test dish 3",
             order_quantity: "1, 2",
+            total_price: 53.15
         }
 
 
@@ -163,6 +193,11 @@ class Frontdesk extends Component {
                     <button onClick={() => this.AddTableHistory()}>
                         Add Table this.state.specificTableHistory
                     </button>
+                    
+                    <Link to="/Payment">
+                        <button>Payment</button>
+                    </Link>
+
                     <Link to="/">
                         <button>Home</button>
                     </Link>
@@ -174,13 +209,37 @@ class Frontdesk extends Component {
                         <h2 style={{ color: "white" }}>No Tables Generated Yet</h2>
                     ) : (this.state.tables.map(table => {
                         if (table.seats === 2) {
-                            return (
-                                <OrderingSysModal
-                                    tableId = {table._id}
+                            if (table.availability === true){
+                                return(
+                                    <OrderingSysModal
+                                    key={table._id}
+                                    table={table}
                                     menu={this.state.menu}
-                                    getMenu={this.getMenu}
+                                    changeTableAvailability={this.changeTableAvailability}
+                                    getSavedTable = {this.getSavedTable}
                                 />
-                            )
+                                )
+                            }else{
+                                return(
+                                    <OrderListModal 
+                                    key = {table._id}
+                                    table={table}
+                                    changeTableAvalability={this.changeTableAvalibility}
+                                    getSavedTable = {this.getSavedTable}
+                                    />
+                                )
+                            }
+                                
+                            
+                            // return (
+                                
+                            //     <OrderingSysModal
+                            //         key={table._id}
+                            //         tableId={table._id}
+                            //         menu={this.state.menu}
+                            //         getMenu={this.getMenu}
+                            //     />
+                            // )
                         } else if (table.seats === 4) {
                             return (
                                 <Medium />

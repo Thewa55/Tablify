@@ -63,6 +63,14 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
 
+  updateTable: function (req, res) {
+    console.log(req.body)
+    db.Diningroom
+      .findOneAndUpdate({ _id: req.params.id }, req.body)
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
+
   findTableHistoryById: function (req, res) {
     db.TableHistory
       .findById(req.params.id)
@@ -103,12 +111,12 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
 
-  updateTableAvailability: function(req,res){
-    db.Diningroom
-      .findOneAndUpdate({ _id: req.params.id })
-      .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
-  },
+  // updateTableAvailability: function(req,res){
+  //   db.Diningroom
+  //     .findOneAndUpdate({ _id: req.params.id })
+  //     .then(dbModel => res.json(dbModel))
+  //     .catch(err => res.status(422).json(err));
+  // },
 
   removeDishById: function (req, res) {
     db.Menu
