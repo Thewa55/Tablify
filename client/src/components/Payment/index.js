@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import Jumbotron from '../Jumbotron'
+import Container from '../Container'
+import './paymentstyle.css';
 
 import {
   SquarePaymentForm,
@@ -10,9 +13,11 @@ import {
 } from 'react-square-payment-form';
 import 'react-square-payment-form/lib/default.css';
 
-const APPLICATION_ID = process.env.REACT_APP_APPLICATION_ID;
-const LOCATION_ID = process.env.REACT_APP_LOCATION_ID ;
+// const APPLICATION_ID = process.env.REACT_APP_APPLICATION_ID;
+// const LOCATION_ID = process.env.REACT_APP_LOCATION_ID ;
 
+const APPLICATION_ID = 'sandbox-sq0idb-bWzBpuCU1yYZUP21Y1M1yw';
+const LOCATION_ID = 'T1SE25464ACMA';
 
 const PaymentPage = () => {
     const [errorMessages, setErrorMessages] = useState([]);
