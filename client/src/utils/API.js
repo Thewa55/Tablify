@@ -43,10 +43,10 @@ export default {
       return axios.post("/api/tablehistory", newCustomer)
   },
 
-  // Change table status
-  changeTableStatus: function(id, newStatus){
-      return axios.put("api/tablehistory/" + id, newStatus)
-  },
+  // // Change table status
+  // changeTableStatus: function(id, newStatus){
+  //     return axios.put("api/tablehistory/" + id, newStatus)
+  // },
 
   // Deletes the book with the given id
   deleteDish: function(id) {
@@ -74,7 +74,7 @@ export default {
     return axios.put("/api/employee/" +id, employee)
   },
 
-  changeTableAvalibility: function(id, table){
+  changeTableStatus: function(id, table){
     return axios.put("/api/table/" +id, table)
   }
 
