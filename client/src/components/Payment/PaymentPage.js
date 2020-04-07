@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
 import {
-  SquarePaymentForm
-
+  SquarePaymentForm,
+  CreditCardCVVInput,
+  CreditCardExpirationDateInput,
+  CreditCardNumberInput,
+  CreditCardPostalCodeInput,
+  CreditCardSubmitButton
 } from 'react-square-payment-form';
 import 'react-square-payment-form/lib/default.css';
 
@@ -43,7 +47,23 @@ const PaymentPage = () => {
         ],
       };
     }
-
+    function createVerificationDetails() {
+        return {
+          amount: '100.00',
+          currencyCode: 'USD',
+          intent: 'CHARGE',
+          billingContact: {
+            familyName: 'Smith',
+            givenName: 'John',
+            email: 'jsmith@example.com',
+            country: 'GB',
+            city: 'London',
+            addressLines: ["1235 Emperor's Gate"],
+            postalCode: 'SW7 4JA',
+            phone: '020 7946 0532',
+          },
+        };
+      }
 
     return (
         <SquarePaymentForm
@@ -52,6 +72,7 @@ const PaymentPage = () => {
           locationId={LOCATION_ID}
           cardNonceResponseReceived={cardNonceResponseReceived}
           createPaymentRequest={createPaymentRequest}
+          createVerificationDetails={createVerificationDetails}
         >
         
           <fieldset className="sq-fieldset">
