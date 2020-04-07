@@ -9,23 +9,31 @@ import moment from 'moment';
 function RevenueList(){
   const [tableHistory, setTableHistory] = useState([]);
   const [today, setToday] = useState()
+  const [yesterday, setYesterday] = useState()
+  const [todayTrans, setTodayTrans] = useState()
 
-//   getTableHistory()
-//     // API.getTableHistory()
-//     //   .then(results => {
-//     //     setTableHistory(results.data)
-//     // })
-//   };
+  function getTableHistory() {
+    API.getTableHistory()
+      .then(results => {
+          console.log(results.data)
+        setTableHistory(results.data.reverse())
+        let transaction = tableHistory.filter(receipt => receipt.date === today)
+        setTodayTrans(transaction)
+    })
+  };
 
   useEffect(() => {
     setToday(moment().format('L'));
-    // getTableHistory()
+    setYesterday(moment().subtract(1, 'day').format('L'))
+    getTableHistory()
   }, []);
 
-  console.log(today)
+  console.log(todayTrans)
+  console.log(yesterday)
   return(
     <div>
       This is the Revenue List. Today is {today}
+      {todayTrans ? (<div>You have stuff to render!</div>):(<div>Sorry nothing today! </div>)}
     </div>
   )
 }
