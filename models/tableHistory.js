@@ -4,6 +4,7 @@ const Schema = mongoose.Schema;
 const tableHistorySchema = new Schema({
     // start_at: Date(),
     // end_at: Date(),
+    date: {type: String},
     order: { type: String },
     order_quantity: { type: String },
     total_price:{ type: Number },
