@@ -134,8 +134,10 @@ class Frontdesk extends Component {
         const testOrder =
         {
             // start_at: Date(),
+            date: "04/06/2020",
             order: "test dish 2, test dish 3",
             order_quantity: "1, 2",
+            total_price: 53.15
         }
 
 
