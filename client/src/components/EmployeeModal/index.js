@@ -36,13 +36,13 @@ function EmployeeModal(props) {
 
     return (
       <>
-        <Button variant="primary" className="mt-4" onClick={handleShow}>
+        <button variant="primary" style={{height: "40px", fontSize: "90%"}} onClick={handleShow}>
           Add An Employee
-        </Button>
+        </button>
   
         <Modal show={show} onHide={handleClose}>
           <Modal.Header closeButton>
-            <Modal.Title>Add an employee</Modal.Title>
+            <Modal.Title style={{fontFamily: "monospace", fontSize: "30px"}}>Add an employee:</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <form>
@@ -94,12 +94,9 @@ function EmployeeModal(props) {
             </form>
           </Modal.Body>
           <Modal.Footer>
-            <Button variant="secondary" onClick={handleClose}>
-              Cancel
-            </Button>
-            <Button variant="primary" onClick={handleSubmit}>
+            <button variant="primary" style={{margin: "0 auto"}} onClick={handleSubmit}>
               Add Employee
-            </Button>
+            </button>
           </Modal.Footer>
         </Modal>
       </>

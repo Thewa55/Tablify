@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import API from "../../utils/API";
-import EmployeeModal from "../EmployeeModal"
-import EmployEditModal from "../EmployeeEditModal"
-import Button from 'react-bootstrap/Button'
-import Table from 'react-bootstrap/Table'
+import EmployeeModal from "../EmployeeModal";
+import EmployEditModal from "../EmployeeEditModal";
+import Button from 'react-bootstrap/Button';
+import Table from 'react-bootstrap/Table';
+import { Link } from "react-router-dom";
+import "./employeestyle.css";
 
 function EmployeeList() {
   const [employees, setEmployees] = useState([])
@@ -40,7 +42,7 @@ function EmployeeList() {
               <tr>
                 <th>ID</th>
                 <th>Name</th>
-                <th>Postion</th>
+                <th>Position</th>
                 <th>Phone Number</th>
                 <th>E-mail</th>
                 <th></th>
@@ -65,12 +67,18 @@ function EmployeeList() {
             </Table>
           <div>
             <EmployeeModal getEmployees={getEmployees} />
+            <Link to="/Account">
+              <button className="login-button">Account</button>
+            </Link>
           </div>
         </div>    
       ) : (
         <div>
             <h1>No current employees in the database, please add some people!</h1>
             <EmployeeModal getEmployees={getEmployees}/>
+            <Link to="/Account">
+              <button className="login-button">Account</button>
+            </Link>
         </div>
       )}
     </div>

@@ -254,7 +254,7 @@ class Frontdesk extends Component {
                 <div className="sidenav">
 
                     <div className="logo-box">
-                        <h1 style={{ fontSize: "100px", textAlign: "center" }}>T</h1>
+                        <h1 style={{ fontSize: "600%", textAlign: "center" }}>T</h1>
                     </div>
 
                     <h1 className="box-top">Build Tables</h1>
