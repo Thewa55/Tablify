@@ -74,8 +74,8 @@
 }
 
 #legend {
-    height: 200px;
-    width: 250px;
+    height: 250px;
+    width: 200px;
     position: fixed;
     z-index: 1;
     background-color: white;
@@ -84,5 +84,20 @@
     top: 0;
     margin: 20px;
     border-radius: 10px;
+    
+}
+
+.legendbtn {
+    margin-left:20px;
+    height:30px;
+    width:30px;
+    font-size:18px;
+    /* background-color: white; */
+    float: left;
+}
+.legendtext{
+    font-size: 18px;
+    float: left;
+    margin-left: 5%;
 }
 
