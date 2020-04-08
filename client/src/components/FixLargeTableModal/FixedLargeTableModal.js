@@ -6,7 +6,7 @@ import Draggable, { DraggableCore } from 'react-draggable';
 
 
 
-function OrderListModal(props) {
+function FixedLargeTableModal(props) {
     // console.log(props.table)
     const [show, setShow] = useState(false);
     const [position, setPosition] = useState({
@@ -38,7 +38,7 @@ function OrderListModal(props) {
             
             <Draggable onDrag={handleDrag} handle=".table" defaultPosition={{ x: 300, y: 200 }} >
                 {/* <Draggable onStart={() => false} handle=".table" defaultPosition={{ x: 329, y: 240 }} > */}
-                <Button className="table-small table text-center" style={{ backgroundColor: props.table.color }} onClick={handleShow}>Test Small</Button>
+                <Button className="table-large table text-center" style={{ backgroundColor: props.table.color }} onClick={handleShow}>Test large</Button>
             </Draggable>
 
             <Modal show={show} onHide={handleClose}>
@@ -68,4 +68,4 @@ function OrderListModal(props) {
     );
 }
 
-export default OrderListModal;
+export default FixedLargeTableModal;
