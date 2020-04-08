@@ -37,6 +37,17 @@ function OrderingSysLargeModal(props) {
         console.log(totalPrice)
     }
 
+    function deleteTable(event) {
+        event.preventDefault();
+
+        API.deleteTable(props.table._id)
+            .then(res => {
+                props.getSavedTable()
+            })
+            .catch(err => console.log(err))
+        
+        handleClose()
+    }
 
     function handleSubmit(event) {
         event.preventDefault();
@@ -77,8 +88,9 @@ function OrderingSysLargeModal(props) {
             </Draggable>
 
             <Modal show={show} onHide={handleClose}>
-                <Modal.Header closeButton>
+                <Modal.Header >
                     <Modal.Title style={{fontFamily: "monospace", fontSize: "30px"}}>Our Menu:</Modal.Title>
+                    <Button className="deletebtn" onClick={deleteTable}>delete table</Button>
                 </Modal.Header>
                 <Modal.Body>
                     <form>
