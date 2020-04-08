@@ -73,3 +73,16 @@
     z-index: 1;
 }
 
+#legend {
+    height: 200px;
+    width: 250px;
+    position: fixed;
+    z-index: 1;
+    background-color: white;
+    border: 5px solid black;
+    right: 0;
+    top: 0;
+    margin: 20px;
+    border-radius: 10px;
+}
+
