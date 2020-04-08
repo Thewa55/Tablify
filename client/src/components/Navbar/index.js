@@ -7,17 +7,11 @@ function Navbar() {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-black">
       <Link className="navbar-brand" to="/">
-        Home
+        <button className="login-button">Home</button>
       </Link>
       <div>
         <ul className="navbar-nav">
           <li className="nav-item">
-            <Link
-              to="/search"
-              className={window.location.pathname === "/search" ? "nav-link active" : "nav-link"}
-            >
-              Search
-            </Link>
           </li>
         </ul>
       </div>
