@@ -165,7 +165,7 @@ class Frontdesk extends Component {
                         order: "",
                         order_quantity: "",
                         total_price: "",
-                        color: "blue",
+                        color: "white",
                         status: "Unoccupied",
                         availability: availability
                     }
