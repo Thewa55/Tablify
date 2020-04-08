@@ -59,8 +59,8 @@ function OrderListLargeModal(props) {
     return (
         <>
             {/* <Draggable onDrag={handleDrag} handle=".table" defaultPosition={{ x: 300, y: 0 }} > */}
-            <Draggable onStart={() => false} handle=".table" defaultPosition={{x: props.table.X, y: props.table.Y}} >
-                <Button className="table-large table text-center" style={{ backgroundColor: props.table.color }} onClick={handleShow}>Test Large</Button>
+            <Draggable onStart={() => false} handle=".table" defaultPosition={{ x: props.table.X, y: props.table.Y }} >
+                <Button className="table-large table text-center" style={{ backgroundColor: props.table.color }} onClick={handleShow}>{props.table.table_name}</Button>
             </Draggable>
 
             <Modal show={show} onHide={handleClose}>

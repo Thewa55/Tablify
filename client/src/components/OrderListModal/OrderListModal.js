@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button'
 import API from '../../utils/API'
+import Draggable, { DraggableCore } from 'react-draggable';
 
 
 
@@ -49,8 +50,9 @@ function OrderListModal(props) {
     }
     return (
         <>
-            <Button className="table-small table text-center" style={{ backgroundColor: props.table.color }} onClick={handleShow}>Test Small</Button>
-
+            <Draggable onStart={() => false} handle=".table" defaultPosition={{ x: props.table.X, y: props.table.Y }} >
+                <Button className="table-small table text-center" style={{ backgroundColor: props.table.color }} onClick={handleShow}>{props.table.table_name}</Button>
+            </Draggable>
 
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
@@ -76,42 +78,42 @@ function OrderListModal(props) {
                             <Button className="col text-dark" variant="secondary" style={{ backgroundColor: props.table.color }} onClick={changeStatus}>
                                 Appetizer
                             </Button>
-                        ):(
-                            <Button className="col" variant="secondary">
-                                Appetizer
-                            </Button>
-                        )}
-                        
+                        ) : (
+                                <Button className="col" variant="secondary">
+                                    Appetizer
+                                </Button>
+                            )}
+
                         {props.table.status === "Appetizer" ? (
                             <Button className="col text-dark" variant="secondary" style={{ backgroundColor: props.table.color }} onClick={changeStatus}>
                                 Entree
                             </Button>
-                        ):(
-                            <Button className="col" variant="secondary">
-                                Entree
-                            </Button>
-                        )}
-                        
+                        ) : (
+                                <Button className="col" variant="secondary">
+                                    Entree
+                                </Button>
+                            )}
+
                         {props.table.status === "Entree" ? (
                             <Button className="col text-dark" variant="secondary" style={{ backgroundColor: props.table.color }} onClick={changeStatus}>
                                 Dessert
                             </Button>
-                        ):(
-                            <Button className="col" variant="secondary">
-                                Dessert
-                            </Button>
-                        )}
+                        ) : (
+                                <Button className="col" variant="secondary">
+                                    Dessert
+                                </Button>
+                            )}
 
                         {props.table.status === "Dessert" ? (
                             <Button className="col text-dark" variant="secondary" style={{ backgroundColor: props.table.color }} onClick={handleSubmit}>
                                 Clear
                             </Button>
-                        ):(
-                            <Button className="col" variant="secondary">
-                                Clear
-                            </Button>
-                        )}
-                        
+                        ) : (
+                                <Button className="col" variant="secondary">
+                                    Clear
+                                </Button>
+                            )}
+
                     </div>
                 </div>
 

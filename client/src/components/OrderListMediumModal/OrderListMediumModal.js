@@ -59,8 +59,8 @@ function OrderListMediumModal(props) {
     return (
         <>
             {/* <Draggable onDrag={handleDrag} handle=".table" defaultPosition={{ x: 300, y: 0 }} > */}
-            <Draggable onStart={() => false} handle=".table" defaultPosition={{x: props.table.X, y: props.table.Y}} >
-                <Button className="table-medium table text-center" style={{ backgroundColor: props.table.color }} onClick={handleShow}>Test Medium</Button>
+            <Draggable onStart={() => false} handle=".table" defaultPosition={{ x: props.table.X, y: props.table.Y }} >
+                <Button className="table-medium table text-center" style={{ backgroundColor: props.table.color }} onClick={handleShow}>{props.table.table_name}</Button>
             </Draggable>
 
             <Modal show={show} onHide={handleClose}>

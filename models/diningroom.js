@@ -8,7 +8,7 @@ const diningroomSchema = new Schema({
   order: {type: String, default: ""},
   order_quantity: {type: String, default: ""},
   total_price: {tpye: Number},
-  color: {type: String, default:"primary"},
+  color: {type: String, default:"white"},
   status: {type: String, default:"Unoccupied"},
   X:{type: Number},
   Y:{type: Number},
