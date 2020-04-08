@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import Jumbotron from '../Jumbotron'
-import Container from '../Container'
-// import './paymentstyle.css';
+import Jumbotron from '../Jumbotron';
+import Container from '../Container';
+import { Link } from "react-router-dom";
 
 import {
   SquarePaymentForm,
@@ -83,51 +83,53 @@ const PaymentPage = () => {
       <Container>
       <Jumbotron>
         <div className="row">
-          <div className="col-md-12 payment-box">
+          <div className="col-md-12 login-box text-center" style={{display: "flex", alignItems: "center", justifyContent: "center"}}>
+            <SquarePaymentForm
+              sandbox={true}
+              applicationId={APPLICATION_ID}
+              locationId={LOCATION_ID}
+              cardNonceResponseReceived={cardNonceResponseReceived}
+              createPaymentRequest={createPaymentRequest}
+              createVerificationDetails={createVerificationDetails}
+            >
+              <h1 className="text-center" style={{fontFamily: "'Fredoka One', cursive"}}>Complete Transaction</h1>
+              <br />
 
-        <SquarePaymentForm
-          sandbox={true}
-          applicationId={APPLICATION_ID}
-          locationId={LOCATION_ID}
-          cardNonceResponseReceived={cardNonceResponseReceived}
-          createPaymentRequest={createPaymentRequest}
-          createVerificationDetails={createVerificationDetails}
-        >
-          <h1 className="text-center" style={{fontFamily: "'Fredoka One', cursive", textDecoration: "underline"}}>Payment</h1>
-            <br />
+              <GooglePayButton loadingView={loadingView} unavailableView={unavailableGoogle} /> 
 
-            <GooglePayButton loadingView={loadingView} unavailableView={unavailableGoogle} /> 
+              <div className="sq-divider">
+                <span className="sq-divider-label">Or</span>
+                <hr className="sq-divider-hr" />
+              </div>
 
-      <div className="sq-divider">
-        <span className="sq-divider-label">Or</span>
-        <hr className="sq-divider-hr" />
-      </div>
+              <fieldset className="sq-fieldset">
+                <CreditCardNumberInput />
+        
+                <div className="sq-form-third">
+                  <CreditCardExpirationDateInput />
+                </div>
+        
+                <div className="sq-form-third">
+                  <CreditCardPostalCodeInput />
+                </div>
+        
+                <div className="sq-form-third">
+                  <CreditCardCVVInput />
+                </div>
+              </fieldset>
 
-          <fieldset className="sq-fieldset">
-            <CreditCardNumberInput />
-    
-            <div className="sq-form-third">
-              <CreditCardExpirationDateInput />
-            </div>
-    
-            <div className="sq-form-third">
-              <CreditCardPostalCodeInput />
-            </div>
-    
-            <div className="sq-form-third">
-              <CreditCardCVVInput />
-            </div>
-          </fieldset>
+              <CreditCardSubmitButton>Pay</CreditCardSubmitButton>
+              <div style={{margin: "0 auto"}} className="text-center">
 
-          <CreditCardSubmitButton>Pay $1.00</CreditCardSubmitButton>
-          <div style={{margin: "0 auto"}} className="text-center">
-
-            {errorMessages.map(errorMessage => (
-              <li key={`sq-error-${errorMessage}`}>{errorMessage}</li>
-            ))}
+                {errorMessages.map(errorMessage => (
+                  <li key={`sq-error-${errorMessage}`}>{errorMessage}</li>
+                ))}
+              </div>
+              <Link to="/FrontDesk">
+                <button className="login-button" style={{marginTop: "5%", fontSize: "14px"}}>Front Desk</button>
+              </Link>
+            </SquarePaymentForm>
           </div>
-        </SquarePaymentForm>
-        </div>
         </div>
       </Jumbotron>
     </Container>

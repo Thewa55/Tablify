@@ -21,19 +21,19 @@ function AddDishModal(props) {
             item: dishRef.current.value,
             category: categoryRef.current.value,
             price: parseInt(priceRef.current.value),
-            cook_time: parseInt(cookTimeRef.current.value),
-        }
+            cook_time: parseInt(cookTimeRef.current.value)
+        };
 
         console.log(newDish)
         API.createNewDish(newDish)
             .then(res => {
                 console.log(res)
-            })
+            });
         
-        handleClose()
-        props.getMenu()
-        console.log("finish call getMenu after add")
-        alert("Thanks for submiting new dish!")
+        handleClose();
+        props.getMenu();
+        console.log("finish call getMenu after add");
+        alert("New Dish Added!");
     }
 
 
@@ -45,7 +45,7 @@ function AddDishModal(props) {
 
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Add Dish</Modal.Title>
+                    <Modal.Title style={{fontFamily: "monospace", fontSize: "30px"}}>Add Dish:</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <form>
@@ -64,7 +64,7 @@ function AddDishModal(props) {
                                 className="input"
                                 ref={categoryRef}
                                 type="text"
-                                placeholder="Appetizer, Entre, or Dessert"
+                                placeholder="Appetizer, Entree, or Dessert"
                             />
                         </div>
                         <div className="form-group text-center">
@@ -82,17 +82,14 @@ function AddDishModal(props) {
                                 className="input"
                                 ref={cookTimeRef}
                                 type="text"
-                                placeholder="Cook time (min)"
+                                placeholder="Preparation Time (in minutes)"
                             />
                         </div>
                     </form>
 
                 </Modal.Body>
-                <Modal.Footer>
-                    <Button variant="secondary" onClick={handleClose}>
-                        Cancel
-                    </Button>
-                    <Button variant="primary" onClick={handleSubmit}>
+                <Modal.Footer className="text-center">
+                    <Button variant="primary" style={{margin: "0 auto"}} onClick={handleSubmit}>
                         Add Dish
                     </Button>
 

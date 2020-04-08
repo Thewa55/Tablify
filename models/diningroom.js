@@ -9,7 +9,10 @@ const diningroomSchema = new Schema({
   order_quantity: {type: String},
   total_price: {tpye: Number},
   color: {type: String, default:"primary"},
-  status: {type: String, default:"Unoccupied"}
+  status: {type: String, default:"Unoccupied"},
+  X:{type: Number},
+  Y:{type: Number},
+  fixed:{type: Boolean, default: false}
 });
 
 const Diningroom = mongoose.model("Diningroom", diningroomSchema);

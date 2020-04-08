@@ -9,6 +9,7 @@ import XL from "../components/TableExamples/XL";
 import ViewMenuModal from "../components/ViewMenuModal/ViewMenuModal"
 import Draggable, { DraggableCore } from 'react-draggable';
 import OrderingSysModal from "../components/OrderingSysModal/OrderingSysModal"
+import FixTableModal from "../components/FixTableModal/FixTableModal"
 
 import { List, ListItem } from "../components/List";
 import OrderListModal from "../components/OrderListModal/OrderListModal";
@@ -58,10 +59,10 @@ class Frontdesk extends Component {
             .catch(err => console.log(err));
     }
 
-    changeTableStatus = (newTableInfo,status) =>{
+    changeTableStatus = (newTableInfo, status) => {
         console.log("newTableInfo: ", newTableInfo)
         console.log("status: ", status)
-        if(status === "Occupied"){
+        if (status === "Occupied") {
             console.log("Match Occupied")
             status = "Appetizer"
             let color = "yellow"
@@ -77,13 +78,13 @@ class Frontdesk extends Component {
                         status: status,
                         // availability: false
                     }
-                    console.log("newTable: ",newTable)
-                    this.updateTable(table._id,newTable)
+                    console.log("newTable: ", newTable)
+                    this.updateTable(table._id, newTable)
                     this.getSavedTable()
                 }
             })
         }
-        else if(status === "Appetizer"){
+        else if (status === "Appetizer") {
             status = "Entree"
             let color = "red"
             this.state.tables.map(table => {
@@ -97,13 +98,13 @@ class Frontdesk extends Component {
                         status: status,
                         availability: false
                     }
-                    console.log("newTable: ",newTable)
-                    this.updateTable(table._id,newTable)
+                    console.log("newTable: ", newTable)
+                    this.updateTable(table._id, newTable)
                     this.getSavedTable()
                 }
             })
         }
-        else if(status === "Entree"){
+        else if (status === "Entree") {
             status = "Dessert"
             let color = "gray"
             this.state.tables.map(table => {
@@ -117,13 +118,13 @@ class Frontdesk extends Component {
                         status: status,
                         availability: false
                     }
-                    console.log("newTable: ",newTable)
-                    this.updateTable(table._id,newTable)
+                    console.log("newTable: ", newTable)
+                    this.updateTable(table._id, newTable)
                     this.getSavedTable()
                 }
             })
         }
-        else if(status === "Dessert"){
+        else if (status === "Dessert") {
             status = "Done"
             let color = "white"
             this.state.tables.map(table => {
@@ -137,8 +138,8 @@ class Frontdesk extends Component {
                         status: status,
                         availability: false
                     }
-                    console.log("newTable: ",newTable)
-                    this.updateTable(table._id,newTable)
+                    console.log("newTable: ", newTable)
+                    this.updateTable(table._id, newTable)
                     this.getSavedTable()
                 }
             })
@@ -146,8 +147,8 @@ class Frontdesk extends Component {
     }
 
     changeTableAvailability = (newTableInfo, availability) => {
-        console.log("newTableInfo: ",newTableInfo)
-        console.log("availability: ",availability)
+        console.log("newTableInfo: ", newTableInfo)
+        console.log("availability: ", availability)
         if (availability === true) {
             console.log("availability is true")
             availability = false
@@ -163,8 +164,8 @@ class Frontdesk extends Component {
                         status: "Occupied",
                         availability: availability
                     }
-                    console.log("newTable: ",newTable)
-                    this.updateTable(table._id,newTable)
+                    console.log("newTable: ", newTable)
+                    this.updateTable(table._id, newTable)
                     this.getSavedTable()
                 }
             })
@@ -182,7 +183,7 @@ class Frontdesk extends Component {
                         status: "Unoccupied",
                         availability: availability
                     }
-                    this.updateTable(table._id,newTable)
+                    this.updateTable(table._id, newTable)
                     this.getSavedTable()
                 }
             })
@@ -190,11 +191,27 @@ class Frontdesk extends Component {
 
     }
 
+    saveTablePosition = (TableId, newPosition) => {
+        console.log("newposition: ", newPosition)
+        this.state.tables.map(table => {
+            if (table._id === TableId) {
+                console.log("Matched Table")
+                let newTablePosition = {
+                    X: newPosition.X,
+                    Y: newPosition.Y,
+                    fixed: true
+                }
+                this.updateTable(table._id, newTablePosition)
+                this.getSavedTable()
+            }
+        })
+    }
+
     updateTable = (tableId, newTablestatus) => {
         console.log("call API to update availability")
         API.changeTableStatus(tableId, newTablestatus)
             .then(result => {
-                console.log(result)
+                // console.log(result)
                 this.getSavedTable()
             })
     }
@@ -202,7 +219,7 @@ class Frontdesk extends Component {
 
     getMenu = () => {
         API.getMenu().then(res => {
-            console.log(res.data)
+            // console.log(res.data)
             const savedMenu = res.data;
             this.setState({ menu: savedMenu });
         })
@@ -273,7 +290,7 @@ class Frontdesk extends Component {
                         </button>
                     </div>
 
-                    <h1 className="box-top" style={{marginTop: "15%"}}>Menu and Payment</h1>
+                    <h1 className="box-top" style={{ marginTop: "15%" }}>Menu and Payment</h1>
                     <div className="inner-box">
                         <ViewMenuModal
                             menu={this.state.menu}
@@ -285,7 +302,7 @@ class Frontdesk extends Component {
                     </div>
 
                     <Link to="/">
-                        <button style={{marginTop: "25%", backgroundColor: "white"}}>Home</button>
+                        <button style={{ marginTop: "25%", backgroundColor: "white" }}>Home</button>
                     </Link>
                 </div>
 
@@ -294,39 +311,44 @@ class Frontdesk extends Component {
                     {!this.state.tables ? (
                         <h2 style={{ color: "white" }}>No Tables Generated Yet</h2>
                     ) : (this.state.tables.map(table => {
+                        console.log("table: ",table)
                         if (table.seats === 2) {
-                            if (table.availability === true){
-                                return(
-                                    <OrderingSysModal
-                                    key={table._id}
-                                    table={table}
-                                    menu={this.state.menu}
-                                    changeTableAvailability={this.changeTableAvailability}
-                                    getSavedTable = {this.getSavedTable}
-                                />
-                                )
-                            }else{
-                                return(
-                                    <OrderListModal 
-                                    key = {table._id}
-                                    table={table}
-                                    changeTableStatus = {this.changeTableStatus}
-                                    changeTableAvailability={this.changeTableAvailability}
-                                    getSavedTable = {this.getSavedTable}
+                            if (table.availability === true && table.fixed === false) {
+                                return (
+                                    <FixTableModal
+                                        key={table._id}
+                                        table={table}
+                                        saveTablePosition={this.saveTablePosition}
                                     />
                                 )
                             }
-                                
-                            
-                            // return (
-                                
-                            //     <OrderingSysModal
-                            //         key={table._id}
-                            //         tableId={table._id}
-                            //         menu={this.state.menu}
-                            //         getMenu={this.getMenu}
-                            //     />
-                            // )
+                            else if (table.availability === true && table.fixed === true) {
+                                console.log("goes to both true")
+                                return (
+                                    <OrderingSysModal
+                                        key={table._id}
+                                        table={table}
+                                        menu={this.state.menu}
+                                        changeTableAvailability={this.changeTableAvailability}
+                                        getSavedTable={this.getSavedTable}
+                                        saveTablePosition={this.saveTablePosition}
+                                    />
+                                )
+                            }
+                            else if (table.availability === false && table.fixed === true) {
+                                return (
+                                    <OrderListModal
+                                        key={table._id}
+                                        table={table}
+                                        changeTableStatus={this.changeTableStatus}
+                                        changeTableAvailability={this.changeTableAvailability}
+                                        getSavedTable={this.getSavedTable}
+                                        saveTablePosition={this.saveTablePosition}
+                                    />
+                                )
+                            }
+
+
                         } else if (table.seats === 4) {
                             return (
                                 <Medium />

@@ -72,7 +72,7 @@ function OrderingSysModal(props) {
     
     return (
         <>
-            <Draggable handle=".table">
+            <Draggable onStart={() => false} handle=".table" defaultPosition={{x: props.table.X, y: props.table.Y}} >
                 <div className="table-small table text-center">
                     <div className="interior-small interior" onClick={handleShow}>Test Small</div>
                 </div>
@@ -80,11 +80,11 @@ function OrderingSysModal(props) {
 
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Our Menu</Modal.Title>
+                    <Modal.Title style={{fontFamily: "monospace", fontSize: "30px"}}>Our Menu:</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <form>
-                        <p>Appetizer:</p>
+                        <p style={{fontFamily: "monospace", fontSize: "20px"}}>Appetizer:</p>
                         <ul>
                             {Appetizer.length ? (
                                 Appetizer.map(dish => {
@@ -103,10 +103,10 @@ function OrderingSysModal(props) {
                                     )
                                 })
                             ) : (
-                                    <h2>No Appetizers Currently Listed</h2>
+                                    <h2>-no appetizers on menu-</h2>
                                 )}
                         </ul>
-                        <p>Entree:</p>
+                        <p style={{fontFamily: "monospace", fontSize: "20px"}}>Entree:</p>
                         <ul>
                             {Entre.length ? (
                                 Entre.map(dish => {
@@ -125,10 +125,10 @@ function OrderingSysModal(props) {
                                     )
                                 })
                             ) : (
-                                    <h2>No Entrees Currently Listed</h2>
+                                    <h2>-no entrees on menu-</h2>
                                 )}
                         </ul>
-                        <p>Dessert:</p>
+                        <p style={{fontFamily: "monospace", fontSize: "20px"}}>Dessert:</p>
                         <ul>
                             {Dessert.length ? (
                                 Dessert.map(dish => {
@@ -147,17 +147,14 @@ function OrderingSysModal(props) {
                                     )
                                 })
                             ) : (
-                                    <h2>No Desserts Currently Listed</h2>
+                                    <h2>-no desserts on menu-</h2>
                                 )}
                         </ul>
                     </form>
 
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="secondary" onClick={handleClose}>
-                        Cancel
-                    </Button>
-                    <Button variant="primary" onClick={handleSubmit}>
+                    <Button variant="primary" style={{margin: "0 auto"}} onClick={handleSubmit}>
                         Submit Order
                     </Button>
                 </Modal.Footer>
