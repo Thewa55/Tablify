@@ -331,7 +331,6 @@ class Frontdesk extends Component {
                                         menu={this.state.menu}
                                         changeTableAvailability={this.changeTableAvailability}
                                         getSavedTable={this.getSavedTable}
-                                        saveTablePosition={this.saveTablePosition}
                                     />
                                 )
                             }
@@ -343,7 +342,6 @@ class Frontdesk extends Component {
                                         changeTableStatus={this.changeTableStatus}
                                         changeTableAvailability={this.changeTableAvailability}
                                         getSavedTable={this.getSavedTable}
-                                        saveTablePosition={this.saveTablePosition}
                                     />
                                 )
                             }
