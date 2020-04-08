@@ -170,7 +170,7 @@ class SignUpFormBase extends Component {
           />
         </div>
         <div className="form-group text-center">
-          <button disabled={isInvalid} type="submit">Sign Up</button>
+          <button disabled={isInvalid} type="submit">Submit</button>
         </div>
         <div style={{margin: "0 auto", fontStyle: "monospace"}} className="text-center">
           {error && <mark>{error.message}</mark>}
