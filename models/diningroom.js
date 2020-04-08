@@ -12,7 +12,8 @@ const diningroomSchema = new Schema({
   status: {type: String, default:"Unoccupied"},
   X:{type: Number},
   Y:{type: Number},
-  fixed:{type: Boolean, default: false}
+  fixed:{type: Boolean, default: false},
+  table_name: {type: String}
 });
 
 const Diningroom = mongoose.model("Diningroom", diningroomSchema);

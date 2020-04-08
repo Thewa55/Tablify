@@ -177,17 +177,18 @@ class Frontdesk extends Component {
 
     }
 
-    saveTablePosition = (TableId, newPosition) => {
-        console.log("newposition: ", newPosition)
+    saveTablePosition = (TableId, newTableInfo) => {
+        console.log("newTableInfo: ", newTableInfo)
         this.state.tables.map(table => {
             if (table._id === TableId) {
                 console.log("Matched Table")
-                let newTablePosition = {
-                    X: newPosition.X,
-                    Y: newPosition.Y,
+                let newTableinf = {
+                    table_name: newTableInfo.tableName,
+                    X: newTableInfo.X,
+                    Y: newTableInfo.Y,
                     fixed: true
                 }
-                this.updateTable(table._id, newTablePosition)
+                this.updateTable(table._id, newTableinf)
                 this.getSavedTable()
             }
         })
