@@ -20,7 +20,7 @@ function EmployeePage() {
       <Jumbotron>
         <div className="row">
           <div className="col-md-12 login-box">
-            <h1 style={{fontFamily: "'Fredoka One', cursive", textDecoration: "underline", marginBottom: "2%"}}>Welcome to the Employee Page</h1>
+            <h1 style={{fontFamily: "'Fredoka One', cursive", textDecoration: "underline", marginBottom: "2%"}}>Employee Database</h1>
             <EmployeeList />
           </div>
         </div>

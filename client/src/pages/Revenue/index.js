@@ -18,8 +18,12 @@ function RevenuePage() {
   return(
     <div>
       <Jumbotron>
-        Welcome to the RevenuePage
-        <RevenueList />
+        <div className="row">
+          <div className="col-md-12 login-box">
+            <h1 style={{fontFamily: "'Fredoka One', cursive", textDecoration: "underline", marginLeft: "1%"}}>Revenue Tracking</h1>
+            <RevenueList />
+          </div>
+        </div>
       </Jumbotron>
     </div>
   )
