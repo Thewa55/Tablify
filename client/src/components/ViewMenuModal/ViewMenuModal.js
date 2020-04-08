@@ -3,80 +3,119 @@ import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button'
 import AddDishModal from '../AddDishModal/AddDishModal'
 import DeleteDishModal from '../DeleteDishModal/DeleteDishModal'
+import API from '../../utils/API';
 
 
 function ViewMenuModal(props) {
     const [show, setShow] = useState(false);
+    const [category, setCategory] = useState({ category: [] });
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-    const Appetizer = props.menu.filter(dish => 
+    const Appetizer = props.menu.filter(dish =>
         dish.category === "Appetizer"
     )
-    const Entre = props.menu.filter(dish => 
+    const Entree = props.menu.filter(dish =>
         dish.category === "Entree"
     )
-    const Dessert = props.menu.filter(dish => 
+    const Dessert = props.menu.filter(dish =>
         dish.category === "Dessert"
     )
+    let Chosen = {};
+
+    function changeCategory(event) {
+        event.preventDefault();
+        if (event.target.name === "Appetizer") {
+            Chosen = {
+                dish: Appetizer,
+                name: "Appetizer"
+            }
+        }
+        else if (event.target.name === "Entree") {
+            Chosen = {
+                dish: Entree,
+                name: "Entree"
+            }
+        }
+        else {
+            Chosen = {
+                dish: Dessert,
+                name: "Dessert"
+            }
+        }
+        console.log("Chosen: ", Chosen)
+        setCategory(Chosen)
+    }
+
+    function removeDish(id) {
+        console.log("id: ",id)
+        API.deleteDish(id)
+            .then(results => {
+                props.getMenu()
+                setCategory(Chosen)
+            })
+    }
+
     return (
+
         <>
             <button className="mt-4" onClick={handleShow}>
                 View Menu
-            </button>
+                </button>
 
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
-                    <Modal.Title style={{fontFamily: "monospace", fontSize: "30px"}}>Our Menu:</Modal.Title>
+                    <Modal.Title style={{ fontFamily: "monospace", fontSize: "30px" }}>Our Menu:</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <p style={{fontFamily: "monospace", fontSize: "20px"}}>Appetizer:</p>
-                    <ul>
-                        {Appetizer.length ? (
-                            Appetizer.map(dish => {
-                                return(
-                                <li key={dish._id}> {dish.item}, ${dish.price}, {dish.cook_time} minute preparation</li>
-                                )
-                            })
-                        ) : (
-                                <h2>-no appetizers on menu-</h2>
-                            )}
-                    </ul>
-                    <p style={{fontFamily: "monospace", fontSize: "20px"}}>Entree:</p>
-                    <ul>
-                        {Entre.length ? (
-                            Entre.map(dish => {
-                                return(
-                                <li key={dish._id}> {dish.item}, ${dish.price}, {dish.cook_time} minute preparation</li>
-                                )
-                            })
-                        ) : (
-                                <h2>-no entrees on menu-</h2>
-                            )}
-                    </ul>
-                    <p style={{fontFamily: "monospace", fontSize: "20px"}}>Dessert:</p>
-                    <ul>
-                        {Dessert.length ? (
-                            Dessert.map(dish => {
-                                return(
-                                <li key={dish._id}> {dish.item}, ${dish.price}, {dish.cook_time} minute preparation</li>
-                                )
-                            })
-                        ) : (
-                                <h2>-no desserts on menu-</h2>
-                            )}
-                    </ul>
-
+                    <div className="row">
+                        {/* <div className="col"> */}
+                        <Button onClick={changeCategory} name="Appetizer" style={{ marginLeft: "2%" }}>Appetizer</Button>
+                        {/* </div> */}
+                        {/* <div className="col"> */}
+                        <Button onClick={changeCategory} name="Entree" style={{ marginLeft: "2%" }}>Entree</Button>
+                        {/* </div> */}
+                        {/* <div className="col"> */}
+                        <Button onClick={changeCategory} name="Dessert" style={{ marginLeft: "2%" }}>Dessert</Button>
+                        {/* </div> */}
+                    </div>
+                    <br></br>
+                    {category.dish ? (
+                        <>
+                            <h4 style={{textAlign:"center"}}>{category.name}</h4>
+                            <table>
+                                <tr>
+                                    <th>Dish Name</th>
+                                    <th>Price</th>
+                                    <th>Time
+                                        (min)</th>
+                                    <th>Remove</th>
+                                </tr>
+                                {category.dish.map(dish => {
+                                    return (
+                                        <tr>
+                                            <th>{dish.item}</th>
+                                            <th>{dish.price}</th>
+                                            <th>{dish.cook_time}</th>
+                                            <Button className="deleteDishBtn" onClick={() => removeDish(dish._id)}>x</Button>
+                                        </tr>
+                                    )
+                                })}
+                            </table>
+                        </>
+                    ) : (
+                            <p>Please choose one of the category above!</p>
+                        )}
 
                 </Modal.Body>
                 <Modal.Footer>
-                    <AddDishModal getMenu={props.getMenu}/>
-                    <DeleteDishModal 
-                        getMenu = {props.getMenu}
-                        menu = {props.menu}
-                    />
-                    
+                    <AddDishModal getMenu={props.getMenu} />
+                    {/* <DeleteDishModal
+                        getMenu={props.getMenu}
+                        menu={props.menu}
+                    /> */}
+
                 </Modal.Footer>
             </Modal>
         </>
