@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button'
 import API from '../../utils/API';
+import "./clearfix.css";
 
 
 function DeleteDishModal(props) {
@@ -64,6 +65,7 @@ function DeleteDishModal(props) {
                                     <>
                                         <li key={dish._id}> {dish.item}, ${dish.price}</li>
                                         <Button className="deleteDishBtn" style={{ float:"right"}} onClick={() => removeDish(dish._id)}>x</Button>
+
                                     </>
                                 )
                             })
@@ -79,6 +81,7 @@ function DeleteDishModal(props) {
                                     <>
                                         <li key={dish._id}> {dish.item}, ${dish.price}</li>
                                         <Button className="deleteDishBtn" style={{float: "right"}} onClick={() => removeDish(dish._id)}>x</Button>
+
                                     </>
                                 )
                             })
