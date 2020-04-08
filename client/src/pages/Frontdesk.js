@@ -291,6 +291,9 @@ class Frontdesk extends Component {
                 </div>
 
                 <div id="main">
+                    <div id="legend">
+                        Test
+                    </div>
                     {/* create tables */}
                     {!this.state.tables ? (
                         <h2 style={{ color: "white" }}>No Tables Generated Yet</h2>

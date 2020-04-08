@@ -56,66 +56,83 @@ function OrderListModal(props) {
 
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Order List </Modal.Title>
+                    <Modal.Title style={{fontFamily: "monospace", fontSize: "24px"}}>Order List </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <ul>
                         {
                             order.map(order => {
                                 return (
-                                    <li key={order.id}> {order.item}, {order.quantity}</li>
+                                    <li key={order.id}><span style={{textDecoration: "underline"}}>{order.item}</span>: - {order.quantity} order(s) -</li>
                                 )
                             })
                         }
                     </ul>
-                    <h3>Total Price: {props.table.total_price}</h3>
+                    <h3 className="mb-3"><span style={{textDecoration: "underline"}}>Total Price:</span> $<span style={{fontWeight: "bolder"}}>{props.table.total_price}</span></h3>
 
                 </Modal.Body>
-                <hr></hr>
                 <div className="container">
-                    <div className="row">
+                    <div className="row mb-3">
                         {props.table.status === "Occupied" ? (
-                            <Button className="col text-dark" variant="secondary" style={{ backgroundColor: props.table.color }} onClick={changeStatus}>
-                                Appetizer
-                            </Button>
-                        ) : (
-                                <Button className="col" variant="secondary">
+
+                            <div className="col-sm-3">
+                                <button className="col text-dark text-left" variant="secondary" style={{backgroundColor: props.table.color}} onClick={changeStatus}>
                                     Appetizer
-                                </Button>
-                            )}
-
+                                </button>
+                            </div>
+                        ):(
+                            <div className="col-sm-3">
+                                <button className="col text-center" variant="secondary">
+                                    Appetizer
+                                </button>
+                            </div>
+                        )}
+                        
                         {props.table.status === "Appetizer" ? (
-                            <Button className="col text-dark" variant="secondary" style={{ backgroundColor: props.table.color }} onClick={changeStatus}>
-                                Entree
-                            </Button>
-                        ) : (
-                                <Button className="col" variant="secondary">
+                            <div className="col-sm-3">
+                                <button className="col text-dark text-center" variant="secondary" style={{ backgroundColor: props.table.color }} onClick={changeStatus}>
                                     Entree
-                                </Button>
-                            )}
-
+                                </button>
+                            </div>
+                        ):(
+                            <div className="col-sm-3">                       
+                                <button className="col text-center" variant="secondary">
+                                    Entree
+                                </button>
+                            </div>
+                        )}
+                        
                         {props.table.status === "Entree" ? (
-                            <Button className="col text-dark" variant="secondary" style={{ backgroundColor: props.table.color }} onClick={changeStatus}>
-                                Dessert
-                            </Button>
-                        ) : (
-                                <Button className="col" variant="secondary">
+                            <div className="col-sm-3">
+                                <button className="col text-dark text-center" variant="secondary" style={{ backgroundColor: props.table.color }} onClick={changeStatus}>
                                     Dessert
-                                </Button>
-                            )}
+                                </button>
+                            </div>
+                        ):(
+                            <div className="col-sm-3">
+                                <button className="col" variant="secondary">
+                                    Dessert
+                                </button>
+                            </div>
+                        )}
 
                         {props.table.status === "Dessert" ? (
-                            <Button className="col text-dark" variant="secondary" style={{ backgroundColor: props.table.color }} onClick={handleSubmit}>
-                                Clear
-                            </Button>
-                        ) : (
-                                <Button className="col" variant="secondary">
+                            <div className="col-sm-3">
+                                <button className="col text-dark text-center" variant="secondary" style={{ backgroundColor: props.table.color }} onClick={handleSubmit}>
                                     Clear
-                                </Button>
-                            )}
+                                </button>
+                            </div>
+                        ):(
+                            <div className="col-sm-3">
+                                <button className="col" variant="secondary">
+                                    Clear
+                                </button>
+                            </div>
+                        )}
 
                     </div>
                 </div>
+
 
 
 
