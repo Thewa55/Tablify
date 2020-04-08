@@ -2,13 +2,17 @@ import React, { useState } from 'react'
 import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button'
 import API from '../../utils/API'
+import Draggable, { DraggableCore } from 'react-draggable';
 
 
 
 function OrderListModal(props) {
-    console.log(props.table)
+    // console.log(props.table)
     const [show, setShow] = useState(false);
-
+    const [position, setPosition] = useState({
+        X: 0,
+        Y: 0
+    });
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
@@ -16,6 +20,7 @@ function OrderListModal(props) {
     // console.log("orderedItem: ", orderedItem)
     const orderedQuantity = props.table.order_quantity.split(",")
     const order = [];
+
 
     for (var i = 0; i < orderedItem.length; i++) {
         order[i] = {
@@ -47,15 +52,23 @@ function OrderListModal(props) {
         handleClose()
         alert("Be ready for next customer!.")
     }
+
+
+
+
     return (
         <>
-            <Button className="table-small table text-center" style={{ backgroundColor: props.table.color }} onClick={handleShow}>Test Small</Button>
-
+            {/* <Draggable onDrag={handleDrag} handle=".table" defaultPosition={{ x: 300, y: 0 }} > */}
+            <Draggable onStart={() => false} handle=".table" defaultPosition={{x: props.table.X, y: props.table.Y}} >
+                <Button className="table-small table text-center" style={{ backgroundColor: props.table.color }} onClick={handleShow}>Test Small</Button>
+            </Draggable>
 
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
                     <Modal.Title>Order List </Modal.Title>
                 </Modal.Header>
+
+                
                 <Modal.Body>
                     <ul>
                         {
@@ -76,42 +89,42 @@ function OrderListModal(props) {
                             <Button className="col text-dark" variant="secondary" style={{ backgroundColor: props.table.color }} onClick={changeStatus}>
                                 Appetizer
                             </Button>
-                        ):(
-                            <Button className="col" variant="secondary">
-                                Appetizer
-                            </Button>
-                        )}
-                        
+                        ) : (
+                                <Button className="col" variant="secondary">
+                                    Appetizer
+                                </Button>
+                            )}
+
                         {props.table.status === "Appetizer" ? (
                             <Button className="col text-dark" variant="secondary" style={{ backgroundColor: props.table.color }} onClick={changeStatus}>
                                 Entree
                             </Button>
-                        ):(
-                            <Button className="col" variant="secondary">
-                                Entree
-                            </Button>
-                        )}
-                        
+                        ) : (
+                                <Button className="col" variant="secondary">
+                                    Entree
+                                </Button>
+                            )}
+
                         {props.table.status === "Entree" ? (
                             <Button className="col text-dark" variant="secondary" style={{ backgroundColor: props.table.color }} onClick={changeStatus}>
                                 Dessert
                             </Button>
-                        ):(
-                            <Button className="col" variant="secondary">
-                                Dessert
-                            </Button>
-                        )}
+                        ) : (
+                                <Button className="col" variant="secondary">
+                                    Dessert
+                                </Button>
+                            )}
 
                         {props.table.status === "Dessert" ? (
                             <Button className="col text-dark" variant="secondary" style={{ backgroundColor: props.table.color }} onClick={handleSubmit}>
                                 Clear
                             </Button>
-                        ):(
-                            <Button className="col" variant="secondary">
-                                Clear
-                            </Button>
-                        )}
-                        
+                        ) : (
+                                <Button className="col" variant="secondary">
+                                    Clear
+                                </Button>
+                            )}
+
                     </div>
                 </div>
 

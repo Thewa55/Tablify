@@ -70,7 +70,7 @@ function OrderingSysModal(props) {
     
     return (
         <>
-            <Draggable handle=".table">
+            <Draggable onStart={() => false} handle=".table" defaultPosition={{x: props.table.X, y: props.table.Y}} >
                 <div className="table-small table text-center">
                     <div className="interior-small interior" onClick={handleShow}>Test Small</div>
                 </div>

@@ -14,6 +14,7 @@ const Landing = () => (
   </div>
 );
 
+
 const LandingNonAuth = () => (
   <div className="background">
     <div className="page-center text-center">
@@ -36,26 +37,26 @@ const LandingNonAuth = () => (
   </div>
 );
 
-function LandingAuth (authUser) {
+function LandingAuth(authUser) {
   console.log(authUser)
-  return(
-  <div className="background">
-    <div className="page-center text-center">
-      <h1 className="logo">T</h1>
-      <h1 className="headline">Welcome back, {authUser.authUser.username}</h1>
-      <h3 className="sub-headline">What would you like to do today?</h3>
-      <Link to="/FrontDesk">
-        <button className="login-button">Front Desk</button>
-      </Link>
-      <Link to="/Kitchen">
-        <button className="login-button">Kitchen</button>
-      </Link>
-      <Link to="/Account">
-        <button className="login-button">Account</button>
-      </Link>
-      <SignOutButton />
+  return (
+    <div className="background">
+      <div className="page-center text-center">
+        <h1 className="logo">T</h1>
+        <h1 className="headline">Welcome back, {authUser.authUser.username}</h1>
+        <h3 className="sub-headline">What would you like to do today?</h3>
+        <Link to="/FrontDesk">
+          <button className="login-button">Front Desk</button>
+        </Link>
+        <Link to="/Kitchen">
+          <button className="login-button">Kitchen</button>
+        </Link>
+        <Link to="/Account">
+          <button className="login-button">Account</button>
+        </Link>
+        <SignOutButton />
+      </div>
     </div>
-  </div>
   )
 }
 
