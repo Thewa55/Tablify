@@ -47,33 +47,33 @@ class Frontdesk extends Component {
             res.data.map(table => {
                 
                 if (table.status === "Unoccupied") {
-                    console.log("Unoccupied")
+                    // console.log("Unoccupied")
                     UnoccupiedCount += 1;
                     Count[0] = UnoccupiedCount;
                 }
                 else if (table.status === "Occupied") {
-                    console.log("Occupied")
+                    // console.log("Occupied")
                     OccupiedCount += 1;
                     Count[1] = OccupiedCount;
                 }
                 else if (table.status === "Appetizer") {
-                    console.log("Appetizer")
+                    // console.log("Appetizer")
                     AppetizerCount += 1;
                     Count[2] = AppetizerCount;
                 }
                 else if (table.status === "Entree") {
-                    console.log("Entree")
+                    // console.log("Entree")
                     EntreeCount += 1;
                     Count[3] = EntreeCount;
                 }
                 else {
-                    console.log("Dessert")
+                    // console.log("Dessert")
                     DessertCount += 1;
                     Count[4] = DessertCount;
                 }
 
             })
-            console.log("count: ",Count)
+            // console.log("count: ",Count)
             this.setState({ tables: res.data, statusCount: Count})
         })
     }
