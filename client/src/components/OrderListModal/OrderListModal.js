@@ -7,7 +7,7 @@ import Draggable, { DraggableCore } from 'react-draggable';
 
 
 function OrderListModal(props) {
-    console.log(props.table)
+    // console.log(props.table)
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
