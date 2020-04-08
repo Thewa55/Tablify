@@ -21,19 +21,19 @@ function AddDishModal(props) {
             item: dishRef.current.value,
             category: categoryRef.current.value,
             price: parseInt(priceRef.current.value),
-            cook_time: parseInt(cookTimeRef.current.value),
-        }
+            cook_time: parseInt(cookTimeRef.current.value)
+        };
 
         console.log(newDish)
         API.createNewDish(newDish)
             .then(res => {
                 console.log(res)
-            })
+            });
         
-        handleClose()
-        props.getMenu()
-        console.log("finish call getMenu after add")
-        alert("Thanks for submiting new dish!")
+        handleClose();
+        props.getMenu();
+        console.log("finish call getMenu after add");
+        alert("New Dish Added!");
     }
 
 
