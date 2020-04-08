@@ -7,7 +7,7 @@ import Draggable, { DraggableCore } from 'react-draggable';
 import moment from 'moment'
 
 
-function OrderingSysModal(props) {
+function OrderingSysMediumModal(props) {
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
@@ -73,7 +73,7 @@ function OrderingSysModal(props) {
     return (
         <>
             <Draggable onStart={() => false} handle=".table" defaultPosition={{x: props.table.X, y: props.table.Y}} >
-                    <div className="table-small table text-center" style={{ backgroundColor: props.table.color }} onClick={handleShow}>Test Small</div>
+                    <div className="table-medium table text-center" style={{ backgroundColor: props.table.color }} onClick={handleShow}>Test Medium</div>
             </Draggable>
 
             <Modal show={show} onHide={handleClose}>
@@ -161,4 +161,4 @@ function OrderingSysModal(props) {
     );
 }
 
-export default OrderingSysModal;
+export default OrderingSysMediumModal;
