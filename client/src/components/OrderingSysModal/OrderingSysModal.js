@@ -37,6 +37,17 @@ function OrderingSysModal(props) {
         console.log(totalPrice)
     }
 
+    function deleteTable(event) {
+        event.preventDefault();
+
+        API.deleteTable(props.table._id)
+            .then(res => {
+                props.getSavedTable()
+            })
+            .catch(err => console.log(err))
+        
+        handleClose()
+    }
 
     function handleSubmit(event) {
         event.preventDefault();
@@ -55,7 +66,7 @@ function OrderingSysModal(props) {
             .then(res => {
                 console.log(res)
             })
-            console.log("prop and prop.changeTable", props, ", ",props.changeTableAvailability)
+        console.log("prop and prop.changeTable", props, ", ", props.changeTableAvailability)
         const newTableInfo = {
             id: props.table._id,
             order: orderString,
@@ -69,20 +80,21 @@ function OrderingSysModal(props) {
         orderedDishCount = [];
         alert("Thank you for your submission.")
     }
-    
+
     return (
         <>
-            <Draggable onStart={() => false} handle=".table" defaultPosition={{x: props.table.X, y: props.table.Y}} >
-                    <Button className="table-small table text-center" style={{ backgroundColor: props.table.color }} onClick={handleShow}>{props.table.table_name}</Button>
+            <Draggable onStart={() => false} handle=".table" defaultPosition={{ x: props.table.X, y: props.table.Y }} >
+                <Button className="table-small table text-center" style={{ backgroundColor: props.table.color }} onClick={handleShow}>{props.table.table_name}</Button>
             </Draggable>
 
             <Modal show={show} onHide={handleClose}>
-                <Modal.Header closeButton>
-                    <Modal.Title style={{fontFamily: "monospace", fontSize: "30px"}}>Our Menu:</Modal.Title>
+                <Modal.Header >
+                    <Modal.Title style={{ fontFamily: "monospace", fontSize: "30px" }}>Our Menu:</Modal.Title>
+                    <Button className="deletebtn" onClick={deleteTable}>delete table</Button>
                 </Modal.Header>
                 <Modal.Body>
                     <form>
-                        <p style={{fontFamily: "monospace", fontSize: "20px"}}>Appetizer:</p>
+                        <p style={{ fontFamily: "monospace", fontSize: "20px" }}>Appetizer:</p>
                         <ul>
                             {Appetizer.length ? (
                                 Appetizer.map(dish => {
@@ -104,7 +116,7 @@ function OrderingSysModal(props) {
                                     <h2>-no appetizers on menu-</h2>
                                 )}
                         </ul>
-                        <p style={{fontFamily: "monospace", fontSize: "20px"}}>Entree:</p>
+                        <p style={{ fontFamily: "monospace", fontSize: "20px" }}>Entree:</p>
                         <ul>
                             {Entre.length ? (
                                 Entre.map(dish => {
@@ -126,7 +138,7 @@ function OrderingSysModal(props) {
                                     <h2>-no entrees on menu-</h2>
                                 )}
                         </ul>
-                        <p style={{fontFamily: "monospace", fontSize: "20px"}}>Dessert:</p>
+                        <p style={{ fontFamily: "monospace", fontSize: "20px" }}>Dessert:</p>
                         <ul>
                             {Dessert.length ? (
                                 Dessert.map(dish => {
@@ -152,7 +164,7 @@ function OrderingSysModal(props) {
 
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="primary" style={{margin: "0 auto"}} onClick={handleSubmit}>
+                    <Button variant="primary" style={{ margin: "0 auto" }} onClick={handleSubmit}>
                         Submit Order
                     </Button>
                 </Modal.Footer>
