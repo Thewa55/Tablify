@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button'
 import API from '../../utils/API';
+import "./clearfix.css";
 
 
 function DeleteDishModal(props) {
@@ -45,9 +46,10 @@ function DeleteDishModal(props) {
                             Appetizer.map(dish => {
                                 return (
                                     <>
-                                        <Button style={{float: "right"}} onClick={() => removeDish(dish._id)}>x</Button>
-
+                                    <div>
                                         <li key={dish._id}> {dish.item}, ${dish.price}, {dish.cook_time} minute preparation</li>
+                                        <button style={{height: "20px", width: "50px", backgroundColor: "red", fontSize: "16px"}} onClick={() => removeDish(dish._id)}>X</button>
+                                    </div>
                                     </>
                                 )
 
@@ -62,8 +64,10 @@ function DeleteDishModal(props) {
                             Entre.map(dish => {
                                 return (
                                     <>
+                                    <div>
                                         <li key={dish._id}> {dish.item}, ${dish.price}, {dish.cook_time} minute preparation</li>
-                                        <Button style={{float: "right"}} onClick={() => removeDish(dish._id)}>x</Button>
+                                        <button style={{height: "20px", width: "50px", backgroundColor: "red", fontSize: "16px"}} onClick={() => removeDish(dish._id)}>X</button>
+                                    </div>
                                     </>
                                 )
                             })
@@ -78,7 +82,7 @@ function DeleteDishModal(props) {
                                 return (
                                     <>
                                         <li key={dish._id}> {dish.item}, ${dish.price}, {dish.cook_time} minute preparation</li>
-                                        <Button style={{float: "right"}} onClick={() => removeDish(dish._id)}>x</Button>
+                                        <button style={{height: "20px", width: "50px", backgroundColor: "red", fontSize: "16px"}} onClick={() => removeDish(dish._id)}>X</button>
                                     </>
                                 )
                             })
