@@ -16,7 +16,7 @@ function Kitchen() {
 
   const cooked = (id) => {
     console.log(id)
-    const orderFinished =  tables.filter(table => table._id !== id)
+    const orderFinished =  tables.forEach(table => table._id !== id)
     setTables(orderFinished)
   }
 
