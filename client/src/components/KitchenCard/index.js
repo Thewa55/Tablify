@@ -1,37 +1,33 @@
 import React from "react";
-import "./style.css";
+import Card from 'react-bootstrap/Card'
+import Button from 'react-bootstrap/Button';
 
 function KitchenCards(props) {
+  console.log(props.table._id)
+  let order = props.table.order.split(",")
+  let numberOfDish = props.table.order_quantity.split(",")
+
+  const finished = () => {
+    props.cooked(props.table._id)
+  }
+
   return (
-    <div className="card">
-      <div className="content"></div>
-      <hr></hr>
-      <ul>
-        <li>
-          <strong>Appetizer:</strong>
-          {props.appetizer}
-        </li>
-        <li>
-          <strong>Entre:</strong>
-          {props.entre}
-        </li>
-        <li>
-          <strong>Main:</strong>
-          {props.main}
-        </li>
-        <li>
-          <strong>Dessert:</strong>
-          {props.Dessert}
-        </li>
-        {/* <span onClick={()=> props.prepare(props.id)} className="prepare">
-                    Prepare
-                    </span> */}
-        <br></br>
-        <form>
-          <input type="submit" value="Prepare" />
-        </form>
-      </ul>
-    </div>
+    <Card style={{ width: '18rem' }}>
+      {/* <Card.Img variant="top" src="holder.js/100px180" /> */}
+      <Card.Body>
+        <Card.Title>Card Title</Card.Title>
+        <Card.Text>
+          <ul>
+            {order.map(function(dish, i){
+              return(
+                <li>{dish} - {numberOfDish[i]} </li>
+              )})
+            }
+          </ul>
+        </Card.Text>
+        <Button variant="danger" onClick={finished}>Done</Button>
+      </Card.Body>
+    </Card>
   );
 }
 

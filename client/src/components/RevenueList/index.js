@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import API from "../../utils/API";
 import moment from 'moment';
 import Table from 'react-bootstrap/Table';
-import Button from 'react-bootstrap/Button';
 import CustomSearch from '../CustomSearch';
 import InvoiceModal from '../InvoiceModal';
 import RevenueChart from '../RevenueChart'
@@ -10,7 +9,6 @@ import { Link } from "react-router-dom";
 
 
 function RevenueList(){
-  const [weekInv, setWeekInv] = useState([]);
   const [tableHistory, setTableHistory] = useState([]);
   const [todayTrans, setTodayTrans] = useState([]);
   const [selected, setSelected] = useState({

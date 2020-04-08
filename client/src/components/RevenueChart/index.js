@@ -40,7 +40,7 @@ function RevenueChart(props){
     
           <Modal show={show} onHide={handleClose}>
             <Modal.Header closeButton>
-              <Modal.Title>7-Day Revenue</Modal.Title>
+              <Modal.Title>7-Day Revenu</Modal.Title>
             </Modal.Header>
             <Modal.Body>
             <Line
