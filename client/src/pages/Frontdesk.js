@@ -341,7 +341,7 @@ class Frontdesk extends Component {
                 <br></br>
                 <div>
                     <button disabled className="legendbtn" style={{ backgroundColor: "green" }}>{this.state.statusCount[1]}</button>
-                    <p className="legendtext"> Finish Order</p>
+                    <p className="legendtext"> Ordered</p>
                 </div>
                 <br></br>
                 <div>
