@@ -4,7 +4,6 @@ import Button from 'react-bootstrap/Button'
 import Table from 'react-bootstrap/Table'
 
 function InvoiceModal(props) {
-  console.log("Props" , props)
   const [show, setShow] = useState(false); 
 
   const handleClose = () => setShow(false);
@@ -13,8 +12,6 @@ function InvoiceModal(props) {
   let dishes = props.items.order.split(",")
   let numDish = props.items.order_quantity.split(",")
 
-  console.log(dishes)
-  console.log(numDish)
   return (
     <>
       <Button variant="primary" className="mt-0" style={{width: "50%"}} onClick={handleShow}>
