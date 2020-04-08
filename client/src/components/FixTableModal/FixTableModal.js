@@ -47,7 +47,7 @@ function OrderListModal(props) {
 
             <Draggable onDrag={handleDrag} handle=".table" defaultPosition={{ x: 300, y: 200 }} >
                 {/* <Draggable onStart={() => false} handle=".table" defaultPosition={{ x: 329, y: 240 }} > */}
-                <Button className="table-small table text-center" style={{ backgroundColor: props.table.color }} onClick={handleShow}>Test Small</Button>
+                <Button className="table-small table text-center" style={{ backgroundColor: props.table.color }} onClick={handleShow}>Table Small</Button>
             </Draggable>
 
             <Modal show={show} onHide={handleClose}>

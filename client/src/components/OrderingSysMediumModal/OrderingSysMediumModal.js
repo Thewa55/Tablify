@@ -73,7 +73,7 @@ function OrderingSysMediumModal(props) {
     return (
         <>
             <Draggable onStart={() => false} handle=".table" defaultPosition={{x: props.table.X, y: props.table.Y}} >
-                    <div className="table-medium table text-center" style={{ backgroundColor: props.table.color }} onClick={handleShow}>Test Medium</div>
+                    <Button className="table-medium table text-center" style={{ backgroundColor: props.table.color }} onClick={handleShow}>{props.table.table_name}</Button>
             </Draggable>
 
             <Modal show={show} onHide={handleClose}>

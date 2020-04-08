@@ -73,7 +73,7 @@ function OrderingSysLargeModal(props) {
     return (
         <>
             <Draggable onStart={() => false} handle=".table" defaultPosition={{x: props.table.X, y: props.table.Y}} >
-                    <div className="table-large table text-center" style={{ backgroundColor: props.table.color }} onClick={handleShow}>Test Large</div>
+                    <Button className="table-large table text-center" style={{ backgroundColor: props.table.color }} onClick={handleShow}>{props.table.table_name}</Button>
             </Draggable>
 
             <Modal show={show} onHide={handleClose}>
