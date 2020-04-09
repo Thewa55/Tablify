@@ -78,7 +78,6 @@ function OrderingSysModal(props) {
         handleClose()
         orderedDish = [];
         orderedDishCount = [];
-        alert("Thank you for your submission.")
     }
 
     return (

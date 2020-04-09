@@ -46,7 +46,6 @@ function OrderListModal(props) {
         }
         props.changeTableAvailability(newTableInfo, props.table.availability)
         handleClose()
-        alert("Be ready for next customer!.")
     }
     return (
         <>
