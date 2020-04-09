@@ -7,7 +7,7 @@ import Draggable, { DraggableCore } from 'react-draggable';
 
 
 function OrderListMediumModal(props) {
-    console.log(props.table)
+    // console.log(props.table)
     const [show, setShow] = useState(false);
     const [position, setPosition] = useState({
         X: 0,
@@ -54,6 +54,7 @@ function OrderListMediumModal(props) {
     }
 
 
+    // let totalPrice = props.table.total_price.toFixed(2);
 
 
     return (
@@ -79,7 +80,7 @@ function OrderListMediumModal(props) {
                             })
                         }
                     </ul>
-                    <h3 className="mb-3"><span style={{textDecoration: "underline"}}>Total Price:</span> $<span stye={{fontWeight: "bolder"}}>{props.table.total_price}</span></h3>
+                    <h3 className="mb-3"><span style={{textDecoration: "underline"}}>Total Price:</span> $<span style={{fontWeight: "bolder"}}>{props.table.total_price.toFixed(2)}</span></h3>
 
                 </Modal.Body>
                 <div className="container">

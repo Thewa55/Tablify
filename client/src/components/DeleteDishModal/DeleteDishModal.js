@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button'
 import API from '../../utils/API';
+import "./clearfix.css";
 
 
 function DeleteDishModal(props) {
@@ -13,7 +14,7 @@ function DeleteDishModal(props) {
     const Appetizer = props.menu.filter(dish =>
         dish.category === "Appetizer"
     )
-    console.log("Appetizer: ", Appetizer)
+    // console.log("Appetizer: ", Appetizer)
     const Entre = props.menu.filter(dish =>
         dish.category === "Entree"
     )
@@ -45,9 +46,9 @@ function DeleteDishModal(props) {
                             Appetizer.map(dish => {
                                 return (
                                     <>
-                                        <Button style={{float: "right"}} onClick={() => removeDish(dish._id)}>x</Button>
+                                        <Button className="deleteDishBtn" style={{float: "right"}} onClick={() => removeDish(dish._id)}>x</Button>
 
-                                        <li key={dish._id}> {dish.item}, ${dish.price}, {dish.cook_time} minute preparation</li>
+                                        <li key={dish._id}> {dish.item}, ${dish.price}</li>
                                     </>
                                 )
 
@@ -62,8 +63,9 @@ function DeleteDishModal(props) {
                             Entre.map(dish => {
                                 return (
                                     <>
-                                        <li key={dish._id}> {dish.item}, ${dish.price}, {dish.cook_time} minute preparation</li>
-                                        <Button style={{float: "right"}} onClick={() => removeDish(dish._id)}>x</Button>
+                                        <li key={dish._id}> {dish.item}, ${dish.price}</li>
+                                        <Button className="deleteDishBtn" style={{ float:"right"}} onClick={() => removeDish(dish._id)}>x</Button>
+
                                     </>
                                 )
                             })
@@ -77,8 +79,9 @@ function DeleteDishModal(props) {
                             Dessert.map(dish => {
                                 return (
                                     <>
-                                        <li key={dish._id}> {dish.item}, ${dish.price}, {dish.cook_time} minute preparation</li>
-                                        <Button style={{float: "right"}} onClick={() => removeDish(dish._id)}>x</Button>
+                                        <li key={dish._id}> {dish.item}, ${dish.price}</li>
+                                        <Button className="deleteDishBtn" style={{float: "right"}} onClick={() => removeDish(dish._id)}>x</Button>
+
                                     </>
                                 )
                             })

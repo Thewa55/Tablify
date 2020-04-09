@@ -10,7 +10,7 @@ mongoose.connect(
 
 const MenuSeed = [
   {
-    item:'wagyu meatballs',
+    item:'Wagyu Meatballs',
     category:'Appetizer',
     price:'23.99',
     cook_time:'10',
@@ -18,7 +18,7 @@ const MenuSeed = [
     upDatedAt:Date()
   },
   {
-    item:'pan seared scallops',
+    item:'Pan Seared Scallops',
     category:'Appetizer',
     price:'24.99',
     cook_time:'10',
@@ -26,7 +26,7 @@ const MenuSeed = [
     upDatedAt:Date()
   },
   {
-    item:'Lobster risotto',
+    item:'Lobster Risotto',
     category:'Appetizer',
     price:'25.99',
     cook_time:'10',
@@ -34,7 +34,7 @@ const MenuSeed = [
     upDatedAt:Date()
   },
   {
-    item:'beef wellington',
+    item:'Beef Wellington',
     category:'Entree',
     price:'49.99',
     cook_time:'10',
@@ -42,7 +42,7 @@ const MenuSeed = [
     upDatedAt:Date()
   },
   {
-    item:'roasted rack of lamb',
+    item:'Roasted Rack of Lamb',
     category:'Entree',
     price:'39.99',
     cook_time:'10',
@@ -50,7 +50,7 @@ const MenuSeed = [
     upDatedAt:Date()
   },
   {
-    item:'crispy skin salmon',
+    item:'Crispy Skin Salmon',
     category:'Entree',
     price:'37.99',
     cook_time:'10',
@@ -58,7 +58,7 @@ const MenuSeed = [
     upDatedAt:Date()
   },
   {
-    item:'sticky toffee pudding',
+    item:'Sticky Coffee Pudding',
     category:'Dessert',
     price:'19.99',
     cook_time:'10',
@@ -66,7 +66,7 @@ const MenuSeed = [
     upDatedAt:Date()
   },
   {
-    item:'cranberry souffle',
+    item:'Cranberry Souffle',
     category:'Dessert',
     price:'17.99',
     cook_time:'10',

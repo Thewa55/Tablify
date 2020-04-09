@@ -52,13 +52,13 @@ function OrderListModal(props) {
 
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Do you want to save this position? </Modal.Title>
+                    <Modal.Title style={{fontFamily: "monospace", fontSize: "24px"}}>Do you want to save this position? </Modal.Title>
                 </Modal.Header>
 
 
                 <Modal.Body>
                     <form>
-                        <p style={{ fontFamily: "monospace", fontSize: "20px" }}>What's the table Name? </p>
+                        <p style={{ fontFamily: "monospace", fontSize: "20px" }}>What's the table name? </p>
                         <input
                             className="input"
                             type="text"
@@ -72,7 +72,7 @@ function OrderListModal(props) {
                         Submit
                     </Button>
                     <Button onClick={handleClose}>
-                        NO
+                        Cancel
                     </Button>
                 </Modal.Footer>
 

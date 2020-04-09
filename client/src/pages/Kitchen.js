@@ -28,7 +28,6 @@ function Kitchen() {
   console.log(tables)
   return (
     <div>
-      <div class="col-md-2">
         <Navbar/>
         {tables ? (
           <>
@@ -43,7 +42,6 @@ function Kitchen() {
             <>
             </>
             )}
-      </div>
     </div>
   );
 }

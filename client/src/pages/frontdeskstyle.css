@@ -73,3 +73,50 @@
     z-index: 1;
 }
 
+#legend {
+    height: 250px;
+    width: 200px;
+    position: fixed;
+    z-index: 1;
+    background-color: white;
+    border: 5px solid black;
+    right: 0;
+    top: 0;
+    margin: 20px;
+    border-radius: 10px;
+    
+}
+
+.legendbtn {
+    margin-left:20px;
+    height:30px;
+    width:30px;
+    font-size:18px;
+    /* background-color: white; */
+    float: left;
+}
+.legendtext{
+    font-size: 18px;
+    float: left;
+    margin-left: 5%;
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #dddddd;
+  }
+
+  .deleteDishBtn{
+      width:100px;
+  }
