@@ -16,17 +16,6 @@ function RevenueList(){
     date: ""
   });
 
-  const [total, setTotal]= useState({
-    today: 0,
-    yesterday: 0,
-    threeDays: 0,
-    fourDays: 0,
-    fiveDays: 0,
-    sixDays: 0,
-    sevenDays: 0
-  })
-
- 
   const today = moment().format('L').toString();
   const yesterday = moment().subtract(1, 'day').format('L');
   const threeDays = moment().subtract(2,'day').format('L');
@@ -45,30 +34,6 @@ function RevenueList(){
         let transaction = results.data.filter(receipt => receipt.date === today)
         setSelected({ invoices: transaction , date: today})
         setTodayTrans(transaction)
-        // results.data.forEach(invoice =>{
-        //   if(invoice.date === today){
-        //     let todayTotal = total.today + invoice.total_price
-        //     setTotal({today: todayTotal})
-        //   } else if(invoice.date === yesterday){
-        //     let yesterdayTotal = total.yesterday + invoice.total_price
-        //     setTotal({yesterday: yesterdayTotal})
-        //   } else if(invoice.date === threeDays){
-        //     let threeDayTotal = total.threeDays + invoice.total_price
-        //     setTotal({threeDays: threeDayTotal})
-        //   } else if(invoice.date === fourDays){
-        //     let fourDayTotal = total.fourDays + invoice.total_price
-        //     setTotal({fourDays: fourDayTotal})
-        //   } else if(invoice.date === fiveDays){
-        //     let fiveDayTotal = total.fiveDays + invoice.total_price
-        //     setTotal({fiveDays: fiveDayTotal})
-        //   } else if(invoice.date === sixDays){
-        //     let sixDayTotal = total.sixDays + invoice.total_price
-        //     setTotal({sixDays: sixDayTotal})
-        //   } else if(invoice.date === sevenDays){
-        //     let sevenDayTotal = total.sevenDays + invoice.total_price
-        //     setTotal({sevenDays: sevenDayTotal})
-        //   }
-        // })
       }
     )
   };
