@@ -12,7 +12,7 @@ function KitchenCards(props) {
   }
 
   return (
-    <Card style={{ width: '18rem', margin: "1%", float: "left", border: "3px solid black", boxShadow: "1px 1px black"}}>
+    <Card style={{ width: '24rem', margin: "1%", float: "left", border: "3px solid black", boxShadow: "1px 1px black"}}>
       {/* <Card.Img variant="top" src="holder.js/100px180" /> */}
       <Card.Body>
         <Card.Title style={{textDecoration: "underline"}}>{props.table.table_name}</Card.Title>
