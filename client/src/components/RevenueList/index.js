@@ -45,36 +45,37 @@ function RevenueList(){
         let transaction = results.data.filter(receipt => receipt.date === today)
         setSelected({ invoices: transaction , date: today})
         setTodayTrans(transaction)
-        results.data.forEach(invoice =>{
-          if(invoice.date === today){
-            let todayTotal = total.today + invoice.total_price
-            setTotal({today: todayTotal})
-          } else if(invoice.date === yesterday){
-            let yesterdayTotal = total.yesterday + invoice.total_price
-            setTotal({yesterday: yesterdayTotal})
-          } else if(invoice.date === threeDays){
-            let threeDayTotal = total.threeDays + invoice.total_price
-            setTotal({threeDays: threeDayTotal})
-          } else if(invoice.date === fourDays){
-            let fourDayTotal = total.fourDays + invoice.total_price
-            setTotal({fourDays: fourDayTotal})
-          } else if(invoice.date === fiveDays){
-            let fiveDayTotal = total.fiveDays + invoice.total_price
-            setTotal({fiveDays: fiveDayTotal})
-          } else if(invoice.date === sixDays){
-            let sixDayTotal = total.sixDays + invoice.total_price
-            setTotal({sixDays: sixDayTotal})
-          } else if(invoice.date === sevenDays){
-            let sevenDayTotal = total.sevenDays + invoice.total_price
-            setTotal({sevenDays: sevenDayTotal})
-          }
-        })
+        // results.data.forEach(invoice =>{
+        //   if(invoice.date === today){
+        //     let todayTotal = total.today + invoice.total_price
+        //     setTotal({today: todayTotal})
+        //   } else if(invoice.date === yesterday){
+        //     let yesterdayTotal = total.yesterday + invoice.total_price
+        //     setTotal({yesterday: yesterdayTotal})
+        //   } else if(invoice.date === threeDays){
+        //     let threeDayTotal = total.threeDays + invoice.total_price
+        //     setTotal({threeDays: threeDayTotal})
+        //   } else if(invoice.date === fourDays){
+        //     let fourDayTotal = total.fourDays + invoice.total_price
+        //     setTotal({fourDays: fourDayTotal})
+        //   } else if(invoice.date === fiveDays){
+        //     let fiveDayTotal = total.fiveDays + invoice.total_price
+        //     setTotal({fiveDays: fiveDayTotal})
+        //   } else if(invoice.date === sixDays){
+        //     let sixDayTotal = total.sixDays + invoice.total_price
+        //     setTotal({sixDays: sixDayTotal})
+        //   } else if(invoice.date === sevenDays){
+        //     let sevenDayTotal = total.sevenDays + invoice.total_price
+        //     setTotal({sevenDays: sevenDayTotal})
+        //   }
+        // })
       }
     )
   };
 
   function getToday(){
     setSelected({invoices: todayTrans, date: today})
+
   }
 
   function getYesterday(){
@@ -104,11 +105,11 @@ function RevenueList(){
     setSelected({invoices: transaction, date: timeFrame})
   }
 
+  
   useEffect(() => {
     getTableHistory()
   }, []);
   
-  console.log(total)
   return(
     <div>
       <div>
@@ -116,7 +117,7 @@ function RevenueList(){
         <button variant="primary" style={{width: "100px", margin: "1%"}} className="btn btn-primary" onClick={getYesterday}>Yesterday</button>
         <button variant="primary" style={{width: "100px", margin: "1%"}} className="btn btn-primary" onClick={getWeek}>Week</button>
         <CustomSearch userSearch={userSearch} />
-        <RevenueChart daysOfWeek={daysOfWeek} total={total} />
+        <RevenueChart daysOfWeek={daysOfWeek} tableHistory={tableHistory} />
         <Link to="/Account">
           <button className="login-button" style={{margin: "1%", marginLeft: "3%"}}>Account</button>
         </Link>

@@ -2,14 +2,17 @@ import React, { useState } from 'react'
 import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button'
 import API from '../../utils/API'
+import { set } from 'mongoose';
 // import EmployeeContext from '../../utils/EmployeeContext'
 
 function EmployeeModal(props) {
     const [show, setShow] = useState(false); 
+    const [checks, setChecks] = useState(false)
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true)
 
+    const [error, setError] = useState("")
     const [employee, setEmployee] = useState({
       _id: props.employee._id,
       employeeId: props.employee.employeeId,
@@ -20,9 +23,54 @@ function EmployeeModal(props) {
     })
 
     function handleInputChange(event){
-        const { name, value } = event.target
-        setEmployee({...employee, [name]: value})
-        // setId(event.target.value)
+      const { name, value } = event.target;
+      setError("");
+      setEmployee({...employee, [name]: value})
+      if ( name === "employeeId"){
+        if(value === ""){
+          setError("Employee ID can't be empty")
+          setChecks(true)
+        }else if (isNaN(value * 1)){
+          setError("Employee ID needs to be a number")
+          setChecks(true)
+        }
+        else {
+          setError("")
+          setChecks(false)
+        }
+      }
+      if(name === "phonenumber"){
+        if(value.length === 9 && !isNaN(value * 1)){
+          setChecks(false)
+          setError("")
+        } 
+        else if(value.length === 10 && !isNaN(value * 1)){
+          setChecks(false)
+          setError("")
+        }
+        else if(value.length < 9 && !isNaN(value * 1)){
+          setChecks(true)
+          setError("The phone number needs to be at least 9 numbers")
+        }  
+        else if(value.length > 10 && !isNaN(value * 1)){
+          setChecks(true)
+          setError("The phone number can't exceed 10 numbers")
+        }         
+        else{
+          setError("Please check your telephone formatting, no hyphens or paranthesis")
+          setChecks(true)
+        }   
+      }
+      if(name === "email"){
+        if(value.includes("@") && value.includes(".")){
+          setChecks(false)
+          setError("")
+        }
+        else{
+          setChecks(true)
+          setError("Please check the email formatting")
+        }
+      }
     }
 
     function handleSubmit (id, employee){
@@ -32,8 +80,6 @@ function EmployeeModal(props) {
           props.getEmployees()
         })
     }
-
-    console.log("employeeInfo: ", employee)
 
     return (
       <>
@@ -98,12 +144,13 @@ function EmployeeModal(props) {
                 />
               </div>
             </form>
+            <div>{error}</div>
           </Modal.Body>
           <Modal.Footer>
             <Button variant="secondary" onClick={handleClose}>
               Cancel
             </Button>
-            <Button variant="primary" onClick={() => handleSubmit(employee._id, employee)}>
+            <Button variant="primary" disabled={checks} onClick={() => handleSubmit(employee._id, employee)}>
               Update Employee
             </Button>
           </Modal.Footer>
