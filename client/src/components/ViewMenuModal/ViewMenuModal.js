@@ -105,7 +105,7 @@ function ViewMenuModal(props) {
                             </table>
                         </>
                     ) : (
-                            <p>Please choose one of the category above!</p>
+                            <p>Please choose one of the categories above!</p>
                         )}
 
                 </Modal.Body>

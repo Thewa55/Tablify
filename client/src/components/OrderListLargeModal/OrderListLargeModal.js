@@ -50,7 +50,7 @@ function OrderListLargeModal(props) {
         }
         props.changeTableAvailability(newTableInfo, props.table.availability)
         handleClose();
-        alert("Table cleared - awaiting the next customer.");
+        // alert("Table cleared - awaiting the next customer.");
     }
 
     // let totalPrice = props.table.total_price.toFixed(2);
