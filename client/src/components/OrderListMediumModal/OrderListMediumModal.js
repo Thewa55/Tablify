@@ -50,7 +50,7 @@ function OrderListMediumModal(props) {
         }
         props.changeTableAvailability(newTableInfo, props.table.availability)
         handleClose();
-        alert("Table cleared - awaiting the next customer.");
+        // alert("Table cleared - awaiting the next customer.");
     }
 
 

@@ -33,7 +33,6 @@ function AddDishModal(props) {
         handleClose();
         props.getMenu();
         console.log("finish call getMenu after add");
-        alert("New Dish Added!");
     }
 
 

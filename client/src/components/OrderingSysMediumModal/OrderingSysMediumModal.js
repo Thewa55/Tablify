@@ -78,7 +78,7 @@ function OrderingSysMediumModal(props) {
         handleClose()
         orderedDish = [];
         orderedDishCount = [];
-        alert("Thank you for your submission.")
+        // alert("Thank you for your submission.")
     }
     
     return (
@@ -90,7 +90,7 @@ function OrderingSysMediumModal(props) {
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header >
                     <Modal.Title style={{fontFamily: "monospace", fontSize: "30px"}}>Our Menu:</Modal.Title>
-                    <Button className="deletebtn" onClick={deleteTable}>delete table</Button>
+                    <Button className="deletebtn" onClick={deleteTable}>Delete table</Button>
                 </Modal.Header>
                 <Modal.Body>
                     <form>
